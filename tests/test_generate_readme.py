@@ -16,10 +16,9 @@ from scripts.utils.readme_renderer import (
     _format_listing_row,
     _format_locations,
     _format_relative_date,
-    _is_georgia_listing,
     _is_southeast_listing,
     _render_category_section,
-    _render_georgia_section,
+    _render_southeast_graduate_section,
     _render_southeast_section,
     render_readme,
 )
@@ -172,15 +171,15 @@ class TestFormatListingRow:
         assert "💳" not in row
         assert "🧠" not in row
 
-    def test_no_sponsorship_emoji(self):
+    def test_no_sponsorship_no_emoji(self):
         listing = _make_listing(sponsorship=SponsorshipStatus.NO_SPONSORSHIP)
         row = _format_listing_row(listing)
-        assert "🛂" in row
+        assert "🛂" not in row
 
-    def test_us_citizenship_emoji(self):
+    def test_us_citizenship_no_emoji(self):
         listing = _make_listing(requires_us_citizenship=True)
         row = _format_listing_row(listing)
-        assert "🇺🇸" in row
+        assert "🇺🇸" not in row
 
     def test_closed_listing_emoji(self):
         listing = _make_listing(status=ListingStatus.CLOSED)
@@ -202,12 +201,12 @@ class TestFormatListingRow:
     def test_multiple_flags(self):
         listing = _make_listing(
             is_faang_plus=True,
-            sponsorship=SponsorshipStatus.NO_SPONSORSHIP,
+            requires_advanced_degree=True,
             remote_friendly=True,
         )
         row = _format_listing_row(listing)
         assert "🔥" in row
-        assert "🛂" in row
+        assert "🎓" in row
         assert "🏠" in row
 
     def test_row_is_pipe_delimited(self):
@@ -227,36 +226,6 @@ class TestFormatListingRow:
         listing = _make_listing(season="fall_2026")
         row = _format_listing_row(listing)
         assert "F26" in row
-
-
-# ---------------------------------------------------------------------------
-# _is_georgia_listing
-# ---------------------------------------------------------------------------
-
-class TestIsGeorgiaListing:
-    def test_atlanta_ga(self):
-        listing = _make_listing(locations=["Atlanta, GA"])
-        assert _is_georgia_listing(listing, ["Atlanta, GA"]) is True
-
-    def test_non_georgia(self):
-        listing = _make_listing(locations=["San Francisco, CA"])
-        assert _is_georgia_listing(listing, ["Atlanta, GA"]) is False
-
-    def test_georgia_keyword(self):
-        listing = _make_listing(locations=["Georgia"])
-        assert _is_georgia_listing(listing, []) is True
-
-    def test_ga_suffix(self):
-        listing = _make_listing(locations=["Decatur, GA"])
-        assert _is_georgia_listing(listing, []) is True
-
-    def test_multiple_locations_one_ga(self):
-        listing = _make_listing(locations=["NYC", "Atlanta, GA", "SF"])
-        assert _is_georgia_listing(listing, ["Atlanta, GA"]) is True
-
-    def test_empty_locations(self):
-        listing = _make_listing(locations=[])
-        assert _is_georgia_listing(listing, ["Atlanta, GA"]) is False
 
 
 # ---------------------------------------------------------------------------
@@ -309,29 +278,6 @@ class TestRenderCategorySection:
         new_pos = section.index("New Intern")
         old_pos = section.index("Old Intern")
         assert new_pos < old_pos
-
-
-# ---------------------------------------------------------------------------
-# _render_georgia_section
-# ---------------------------------------------------------------------------
-
-class TestRenderGeorgiaSection:
-    def test_no_georgia_listings(self):
-        listings = [_make_listing(locations=["San Francisco, CA"])]
-        section = _render_georgia_section(listings, ["Atlanta, GA"])
-        assert "## 🍑 Georgia Internships" in section
-        assert "No Georgia-based listings" in section
-
-    def test_with_georgia_listings(self):
-        listings = [_make_listing(locations=["Atlanta, GA"])]
-        section = _render_georgia_section(listings, ["Atlanta, GA"])
-        assert "| Company | Role | Location | Season | Apply | Posted |" in section
-        assert "**TestCo**" in section
-
-    def test_excludes_closed_listings(self):
-        closed = _make_listing(locations=["Atlanta, GA"], status=ListingStatus.CLOSED)
-        section = _render_georgia_section([closed], ["Atlanta, GA"])
-        assert "No Georgia-based listings" in section
 
 
 # ---------------------------------------------------------------------------
@@ -403,8 +349,8 @@ class TestRenderReadme:
         readme = render_readme(db)
         assert "| Symbol | Meaning |" in readme
         assert "| 🔥 | FAANG+ company |" in readme
-        assert "| 🛂 | Does NOT offer sponsorship |" in readme
-        assert "| 🇺🇸 | Requires U.S. Citizenship |" in readme
+        assert "🛂" not in readme
+        assert "🇺🇸" not in readme
         assert "| 🔒 | Application closed |" in readme
         assert "| 🎓 | Advanced degree required |" in readme
         assert "| 🏠 | Remote friendly |" in readme
@@ -414,21 +360,11 @@ class TestRenderReadme:
         assert "| S27 | Summer 2027 |" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
-    def test_georgia_section_present(self, mock_config):
+    def test_no_georgia_section(self, mock_config):
         listings = [_make_listing(locations=["Atlanta, GA"])]
         db = _make_db(listings)
         readme = render_readme(db)
-        assert "## 🍑 Georgia Internships" in readme
-
-    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
-    def test_georgia_section_disabled(self, mock_config):
-        mock_off = MagicMock()
-        mock_off.georgia_focus.georgia_section_in_readme = False
-        mock_off.project.github_repo = "ctsc/atlanta-tech-internships-2026"
-        with patch("scripts.utils.readme_renderer.get_config", return_value=mock_off):
-            db = _make_db([_make_listing(locations=["Atlanta, GA"])])
-            readme = render_readme(db)
-            assert "## 🍑 Georgia Internships" not in readme
+        assert "## 🍑 Georgia Internships" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_contributing_section(self, mock_config):
@@ -504,8 +440,6 @@ class TestRenderReadme:
             db = _make_db([])
             readme = render_readme(db)
             assert "# Atlanta Tech Internships" in readme
-            # Georgia section not rendered when config fails
-            assert "## 🍑 Georgia Internships" not in readme
 
 
 # ---------------------------------------------------------------------------
@@ -762,11 +696,18 @@ class TestReadmeHeader:
         assert "| 💳 | Fintech |" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config")
-    def test_stats_table_has_georgia_link(self, mock_config):
+    def test_stats_table_has_no_georgia_link(self, mock_config):
         mock_config.return_value = _MOCK_CONFIG
         db = _make_db([_make_listing(locations=["Atlanta, GA"])])
         readme = render_readme(db)
-        assert "🍑 [Georgia Internships](#-georgia-internships)" in readme
+        assert "🍑" not in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_stats_table_has_se_graduate_link(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        db = _make_db([_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)])
+        readme = render_readme(db)
+        assert "🎓 [SE Graduate & PhD](#-southeast-graduate--phd-internships)" in readme
 
     @patch("scripts.utils.readme_renderer.get_config")
     def test_stats_table_has_southeast_link(self, mock_config):
@@ -782,3 +723,56 @@ class TestReadmeHeader:
         db = _make_db(listings)
         readme = render_readme(db)
         assert "## 🌴 Southeast Internships" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_se_graduate_section_present(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        listings = [_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)]
+        db = _make_db(listings)
+        readme = render_readme(db)
+        assert "## 🎓 Southeast Graduate & PhD Internships" in readme
+
+
+# ---------------------------------------------------------------------------
+# _render_southeast_graduate_section
+# ---------------------------------------------------------------------------
+
+class TestRenderSoutheastGraduateSection:
+    def test_empty_when_no_grad_se_listings(self):
+        listings = [_make_listing(locations=["Atlanta, GA"])]
+        section = _render_southeast_graduate_section(listings)
+        assert "## 🎓 Southeast Graduate & PhD Internships" in section
+        assert "No graduate-friendly Southeast listings" in section
+
+    def test_with_graduate_friendly_listing(self):
+        listings = [_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)]
+        section = _render_southeast_graduate_section(listings)
+        assert "| Company | Role | Location | Season | Apply | Posted |" in section
+        assert "**TestCo**" in section
+
+    def test_with_advanced_degree_listing(self):
+        listings = [_make_listing(locations=["Miami, FL"], requires_advanced_degree=True)]
+        section = _render_southeast_graduate_section(listings)
+        assert "**TestCo**" in section
+
+    def test_excludes_non_se_graduate_listings(self):
+        listings = [_make_listing(locations=["San Francisco, CA"], graduate_friendly=True)]
+        section = _render_southeast_graduate_section(listings)
+        assert "No graduate-friendly Southeast listings" in section
+
+    def test_excludes_closed_listings(self):
+        closed = _make_listing(
+            locations=["Atlanta, GA"],
+            graduate_friendly=True,
+            status=ListingStatus.CLOSED,
+        )
+        section = _render_southeast_graduate_section([closed])
+        assert "No graduate-friendly Southeast listings" in section
+
+    def test_includes_both_grad_types(self):
+        listings = [
+            _make_listing(id="gf1", locations=["Atlanta, GA"], graduate_friendly=True),
+            _make_listing(id="ad1", locations=["Nashville, TN"], requires_advanced_degree=True),
+        ]
+        section = _render_southeast_graduate_section(listings)
+        assert section.count("**TestCo**") == 2

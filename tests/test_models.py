@@ -266,12 +266,18 @@ class TestJobListing:
             **sample_job_listing_data,
             "requires_us_citizenship": True,
             "requires_advanced_degree": True,
+            "graduate_friendly": True,
             "remote_friendly": True,
         }
         listing = JobListing(**data)
         assert listing.requires_us_citizenship is True
         assert listing.requires_advanced_degree is True
+        assert listing.graduate_friendly is True
         assert listing.remote_friendly is True
+
+    def test_graduate_friendly_default(self, sample_job_listing_data):
+        listing = JobListing(**sample_job_listing_data)
+        assert listing.graduate_friendly is False
 
     def test_serialization_roundtrip(self, sample_job_listing):
         """Serialize to dict and back — should produce identical model."""

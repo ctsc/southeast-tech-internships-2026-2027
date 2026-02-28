@@ -38,6 +38,7 @@ DEFAULT_METADATA: dict = {
     "locations": [],
     "sponsorship": "unknown",
     "requires_advanced_degree": False,
+    "graduate_friendly": False,
     "remote_friendly": False,
     "tech_stack": [],
     "confidence": 0.0,

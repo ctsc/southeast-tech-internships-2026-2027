@@ -112,6 +112,7 @@ class JobListing(BaseModel):
     requires_us_citizenship: bool = False
     is_faang_plus: bool = False
     requires_advanced_degree: bool = False
+    graduate_friendly: bool = False
     remote_friendly: bool = False
     date_added: date
     date_last_verified: date

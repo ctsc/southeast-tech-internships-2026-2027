@@ -784,6 +784,7 @@ class TestDefaultMetadata:
             "locations",
             "sponsorship",
             "requires_advanced_degree",
+            "graduate_friendly",
             "remote_friendly",
             "tech_stack",
             "confidence",

@@ -1,11 +1,11 @@
 """Markdown table generation logic for rendering the README from job data.
 
 Transforms a JobsDatabase into a beautifully formatted README.md with
-categorized internship tables, stats, legend, and Georgia focus section.
+categorized internship tables, stats, legend, and Southeast focus sections.
 """
 
 import logging
-from datetime import date, timedelta
+from datetime import date
 
 from scripts.utils.config import get_config
 from scripts.utils.models import (
@@ -13,7 +13,6 @@ from scripts.utils.models import (
     JobsDatabase,
     ListingStatus,
     RoleCategory,
-    SponsorshipStatus,
 )
 
 logger = logging.getLogger(__name__)
@@ -89,10 +88,6 @@ def _format_listing_row(listing: JobListing) -> str:
     flags = []
     if listing.status == ListingStatus.CLOSED:
         flags.append("🔒")
-    if listing.sponsorship == SponsorshipStatus.NO_SPONSORSHIP:
-        flags.append("🛂")
-    if listing.requires_us_citizenship:
-        flags.append("🇺🇸")
     if listing.requires_advanced_degree:
         flags.append("🎓")
     if listing.remote_friendly:
@@ -111,20 +106,6 @@ def _format_listing_row(listing: JobListing) -> str:
         apply_link = f"[Apply]({apply_url})"
 
     return f"| {company} | {role} | {locations} | {season_badge} | {apply_link} | {date_str} |"
-
-
-def _is_georgia_listing(listing: JobListing, ga_locations: list[str]) -> bool:
-    """Check if a listing has any Georgia location."""
-    for loc in listing.locations:
-        loc_lower = loc.lower()
-        # Check for explicit GA mentions
-        if ", ga" in loc_lower or "georgia" in loc_lower:
-            return True
-        # Check against configured priority locations
-        for ga_loc in ga_locations:
-            if ga_loc.lower() in loc_lower or loc_lower in ga_loc.lower():
-                return True
-    return False
 
 
 def _render_category_section(
@@ -153,35 +134,6 @@ def _render_category_section(
         lines.append("No listings yet. Check back soon!")
         lines.append("")
         return "\n".join(lines)
-
-    lines.append("| Company | Role | Location | Season | Apply | Posted |")
-    lines.append("|---------|------|----------|--------|-------|------------|")
-    for listing in sorted_listings:
-        lines.append(_format_listing_row(listing))
-    lines.append("")
-    return "\n".join(lines)
-
-
-def _render_georgia_section(listings: list[JobListing], ga_locations: list[str]) -> str:
-    """Render the Georgia-focused section."""
-    ga_listings = [
-        x for x in listings
-        if x.status == ListingStatus.OPEN and _is_georgia_listing(x, ga_locations)
-    ]
-
-    lines = [
-        "## 🍑 Georgia Internships",
-        "",
-        "> Internships located in Georgia — Atlanta, Alpharetta, and across the state.",
-        "",
-    ]
-
-    if not ga_listings:
-        lines.append("No Georgia-based listings yet. Check back soon!")
-        lines.append("")
-        return "\n".join(lines)
-
-    sorted_listings = sorted(ga_listings, key=lambda x: x.date_added, reverse=True)
 
     lines.append("| Company | Role | Location | Season | Apply | Posted |")
     lines.append("|---------|------|----------|--------|-------|------------|")
@@ -251,6 +203,37 @@ def _render_southeast_section(listings: list[JobListing]) -> str:
     return "\n".join(lines)
 
 
+def _render_southeast_graduate_section(listings: list[JobListing]) -> str:
+    """Render the Southeast Graduate & PhD section."""
+    se_grad_listings = [
+        x for x in listings
+        if x.status == ListingStatus.OPEN
+        and _is_southeast_listing(x)
+        and (x.requires_advanced_degree or x.graduate_friendly)
+    ]
+
+    lines = [
+        "## 🎓 Southeast Graduate & PhD Internships",
+        "",
+        "> Graduate-friendly internships in the Southeast — for Master's and PhD candidates.",
+        "",
+    ]
+
+    if not se_grad_listings:
+        lines.append("No graduate-friendly Southeast listings yet. Check back soon!")
+        lines.append("")
+        return "\n".join(lines)
+
+    sorted_listings = sorted(se_grad_listings, key=lambda x: x.date_added, reverse=True)
+
+    lines.append("| Company | Role | Location | Season | Apply | Posted |")
+    lines.append("|---------|------|----------|--------|-------|------------|")
+    for listing in sorted_listings:
+        lines.append(_format_listing_row(listing))
+    lines.append("")
+    return "\n".join(lines)
+
+
 def _count_open(listings: list[JobListing], category: RoleCategory) -> int:
     """Count open listings for a given category."""
     return len([
@@ -270,11 +253,9 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     """
     try:
         config = get_config()
-        georgia_focus = config.georgia_focus
         repo = config.project.github_repo
     except Exception:
         logger.warning("Could not load config, using defaults for README rendering")
-        georgia_focus = None
         repo = "ctsc/atlanta-tech-internships-2026"
 
     jobs_db.compute_stats()
@@ -320,17 +301,18 @@ def render_readme(jobs_db: JobsDatabase) -> str:
         parts.append(f"| {emoji} [{title}](#{anchor}) | {count} |")
 
     # Location-based section counts
-    ga_locations_cfg = georgia_focus.priority_locations if georgia_focus else []
-    ga_count = len([
-        x for x in listings
-        if x.status == ListingStatus.OPEN and _is_georgia_listing(x, ga_locations_cfg)
-    ])
     se_count = len([
         x for x in listings
         if x.status == ListingStatus.OPEN and _is_southeast_listing(x)
     ])
-    parts.append(f"| 🍑 [Georgia Internships](#-georgia-internships) | {ga_count} |")
+    se_grad_count = len([
+        x for x in listings
+        if x.status == ListingStatus.OPEN
+        and _is_southeast_listing(x)
+        and (x.requires_advanced_degree or x.graduate_friendly)
+    ])
     parts.append(f"| 🌴 [Southeast Internships](#-southeast-internships) | {se_count} |")
+    parts.append(f"| 🎓 [SE Graduate & PhD](#-southeast-graduate--phd-internships) | {se_grad_count} |")
 
     parts.append(f"| **Total** | **{total_open}** |")
     parts.append("")
@@ -343,8 +325,6 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("| Symbol | Meaning |")
     parts.append("|--------|---------|")
     parts.append("| 🔥 | FAANG+ company |")
-    parts.append("| 🛂 | Does NOT offer sponsorship |")
-    parts.append("| 🇺🇸 | Requires U.S. Citizenship |")
     parts.append("| 🔒 | Application closed |")
     parts.append("| 🎓 | Advanced degree required |")
     parts.append("| 🏠 | Remote friendly |")
@@ -356,15 +336,13 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("---")
     parts.append("")
 
-    # --- Georgia Section (if enabled) ---
-    if georgia_focus and georgia_focus.georgia_section_in_readme:
-        ga_locations = georgia_focus.priority_locations
-        parts.append(_render_georgia_section(listings, ga_locations))
-        parts.append("---")
-        parts.append("")
-
     # --- Southeast Section ---
     parts.append(_render_southeast_section(listings))
+    parts.append("---")
+    parts.append("")
+
+    # --- Southeast Graduate & PhD Section ---
+    parts.append(_render_southeast_graduate_section(listings))
     parts.append("---")
     parts.append("")
 

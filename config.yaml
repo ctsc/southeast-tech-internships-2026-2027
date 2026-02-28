@@ -410,6 +410,195 @@ greenhouse_boards:
     company: "1Password"
     is_faang_plus: false
 
+  # --- Defense / Aerospace ---
+  - token: "lockheedmartin"
+    company: "Lockheed Martin"
+    is_faang_plus: false
+  - token: "northropgrumman"
+    company: "Northrop Grumman"
+    is_faang_plus: false
+  - token: "l3harris"
+    company: "L3Harris Technologies"
+    is_faang_plus: false
+  - token: "bae-systems-usa"
+    company: "BAE Systems"
+    is_faang_plus: false
+  - token: "leidos"
+    company: "Leidos"
+    is_faang_plus: false
+  - token: "saic"
+    company: "SAIC"
+    is_faang_plus: false
+  - token: "general-dynamics"
+    company: "General Dynamics"
+    is_faang_plus: false
+  - token: "raytheon"
+    company: "Raytheon"
+    is_faang_plus: false
+  - token: "boozallenham"
+    company: "Booz Allen Hamilton"
+    is_faang_plus: false
+
+  # --- Healthcare IT ---
+  - token: "epic"
+    company: "Epic Systems"
+    is_faang_plus: false
+  - token: "veeva"
+    company: "Veeva Systems"
+    is_faang_plus: false
+  - token: "cerner"
+    company: "Cerner (Oracle Health)"
+    is_faang_plus: false
+  - token: "tempus"
+    company: "Tempus AI"
+    is_faang_plus: false
+  - token: "flatiron-health"
+    company: "Flatiron Health"
+    is_faang_plus: false
+  - token: "color"
+    company: "Color Health"
+    is_faang_plus: false
+
+  # --- Consulting / Professional Services ---
+  - token: "deloitte"
+    company: "Deloitte"
+    is_faang_plus: false
+  - token: "accenture"
+    company: "Accenture"
+    is_faang_plus: false
+  - token: "mckinsey"
+    company: "McKinsey & Company"
+    is_faang_plus: false
+  - token: "bcg"
+    company: "Boston Consulting Group"
+    is_faang_plus: false
+
+  # --- Fintech / Payments ---
+  - token: "affirm"
+    company: "Affirm"
+    is_faang_plus: false
+  - token: "klarna"
+    company: "Klarna"
+    is_faang_plus: false
+  - token: "wise"
+    company: "Wise"
+    is_faang_plus: false
+  - token: "adyen"
+    company: "Adyen"
+    is_faang_plus: false
+  - token: "checkout-com"
+    company: "Checkout.com"
+    is_faang_plus: false
+  - token: "moderntreasury"
+    company: "Modern Treasury"
+    is_faang_plus: false
+  - token: "mercury"
+    company: "Mercury"
+    is_faang_plus: false
+  - token: "column"
+    company: "Column"
+    is_faang_plus: false
+
+  # --- Dev Tools / Infrastructure ---
+  - token: "atlassian"
+    company: "Atlassian"
+    is_faang_plus: false
+  - token: "jetbrains"
+    company: "JetBrains"
+    is_faang_plus: false
+  - token: "snyk"
+    company: "Snyk"
+    is_faang_plus: false
+  - token: "sentry"
+    company: "Sentry"
+    is_faang_plus: false
+  - token: "newrelic"
+    company: "New Relic"
+    is_faang_plus: false
+  - token: "pagerduty"
+    company: "PagerDuty"
+    is_faang_plus: false
+  - token: "circleci"
+    company: "CircleCI"
+    is_faang_plus: false
+  - token: "buildkite"
+    company: "Buildkite"
+    is_faang_plus: false
+  - token: "pulumi"
+    company: "Pulumi"
+    is_faang_plus: false
+  - token: "prisma"
+    company: "Prisma"
+    is_faang_plus: false
+  - token: "planetscale"
+    company: "PlanetScale"
+    is_faang_plus: false
+
+  # --- Southeast Region Companies ---
+  - token: "mailchimp"
+    company: "Mailchimp (Intuit)"
+    is_faang_plus: false
+  - token: "kabbage"
+    company: "Kabbage (Amex)"
+    is_faang_plus: false
+  - token: "aprio"
+    company: "Aprio"
+    is_faang_plus: false
+  - token: "rubicon"
+    company: "Rubicon Technologies"
+    is_faang_plus: false
+  - token: "relativity"
+    company: "Relativity Space"
+    is_faang_plus: false
+
+  # --- Robotics / Hardware ---
+  - token: "zipline"
+    company: "Zipline"
+    is_faang_plus: false
+  - token: "anduril"
+    company: "Anduril"
+    is_faang_plus: false
+  - token: "shield-ai"
+    company: "Shield AI"
+    is_faang_plus: false
+  - token: "skydio"
+    company: "Skydio"
+    is_faang_plus: false
+  - token: "reliable-robotics"
+    company: "Reliable Robotics"
+    is_faang_plus: false
+
+  # --- E-commerce / Marketplace ---
+  - token: "etsy"
+    company: "Etsy"
+    is_faang_plus: false
+  - token: "wayfair"
+    company: "Wayfair"
+    is_faang_plus: false
+  - token: "chewy"
+    company: "Chewy"
+    is_faang_plus: false
+  - token: "wish"
+    company: "Wish"
+    is_faang_plus: false
+  - token: "faire"
+    company: "Faire"
+    is_faang_plus: false
+  - token: "goat"
+    company: "GOAT Group"
+    is_faang_plus: false
+
+  # --- Travel / Hospitality ---
+  - token: "expedia"
+    company: "Expedia Group"
+    is_faang_plus: false
+  - token: "tripadvisor"
+    company: "Tripadvisor"
+    is_faang_plus: false
+  - token: "booking"
+    company: "Booking.com"
+    is_faang_plus: false
+
 # ============================================================================
 # ATS API Sources — Lever Boards
 # ============================================================================
@@ -481,6 +670,63 @@ lever_boards:
   - company_slug: "snyk"
     company: "Snyk"
     is_faang_plus: false
+  - company_slug: "webflow"
+    company: "Webflow"
+    is_faang_plus: false
+  - company_slug: "loom"
+    company: "Loom"
+    is_faang_plus: false
+  - company_slug: "notion"
+    company: "Notion"
+    is_faang_plus: false
+  - company_slug: "figma"
+    company: "Figma"
+    is_faang_plus: false
+  - company_slug: "retool"
+    company: "Retool"
+    is_faang_plus: false
+  - company_slug: "mux"
+    company: "Mux"
+    is_faang_plus: false
+  - company_slug: "vercel"
+    company: "Vercel"
+    is_faang_plus: false
+  - company_slug: "supabase"
+    company: "Supabase"
+    is_faang_plus: false
+  - company_slug: "sanity"
+    company: "Sanity"
+    is_faang_plus: false
+  - company_slug: "contentful"
+    company: "Contentful"
+    is_faang_plus: false
+  - company_slug: "stytch"
+    company: "Stytch"
+    is_faang_plus: false
+  - company_slug: "clerk"
+    company: "Clerk"
+    is_faang_plus: false
+  - company_slug: "workos"
+    company: "WorkOS"
+    is_faang_plus: false
+  - company_slug: "drata"
+    company: "Drata"
+    is_faang_plus: false
+  - company_slug: "vanta"
+    company: "Vanta"
+    is_faang_plus: false
+  - company_slug: "onepassword"
+    company: "1Password"
+    is_faang_plus: false
+  - company_slug: "openphone"
+    company: "OpenPhone"
+    is_faang_plus: false
+  - company_slug: "baton"
+    company: "Baton"
+    is_faang_plus: false
+  - company_slug: "tldraw"
+    company: "tldraw"
+    is_faang_plus: false
 
 # ============================================================================
 # ATS API Sources — Ashby Boards
@@ -537,6 +783,48 @@ ashby_boards:
     is_faang_plus: false
   - company_slug: "highlight"
     company: "Highlight"
+    is_faang_plus: false
+  - company_slug: "cursor"
+    company: "Cursor"
+    is_faang_plus: false
+  - company_slug: "warp"
+    company: "Warp"
+    is_faang_plus: false
+  - company_slug: "railway"
+    company: "Railway"
+    is_faang_plus: false
+  - company_slug: "modal"
+    company: "Modal"
+    is_faang_plus: false
+  - company_slug: "replicate"
+    company: "Replicate"
+    is_faang_plus: false
+  - company_slug: "perplexity"
+    company: "Perplexity AI"
+    is_faang_plus: false
+  - company_slug: "cohere"
+    company: "Cohere"
+    is_faang_plus: false
+  - company_slug: "mistral"
+    company: "Mistral AI"
+    is_faang_plus: false
+  - company_slug: "together"
+    company: "Together AI"
+    is_faang_plus: false
+  - company_slug: "fireworks"
+    company: "Fireworks AI"
+    is_faang_plus: false
+  - company_slug: "langchain"
+    company: "LangChain"
+    is_faang_plus: false
+  - company_slug: "pinecone"
+    company: "Pinecone"
+    is_faang_plus: false
+  - company_slug: "chroma"
+    company: "Chroma"
+    is_faang_plus: false
+  - company_slug: "weaviate"
+    company: "Weaviate"
     is_faang_plus: false
 
 # ============================================================================
@@ -667,6 +955,170 @@ scrape_sources:
     is_faang_plus: false
   - company: "Hudson River Trading"
     url: "https://www.hudsonrivertrading.com/careers/?gh_src=&q=intern"
+    is_faang_plus: false
+
+  # --- Retail / Consumer ---
+  - company: "Walmart"
+    url: "https://careers.walmart.com/results?q=intern+software&page=1&sort=rank"
+    is_faang_plus: false
+  - company: "Target"
+    url: "https://jobs.target.com/search-jobs/intern%20technology"
+    is_faang_plus: false
+  - company: "Costco"
+    url: "https://www.costco.com/jobs.html?keyword=intern+technology"
+    is_faang_plus: false
+  - company: "Kroger"
+    url: "https://jobs.kroger.com/main/jobs?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "Best Buy"
+    url: "https://jobs.bestbuy.com/bby?q=intern+technology"
+    is_faang_plus: false
+
+  # --- Logistics / Transportation ---
+  - company: "FedEx"
+    url: "https://careers.fedex.com/fedex/jobs?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "Norfolk Southern"
+    url: "https://jobs.nscorp.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "CSX"
+    url: "https://www.csx.com/index.cfm/working-at-csx/search-jobs/?search=intern+technology"
+    is_faang_plus: false
+
+  # --- Telecom ---
+  - company: "AT&T"
+    url: "https://www.att.jobs/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Verizon"
+    url: "https://mycareer.verizon.com/jobs/SearchJobs/intern+technology"
+    is_faang_plus: false
+  - company: "T-Mobile"
+    url: "https://careers.t-mobile.com/search-jobs/intern+technology"
+    is_faang_plus: false
+
+  # --- Entertainment / Media ---
+  - company: "Disney"
+    url: "https://jobs.disneycareers.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Warner Bros. Discovery"
+    url: "https://careers.wbd.com/global/en/search-results?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "Paramount"
+    url: "https://careers.paramount.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Electronic Arts"
+    url: "https://ea.gr8people.com/jobs?keywords=intern+software"
+    is_faang_plus: false
+  - company: "Riot Games"
+    url: "https://www.riotgames.com/en/work-with-us?search=intern"
+    is_faang_plus: false
+  - company: "Epic Games"
+    url: "https://www.epicgames.com/site/en-US/careers/jobs?q=intern"
+    is_faang_plus: false
+  - company: "Activision Blizzard"
+    url: "https://careers.activisionblizzard.com/search-results?keywords=intern+software"
+    is_faang_plus: false
+
+  # --- Aerospace ---
+  - company: "Boeing"
+    url: "https://jobs.boeing.com/search-jobs/intern+software"
+    is_faang_plus: false
+  - company: "SpaceX"
+    url: "https://www.spacex.com/careers/?search=intern+software"
+    is_faang_plus: false
+  - company: "Blue Origin"
+    url: "https://www.blueorigin.com/careers?search=intern+software"
+    is_faang_plus: false
+
+  # --- Banks ---
+  - company: "Bank of America"
+    url: "https://careers.bankofamerica.com/en-us/search-results?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "Wells Fargo"
+    url: "https://www.wellsfargojobs.com/en/jobs?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "Citigroup"
+    url: "https://jobs.citi.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Capital One"
+    url: "https://www.capitalonecareers.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "American Express"
+    url: "https://aexp.eightfold.ai/careers?query=intern+technology"
+    is_faang_plus: false
+
+  # --- Insurance / Financial Services ---
+  - company: "State Farm"
+    url: "https://jobs.statefarm.com/main/jobs?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "USAA"
+    url: "https://www.usaajobs.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Progressive"
+    url: "https://www.progressive.com/careers/search/?q=intern+technology"
+    is_faang_plus: false
+  - company: "Truist"
+    url: "https://careers.truist.com/search-jobs/intern+technology"
+    is_faang_plus: false
+
+  # --- Healthcare ---
+  - company: "UnitedHealth Group"
+    url: "https://careers.unitedhealthgroup.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Humana"
+    url: "https://careers.humana.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Anthem (Elevance Health)"
+    url: "https://careers.elevancehealth.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "CVS Health"
+    url: "https://jobs.cvshealth.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Medtronic"
+    url: "https://jobs.medtronic.com/search-jobs/intern+software"
+    is_faang_plus: false
+
+  # --- Energy ---
+  - company: "Chevron"
+    url: "https://careers.chevron.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "ExxonMobil"
+    url: "https://careers.exxonmobil.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "NextEra Energy"
+    url: "https://careers.nexteraenergy.com/search-jobs/intern+technology"
+    is_faang_plus: false
+
+  # --- Southeast Major Employers ---
+  - company: "Chick-fil-A"
+    url: "https://careers.chick-fil-a.com/search?q=intern+technology"
+    is_faang_plus: false
+  - company: "SunTrust (Truist)"
+    url: "https://careers.truist.com/search-jobs/intern+technology+atlanta"
+    is_faang_plus: false
+  - company: "Georgia-Pacific"
+    url: "https://jobs.gp.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Honeywell"
+    url: "https://careers.honeywell.com/us/en/search-results?keywords=intern+software"
+    is_faang_plus: false
+  - company: "Lockheed Martin (Marietta)"
+    url: "https://www.lockheedmartinjobs.com/search-jobs/intern+software+marietta"
+    is_faang_plus: false
+  - company: "GE Aerospace"
+    url: "https://careers.geaerospace.com/global/en/search-results?keywords=intern+software"
+    is_faang_plus: false
+  - company: "Siemens"
+    url: "https://jobs.siemens.com/careers?query=intern+software"
+    is_faang_plus: false
+  - company: "Panasonic"
+    url: "https://careers.na.panasonic.com/search-jobs/intern+software"
+    is_faang_plus: false
+  - company: "Bosch"
+    url: "https://www.bosch.us/careers/job-search/?keywords=intern+software"
+    is_faang_plus: false
+  - company: "Emerson"
+    url: "https://www.emerson.com/en-us/careers/search-results?keyword=intern+software"
     is_faang_plus: false
 
 # ============================================================================
@@ -810,6 +1262,7 @@ ai:
       "is_georgia": true/false,
       "sponsorship": "sponsors|no_sponsorship|us_citizenship|unknown",
       "requires_advanced_degree": true/false,
+      "graduate_friendly": true/false,
       "remote_friendly": true/false,
       "tech_stack": ["Python", "React", ...],
       "industry": "fintech|healthcare|energy|ecommerce|banking|automotive|gaming|social_media|cybersecurity|cloud|enterprise|ai_ml|aerospace|telecom|media|food|logistics|semiconductor|other",
@@ -973,10 +1426,30 @@ company_industries:
   Roadie: "logistics"
 
   # Aerospace
-  # (none currently in config)
+  Lockheed Martin: "aerospace"
+  Northrop Grumman: "aerospace"
+  L3Harris Technologies: "aerospace"
+  BAE Systems: "aerospace"
+  Leidos: "aerospace"
+  SAIC: "aerospace"
+  General Dynamics: "aerospace"
+  Raytheon: "aerospace"
+  Booz Allen Hamilton: "aerospace"
+  Boeing: "aerospace"
+  SpaceX: "aerospace"
+  Blue Origin: "aerospace"
+  Relativity Space: "aerospace"
+  Anduril: "aerospace"
+  Shield AI: "aerospace"
+  Skydio: "aerospace"
+  Reliable Robotics: "aerospace"
+  Zipline: "aerospace"
+  GE Aerospace: "aerospace"
 
   # Telecom
-  # (none currently in config)
+  AT&T: "telecom"
+  Verizon: "telecom"
+  T-Mobile: "telecom"
 
   # Food / Beverage
   Coca-Cola: "food"
@@ -1013,6 +1486,121 @@ company_industries:
   Genuine Parts Company: "logistics"
   Pactiv Evergreen: "other"
   Mailchimp (Intuit): "enterprise"
+
+  # Healthcare
+  Epic Systems: "healthcare"
+  Veeva Systems: "healthcare"
+  Cerner (Oracle Health): "healthcare"
+  Tempus AI: "healthcare"
+  Flatiron Health: "healthcare"
+  Color Health: "healthcare"
+  UnitedHealth Group: "healthcare"
+  Humana: "healthcare"
+  Anthem (Elevance Health): "healthcare"
+  CVS Health: "healthcare"
+  Medtronic: "healthcare"
+
+  # Consulting
+  Deloitte: "enterprise"
+  Accenture: "enterprise"
+  McKinsey & Company: "enterprise"
+  Boston Consulting Group: "enterprise"
+
+  # Fintech (new)
+  Affirm: "fintech"
+  Klarna: "fintech"
+  Wise: "fintech"
+  Adyen: "fintech"
+  Checkout.com: "fintech"
+  Modern Treasury: "fintech"
+  Mercury: "fintech"
+  Column: "fintech"
+
+  # Dev tools (new)
+  Atlassian: "enterprise"
+  JetBrains: "enterprise"
+  Sentry: "enterprise"
+  New Relic: "enterprise"
+  PagerDuty: "enterprise"
+  CircleCI: "cloud"
+  Buildkite: "cloud"
+  Pulumi: "cloud"
+  Prisma: "cloud"
+
+  # Ecommerce (new)
+  Etsy: "ecommerce"
+  Wayfair: "ecommerce"
+  Chewy: "ecommerce"
+  Faire: "ecommerce"
+  GOAT Group: "ecommerce"
+
+  # Travel
+  Expedia Group: "ecommerce"
+  Tripadvisor: "ecommerce"
+  Booking.com: "ecommerce"
+
+  # Retail
+  Walmart: "ecommerce"
+  Target: "ecommerce"
+  Costco: "ecommerce"
+  Kroger: "ecommerce"
+  Best Buy: "ecommerce"
+
+  # Banks (new)
+  Bank of America: "banking"
+  Wells Fargo: "banking"
+  Citigroup: "banking"
+  Capital One: "banking"
+  American Express: "banking"
+  Truist: "banking"
+
+  # Insurance
+  State Farm: "banking"
+  USAA: "banking"
+  Progressive: "banking"
+
+  # Logistics (new)
+  FedEx: "logistics"
+  Norfolk Southern: "logistics"
+  CSX: "logistics"
+
+  # Energy (new)
+  Chevron: "energy"
+  ExxonMobil: "energy"
+  NextEra Energy: "energy"
+
+  # Entertainment / Gaming
+  Disney: "media"
+  Warner Bros. Discovery: "media"
+  Paramount: "media"
+  Electronic Arts: "gaming"
+  Riot Games: "gaming"
+  Epic Games: "gaming"
+  Activision Blizzard: "gaming"
+
+  # Southeast (new)
+  Chick-fil-A: "food"
+  Georgia-Pacific: "other"
+  Honeywell: "enterprise"
+  Siemens: "enterprise"
+  Panasonic: "semiconductor"
+  Bosch: "automotive"
+  Emerson: "enterprise"
+  Kabbage (Amex): "fintech"
+
+  # AI (new Ashby)
+  LangChain: "ai_ml"
+  Pinecone: "ai_ml"
+  Chroma: "ai_ml"
+  Weaviate: "ai_ml"
+
+  # Auth / Security (new Lever)
+  Webflow: "enterprise"
+  Stytch: "cybersecurity"
+  Clerk: "cybersecurity"
+  WorkOS: "enterprise"
+  Drata: "cybersecurity"
+  Vanta: "cybersecurity"
 
   # Data infra
   dbt Labs: "cloud"
