@@ -1,11 +1,10 @@
 """Tests for README generation: renderer and generate_readme script."""
 
 import json
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from unittest.mock import MagicMock, patch
 
 from scripts.utils.models import (
-    IndustrySector,
     JobListing,
     JobsDatabase,
     ListingStatus,
@@ -13,13 +12,15 @@ from scripts.utils.models import (
     SponsorshipStatus,
 )
 from scripts.utils.readme_renderer import (
-    INDUSTRY_EMOJI,
     _count_open,
     _format_listing_row,
     _format_locations,
+    _format_relative_date,
     _is_georgia_listing,
+    _is_southeast_listing,
     _render_category_section,
     _render_georgia_section,
+    _render_southeast_section,
     render_readme,
 )
 from scripts.generate_readme import (
@@ -110,6 +111,39 @@ class TestFormatLocations:
 
 
 # ---------------------------------------------------------------------------
+# _format_relative_date
+# ---------------------------------------------------------------------------
+
+class TestFormatRelativeDate:
+    def test_today(self):
+        assert _format_relative_date(date.today()) == "today"
+
+    def test_one_day_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=1)) == "1d ago"
+
+    def test_five_days_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=5)) == "5d ago"
+
+    def test_one_week_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=7)) == "1w ago"
+
+    def test_two_weeks_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=14)) == "2w ago"
+
+    def test_one_month_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=30)) == "1mo ago"
+
+    def test_three_months_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=90)) == "3mo ago"
+
+    def test_one_year_ago(self):
+        assert _format_relative_date(date.today() - timedelta(days=365)) == "1y ago"
+
+    def test_future_date_shows_today(self):
+        assert _format_relative_date(date.today() + timedelta(days=5)) == "today"
+
+
+# ---------------------------------------------------------------------------
 # _format_listing_row
 # ---------------------------------------------------------------------------
 
@@ -120,13 +154,23 @@ class TestFormatListingRow:
         assert "**TestCo**" in row
         assert "Software Engineer Intern" in row
         assert "[Apply](" in row
-        assert "Feb 15" in row
+        # Date column uses relative time
+        assert "ago" in row or "today" in row
 
     def test_faang_plus_emoji(self):
         listing = _make_listing(is_faang_plus=True)
         row = _format_listing_row(listing)
-        assert "🔥" in row
         assert "🔥 **TestCo**" in row
+
+    def test_no_industry_emoji_in_row(self):
+        listing = _make_listing()
+        row = _format_listing_row(listing)
+        # Should not have any industry emoji prefix before company name
+        assert row.startswith("| **TestCo**") or "| **TestCo**" in row
+        # Specifically check no emoji appears right before the bold company name
+        assert "🏷️" not in row
+        assert "💳" not in row
+        assert "🧠" not in row
 
     def test_no_sponsorship_emoji(self):
         listing = _make_listing(sponsorship=SponsorshipStatus.NO_SPONSORSHIP)
@@ -253,7 +297,7 @@ class TestRenderCategorySection:
     def test_with_listings(self):
         listings = [_make_listing(), _make_listing(id="x2", role="Backend Intern")]
         section = _render_category_section(RoleCategory.SWE, "💻", "Software Engineering", listings)
-        assert "| Company | Role | Location | Season | Apply | Date Added |" in section
+        assert "| Company | Role | Location | Season | Apply | Posted |" in section
         assert "|---------|------|----------|--------|-------|------------|" in section
         assert "**TestCo**" in section
 
@@ -281,7 +325,7 @@ class TestRenderGeorgiaSection:
     def test_with_georgia_listings(self):
         listings = [_make_listing(locations=["Atlanta, GA"])]
         section = _render_georgia_section(listings, ["Atlanta, GA"])
-        assert "| Company | Role | Location | Season | Apply | Date Added |" in section
+        assert "| Company | Role | Location | Season | Apply | Posted |" in section
         assert "**TestCo**" in section
 
     def test_excludes_closed_listings(self):
@@ -607,34 +651,91 @@ class TestGenerateReadme:
 # Industry Emoji Tests
 # ---------------------------------------------------------------------------
 
-class TestIndustryEmoji:
-    def test_industry_emoji_dict_has_all_sectors(self):
-        """INDUSTRY_EMOJI should have an entry for every IndustrySector."""
-        for sector in IndustrySector:
-            assert sector in INDUSTRY_EMOJI, f"Missing emoji for {sector.value}"
+# ---------------------------------------------------------------------------
+# _is_southeast_listing
+# ---------------------------------------------------------------------------
 
-    def test_fintech_emoji_in_listing_row(self):
-        listing = _make_listing(company="Stripe", industry=IndustrySector.FINTECH)
-        row = _format_listing_row(listing)
-        assert "💳" in row
-        assert "**Stripe**" in row
+class TestIsSoutheastListing:
+    def test_florida_match(self):
+        listing = _make_listing(locations=["Miami, FL"])
+        assert _is_southeast_listing(listing) is True
 
-    def test_ai_ml_emoji_in_listing_row(self):
-        listing = _make_listing(company="OpenAI", industry=IndustrySector.AI_ML, is_faang_plus=True)
-        row = _format_listing_row(listing)
-        assert "🧠" in row
-        assert "🔥" in row
-        assert "**OpenAI**" in row
+    def test_texas_city_match(self):
+        listing = _make_listing(locations=["Austin, TX"])
+        assert _is_southeast_listing(listing) is True
 
-    def test_default_industry_shows_other_emoji(self):
-        listing = _make_listing(company="UnknownCo")
-        row = _format_listing_row(listing)
-        assert "🏷️" in row
+    def test_north_carolina_match(self):
+        listing = _make_listing(locations=["Charlotte, NC"])
+        assert _is_southeast_listing(listing) is True
 
-    def test_cybersecurity_emoji(self):
-        listing = _make_listing(company="CrowdStrike", industry=IndustrySector.CYBERSECURITY)
-        row = _format_listing_row(listing)
-        assert "🔐" in row
+    def test_georgia_match(self):
+        listing = _make_listing(locations=["Atlanta, GA"])
+        assert _is_southeast_listing(listing) is True
+
+    def test_tennessee_match(self):
+        listing = _make_listing(locations=["Nashville, TN"])
+        assert _is_southeast_listing(listing) is True
+
+    def test_alabama_match(self):
+        listing = _make_listing(locations=["Huntsville, AL"])
+        assert _is_southeast_listing(listing) is True
+
+    def test_south_carolina_match(self):
+        listing = _make_listing(locations=["Charleston, SC"])
+        assert _is_southeast_listing(listing) is True
+
+    def test_non_southeast_rejected(self):
+        listing = _make_listing(locations=["San Francisco, CA"])
+        assert _is_southeast_listing(listing) is False
+
+    def test_non_southeast_northeast(self):
+        listing = _make_listing(locations=["Boston, MA"])
+        assert _is_southeast_listing(listing) is False
+
+    def test_empty_locations(self):
+        listing = _make_listing(locations=[])
+        assert _is_southeast_listing(listing) is False
+
+    def test_multiple_locations_one_se(self):
+        listing = _make_listing(locations=["NYC", "Orlando, FL"])
+        assert _is_southeast_listing(listing) is True
+
+    def test_state_name_match(self):
+        listing = _make_listing(locations=["Tennessee"])
+        assert _is_southeast_listing(listing) is True
+
+
+# ---------------------------------------------------------------------------
+# _render_southeast_section
+# ---------------------------------------------------------------------------
+
+class TestRenderSoutheastSection:
+    def test_empty_when_no_se_listings(self):
+        listings = [_make_listing(locations=["San Francisco, CA"])]
+        section = _render_southeast_section(listings)
+        assert "## 🌴 Southeast Internships" in section
+        assert "No Southeast-based listings" in section
+
+    def test_with_se_listings(self):
+        listings = [_make_listing(locations=["Atlanta, GA"])]
+        section = _render_southeast_section(listings)
+        assert "| Company | Role | Location | Season | Apply | Posted |" in section
+        assert "**TestCo**" in section
+
+    def test_excludes_closed_listings(self):
+        closed = _make_listing(locations=["Miami, FL"], status=ListingStatus.CLOSED)
+        section = _render_southeast_section([closed])
+        assert "No Southeast-based listings" in section
+
+    def test_includes_multiple_states(self):
+        listings = [
+            _make_listing(id="ga1", locations=["Atlanta, GA"]),
+            _make_listing(id="fl1", locations=["Miami, FL"]),
+            _make_listing(id="nc1", locations=["Charlotte, NC"]),
+        ]
+        section = _render_southeast_section(listings)
+        # All three should be in the section
+        assert section.count("**TestCo**") == 3
 
 
 class TestReadmeHeader:
@@ -653,10 +754,31 @@ class TestReadmeHeader:
         assert "Leave a star on the repo" in readme
 
     @patch("scripts.utils.readme_renderer.get_config")
-    def test_legend_contains_industry_section(self, mock_config):
+    def test_legend_has_no_industry_section(self, mock_config):
         mock_config.return_value = _MOCK_CONFIG
         db = _make_db([_make_listing()])
         readme = render_readme(db)
-        assert "**Industry**" in readme
-        assert "💳" in readme
-        assert "Fintech" in readme
+        assert "**Industry**" not in readme
+        assert "| 💳 | Fintech |" not in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_stats_table_has_georgia_link(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        db = _make_db([_make_listing(locations=["Atlanta, GA"])])
+        readme = render_readme(db)
+        assert "🍑 [Georgia Internships](#-georgia-internships)" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_stats_table_has_southeast_link(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        db = _make_db([_make_listing(locations=["Miami, FL"])])
+        readme = render_readme(db)
+        assert "🌴 [Southeast Internships](#-southeast-internships)" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_southeast_section_present(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        listings = [_make_listing(locations=["Orlando, FL"])]
+        db = _make_db(listings)
+        readme = render_readme(db)
+        assert "## 🌴 Southeast Internships" in readme

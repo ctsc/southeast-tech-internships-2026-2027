@@ -5,10 +5,10 @@ categorized internship tables, stats, legend, and Georgia focus section.
 """
 
 import logging
+from datetime import date, timedelta
 
 from scripts.utils.config import get_config
 from scripts.utils.models import (
-    IndustrySector,
     JobListing,
     JobsDatabase,
     ListingStatus,
@@ -28,29 +28,6 @@ CATEGORY_INFO: list[tuple[RoleCategory, str, str, str]] = [
     (RoleCategory.HARDWARE, "Hardware Engineering", "-hardware-engineering", "🔧"),
     (RoleCategory.OTHER, "Other", "-other", "🔹"),
 ]
-
-
-INDUSTRY_EMOJI: dict[str, str] = {
-    IndustrySector.FINTECH: "💳",
-    IndustrySector.HEALTHCARE: "🏥",
-    IndustrySector.ENERGY: "⚡",
-    IndustrySector.ECOMMERCE: "🛒",
-    IndustrySector.BANKING: "🏦",
-    IndustrySector.AUTOMOTIVE: "🚗",
-    IndustrySector.GAMING: "🎮",
-    IndustrySector.SOCIAL_MEDIA: "💬",
-    IndustrySector.CYBERSECURITY: "🔐",
-    IndustrySector.CLOUD: "☁️",
-    IndustrySector.ENTERPRISE: "🏢",
-    IndustrySector.AI_ML: "🧠",
-    IndustrySector.AEROSPACE: "🚀",
-    IndustrySector.TELECOM: "📡",
-    IndustrySector.MEDIA: "🎬",
-    IndustrySector.FOOD: "🍔",
-    IndustrySector.LOGISTICS: "📦",
-    IndustrySector.SEMICONDUCTOR: "🔬",
-    IndustrySector.OTHER: "🏷️",
-}
 
 
 def _format_locations(locations: list[str], max_display: int = 3) -> str:
@@ -77,6 +54,25 @@ def _format_season(season: str) -> str:
     return SEASON_BADGES.get(season, season)
 
 
+def _format_relative_date(d: date) -> str:
+    """Format a date as relative time (e.g., 'today', '2d ago', '3w ago')."""
+    delta = (date.today() - d).days
+    if delta <= 0:
+        return "today"
+    if delta == 1:
+        return "1d ago"
+    if delta < 7:
+        return f"{delta}d ago"
+    if delta < 30:
+        weeks = delta // 7
+        return f"{weeks}w ago"
+    if delta < 365:
+        months = delta // 30
+        return f"{months}mo ago"
+    years = delta // 365
+    return f"{years}y ago"
+
+
 def _escape_markdown_cell(text: str) -> str:
     """Escape pipe characters in text destined for a markdown table cell."""
     return text.replace("|", "\\|")
@@ -84,13 +80,9 @@ def _escape_markdown_cell(text: str) -> str:
 
 def _format_listing_row(listing: JobListing) -> str:
     """Format a single listing as a markdown table row."""
-    # Company name with industry emoji and FAANG+ indicator
-    industry_emoji = INDUSTRY_EMOJI.get(listing.industry, "🏷️")
     company = f"**{_escape_markdown_cell(listing.company)}**"
     if listing.is_faang_plus:
-        company = f"{industry_emoji} 🔥 {company}"
-    else:
-        company = f"{industry_emoji} {company}"
+        company = f"🔥 {company}"
 
     # Role with status/flag indicators
     role = _escape_markdown_cell(listing.role)
@@ -110,7 +102,7 @@ def _format_listing_row(listing: JobListing) -> str:
 
     locations = _format_locations(listing.locations)
     season_badge = _format_season(listing.season)
-    date_str = listing.date_added.strftime("%b %d")
+    date_str = _format_relative_date(listing.date_added)
     apply_url = str(listing.apply_url)
 
     if listing.status == ListingStatus.CLOSED:
@@ -162,7 +154,7 @@ def _render_category_section(
         lines.append("")
         return "\n".join(lines)
 
-    lines.append("| Company | Role | Location | Season | Apply | Date Added |")
+    lines.append("| Company | Role | Location | Season | Apply | Posted |")
     lines.append("|---------|------|----------|--------|-------|------------|")
     for listing in sorted_listings:
         lines.append(_format_listing_row(listing))
@@ -191,7 +183,67 @@ def _render_georgia_section(listings: list[JobListing], ga_locations: list[str])
 
     sorted_listings = sorted(ga_listings, key=lambda x: x.date_added, reverse=True)
 
-    lines.append("| Company | Role | Location | Season | Apply | Date Added |")
+    lines.append("| Company | Role | Location | Season | Apply | Posted |")
+    lines.append("|---------|------|----------|--------|-------|------------|")
+    for listing in sorted_listings:
+        lines.append(_format_listing_row(listing))
+    lines.append("")
+    return "\n".join(lines)
+
+
+SOUTHEAST_PATTERNS: dict[str, list[str]] = {
+    "states": [
+        ", ga", ", fl", ", al", ", tx", ", sc", ", nc", ", tn",
+        "georgia", "florida", "alabama", "texas",
+        "south carolina", "north carolina", "tennessee",
+    ],
+    "cities": [
+        "atlanta", "alpharetta", "marietta", "savannah", "augusta",
+        "miami", "orlando", "tampa", "jacksonville",
+        "birmingham", "huntsville",
+        "dallas", "austin", "houston", "san antonio",
+        "charlotte", "raleigh", "durham", "research triangle",
+        "charleston", "greenville", "columbia",
+        "nashville", "knoxville", "memphis", "chattanooga",
+    ],
+}
+
+
+def _is_southeast_listing(listing: JobListing) -> bool:
+    """Check if a listing is in the Southeast region (GA, FL, AL, TX, SC, NC, TN)."""
+    for loc in listing.locations:
+        loc_lower = loc.lower()
+        for pattern in SOUTHEAST_PATTERNS["states"]:
+            if pattern in loc_lower:
+                return True
+        for city in SOUTHEAST_PATTERNS["cities"]:
+            if city in loc_lower:
+                return True
+    return False
+
+
+def _render_southeast_section(listings: list[JobListing]) -> str:
+    """Render the Southeast-focused section."""
+    se_listings = [
+        x for x in listings
+        if x.status == ListingStatus.OPEN and _is_southeast_listing(x)
+    ]
+
+    lines = [
+        "## 🌴 Southeast Internships",
+        "",
+        "> Internships in Georgia, Florida, Alabama, Texas, South Carolina, North Carolina, and Tennessee.",
+        "",
+    ]
+
+    if not se_listings:
+        lines.append("No Southeast-based listings yet. Check back soon!")
+        lines.append("")
+        return "\n".join(lines)
+
+    sorted_listings = sorted(se_listings, key=lambda x: x.date_added, reverse=True)
+
+    lines.append("| Company | Role | Location | Season | Apply | Posted |")
     lines.append("|---------|------|----------|--------|-------|------------|")
     for listing in sorted_listings:
         lines.append(_format_listing_row(listing))
@@ -266,6 +318,20 @@ def render_readme(jobs_db: JobsDatabase) -> str:
         if cat == RoleCategory.OTHER and count == 0:
             continue
         parts.append(f"| {emoji} [{title}](#{anchor}) | {count} |")
+
+    # Location-based section counts
+    ga_locations_cfg = georgia_focus.priority_locations if georgia_focus else []
+    ga_count = len([
+        x for x in listings
+        if x.status == ListingStatus.OPEN and _is_georgia_listing(x, ga_locations_cfg)
+    ])
+    se_count = len([
+        x for x in listings
+        if x.status == ListingStatus.OPEN and _is_southeast_listing(x)
+    ])
+    parts.append(f"| 🍑 [Georgia Internships](#-georgia-internships) | {ga_count} |")
+    parts.append(f"| 🌴 [Southeast Internships](#-southeast-internships) | {se_count} |")
+
     parts.append(f"| **Total** | **{total_open}** |")
     parts.append("")
     parts.append("---")
@@ -287,27 +353,6 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("| Sp27 | Spring 2027 |")
     parts.append("| S27 | Summer 2027 |")
     parts.append("")
-    parts.append("**Industry**")
-    parts.append("")
-    parts.append("| Symbol | Industry |")
-    parts.append("|--------|----------|")
-    parts.append("| 💳 | Fintech |")
-    parts.append("| 🏦 | Banking / Finance |")
-    parts.append("| 🧠 | AI / ML |")
-    parts.append("| ☁️ | Cloud / Infrastructure |")
-    parts.append("| 🔐 | Cybersecurity |")
-    parts.append("| 🏢 | Enterprise / SaaS |")
-    parts.append("| 💬 | Social Media |")
-    parts.append("| 🎬 | Media / Entertainment |")
-    parts.append("| 🛒 | Ecommerce |")
-    parts.append("| 🚗 | Automotive |")
-    parts.append("| 🔬 | Semiconductor |")
-    parts.append("| 📦 | Logistics |")
-    parts.append("| 🏥 | Healthcare |")
-    parts.append("| ⚡ | Energy |")
-    parts.append("| 🍔 | Food / Beverage |")
-    parts.append("| 🏷️ | Other |")
-    parts.append("")
     parts.append("---")
     parts.append("")
 
@@ -317,6 +362,11 @@ def render_readme(jobs_db: JobsDatabase) -> str:
         parts.append(_render_georgia_section(listings, ga_locations))
         parts.append("---")
         parts.append("")
+
+    # --- Southeast Section ---
+    parts.append(_render_southeast_section(listings))
+    parts.append("---")
+    parts.append("")
 
     # --- Category Sections ---
     for cat, title, anchor, emoji in CATEGORY_INFO:
