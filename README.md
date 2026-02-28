@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: February 28, 2026 at 18:18 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: February 28, 2026 at 18:42 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -20,8 +20,8 @@ Use this repo to discover and track **tech internships** across software enginee
 | 📈 [Quantitative Finance](#-quantitative-finance) | 9 |
 | 📱 [Product Management](#-product-management) | 1 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 31 |
-| 🔹 [Other](#-other) | 925 |
-| **Total** | **1522** |
+| 🔹 [Other](#-other) | 920 |
+| **Total** | **1517** |
 
 ---
 
@@ -478,14 +478,14 @@ Use this repo to discover and track **tech internships** across software enginee
 | 🏷️ **Flock Safety** | Device Software Engineering Intern | Atlanta, GA | F26 | [Apply](https://jobs.ashbyhq.com/Flock%20Safety/88a80dbf-1627-420a-a087-1bc8edc894e0/application?utm_source=Simplify&ref=Simplify) | Feb 28 |
 | 🏷️ **NXP Semiconductors** | Software Engineering Intern | Ottawa, ON, Canada | F26 | [Apply](https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Kanata/Software-Engineering-Intern---Summer-2026_R-10061229?utm_source=Simplify&ref=Simplify) | Feb 28 |
 | 🏷️ **Roku** | Software Engineer Intern - Embedded | Cambridge, UK | F26 | [Apply](https://www.weareroku.com/jobs/7533350?gh_jid=7533350&utm_source=Simplify&ref=Simplify) | Feb 28 |
-| 💳 **Stripe** | Software Engineer, Intern | London | F26 | [Apply](https://stripe.com/jobs/search?gh_jid=7360840) | Feb 28 |
 | 🏢 **Twilio** | Software Engineer Intern - Canada | Remote - Canada | F26 | [Apply](https://job-boards.greenhouse.io/twilio/jobs/7560248) | Feb 28 |
 | 🏢 **Twilio** | Software Engineer Intern - United States | Remote - US | F26 | [Apply](https://job-boards.greenhouse.io/twilio/jobs/7560246) | Feb 28 |
 | 🏢 **LaunchDarkly** | Fullstack Software Engineer Intern | Oakland, California, United States | F26 | [Apply](https://job-boards.greenhouse.io/launchdarkly/jobs/7632240003) | Feb 28 |
-| 🏢 **Grammarly** | Software Engineer Intern (Summer 2026) | Berlin, Hybrid | F26 | [Apply](https://job-boards.greenhouse.io/grammarly/jobs/7491439) | Feb 28 |
 | 📦 **Genuine Parts Company** | Marketing Technology InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/marketing-technology-intern/505/85815950224) | Feb 28 |
 | 📦 **Genuine Parts Company** | Web Developer InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/web-developer-intern/505/91840435472) | Feb 28 |
 | 📦 **Genuine Parts Company** | Cloud SRE InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/cloud-sre-intern/505/86810984128) | Feb 28 |
+| 💳 **Stripe** | Software Engineer, Intern | Dublin | F26 | [Apply](https://stripe.com/jobs/search?gh_jid=7206494) | Feb 28 |
+| 🏢 **Grammarly** | Software Engineer Intern (Summer 2026) | Ukraine, Hybrid | F26 | [Apply](https://job-boards.greenhouse.io/grammarly/jobs/7657265) | Feb 28 |
 | 💳 **Coinbase** | Software Engineer Intern 🔒 | Hybrid - San Francisco, CA | F26 | 🔒 Closed | Feb 28 |
 | 💬 **Pinterest** | Software Engineering Intern 2026 (Mexico City) 🔒 | Mexico City, MX | F26 | 🔒 Closed | Feb 28 |
 | 🏷️ **Dropbox** | Poland Software Engineering Intern (Summer 2026) 🔒 | Remote - Poland | F26 | 🔒 Closed | Feb 28 |
@@ -1763,12 +1763,6 @@ Use this repo to discover and track **tech internships** across software enginee
 | 🏷️ **Ensign-Bickford Aerospace & Defense Company** | Product Engineer Intern | Simsbury, CT, Hopkinsville and 1 more | F26 | [Apply](https://ebi.wd5.myworkdayjobs.com/ebadcareers/job/Graham-KY/Product-Engineer-Intern_REQ106906?utm_source=Simplify&ref=Simplify) | Feb 28 |
 | 🏷️ **Nokia** | Hardware Developer Eng Co-op/Intern | Ottawa, ON, Canada | F26 | [Apply](https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/28488?utm_source=Simplify&ref=Simplify) | Feb 28 |
 | 🏷️ **Nokia** | Electronics Component Qualification Co-op/Intern | Ottawa, ON, Canada | F26 | [Apply](https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/28486?utm_source=Simplify&ref=Simplify) | Feb 28 |
-| 🏷️ **Dropbox** | Content Design Intern (Summer 2026) | Remote - US: All locations | F26 | [Apply](https://jobs.dropbox.com/listing/7558609?gh_jid=7558609) | Feb 28 |
-| 🏷️ **Dropbox** | CX Technical Content Design Intern (Summer 2026) | Remote - Canada: Select locations | F26 | [Apply](https://jobs.dropbox.com/listing/7558516?gh_jid=7558516) | Feb 28 |
-| 🏷️ **Dropbox** | CX Video Content Design Intern (Summer 2026) | Remote - US: All locations | F26 | [Apply](https://jobs.dropbox.com/listing/7532161?gh_jid=7532161) | Feb 28 |
-| 🏷️ **Dropbox** | Research and Insights Intern (Summer 2026) | Remote - US: All locations | F26 | [Apply](https://jobs.dropbox.com/listing/7558568?gh_jid=7558568) | Feb 28 |
-| 🏷️ **Dropbox** | Support Enablement Engineer Intern  (Summer 2026) | Remote - Canada: Select locations | F26 | [Apply](https://jobs.dropbox.com/listing/7531481?gh_jid=7531481) | Feb 28 |
-| 🔐 **Okta** | Customer Success Intern (Summer 2026) | Chicago, Illinois | F26 | [Apply](https://www.okta.com/company/careers/opportunity/7565237?gh_jid=7565237) | Feb 28 |
 | ☁️ 🔥 **Google** | homehomeHomeHome | Unknown | F26 | [Apply](https://www.google.com/about/careers/applications/jobs/results/?q=intern+software+engineer) | Feb 28 |
 | ☁️ 🔥 **Google** | noogler_hatnoogler_hatStudentsStudents | Unknown | F26 | [Apply](https://www.google.com/about/careers/applications/jobs/results/students?q=intern+software+engineer) | Feb 28 |
 | ☁️ 🔥 **Google** | googlegoogleHow we workHow we work | Unknown | F26 | [Apply](https://www.google.com/about/careers/applications/jobs/results/teams?q=intern+software+engineer) | Feb 28 |
@@ -1794,6 +1788,7 @@ Use this repo to discover and track **tech internships** across software enginee
 | 🏷️ **Geisinger** | Undergraduate Intern - Software Development | Pennsylvania | F26 | [Apply](https://geisinger.wd5.myworkdayjobs.com/geisingerexternal/job/Work-from-Home/Intern-Undergraduate--Software-Development-_R-92541?utm_source=Simplify&ref=Simplify) | Feb 28 |
 | 🏷️ **Boston Dynamics** | Technical Operations Co-Op | Waltham, MA | F26 | [Apply](https://bostondynamics.wd1.myworkdayjobs.com/Boston_Dynamics/job/Waltham-Office-POST/Technical-Operations-Co-Op_R2386?utm_source=Simplify&ref=Simplify) | Feb 28 |
 | 🏷️ **CAE** | Integration Specialist Intern Co-Op | Tampa, FL | F26 | [Apply](https://cae.wd3.myworkdayjobs.com/career/job/Tampa/Integration-Specialist-Co-Op_120461?utm_source=Simplify&ref=Simplify) | Feb 28 |
+| 🔐 **Okta** | Customer Success Intern (Summer 2026) | Dublin, Ireland | F26 | [Apply](https://www.okta.com/company/careers/opportunity/7646155?gh_jid=7646155) | Feb 28 |
 | 💳 **Coinbase** | Business Controller Intern 🔒 | Hybrid - New York, NY | F26 | 🔒 Closed | Feb 28 |
 | 💳 **Coinbase** | Product Design Intern 🔒 | Hybrid - San Francisco, CA | F26 | 🔒 Closed | Feb 28 |
 | 💳 **Coinbase** | Strategic Sourcing Intern 🔒 | Hybrid - New York, NY | F26 | 🔒 Closed | Feb 28 |
@@ -1828,6 +1823,11 @@ Use this repo to discover and track **tech internships** across software enginee
 | 💳 **Global Payments** | 8 🔒 | Unknown | F26 | 🔒 Closed | Feb 28 |
 | 💳 **Global Payments** | 9 🔒 | Unknown | F26 | 🔒 Closed | Feb 28 |
 | 💳 **Global Payments** | 19 🔒 | Unknown | F26 | 🔒 Closed | Feb 28 |
+| 🏷️ **Dropbox** | Content Design Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | Feb 28 |
+| 🏷️ **Dropbox** | CX Technical Content Design Intern (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | Feb 28 |
+| 🏷️ **Dropbox** | CX Video Content Design Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | Feb 28 |
+| 🏷️ **Dropbox** | Research and Insights Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | Feb 28 |
+| 🏷️ **Dropbox** | Support Enablement Engineer Intern  (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | Feb 28 |
 
 ---
 
