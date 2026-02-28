@@ -34,35 +34,35 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Discover new listings
-        run: python scripts/discover.py
+        run: python -m scripts.discover
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         continue-on-error: true
 
       - name: Validate & enrich with Gemini
-        run: python scripts/validate.py
+        run: python -m scripts.validate
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         continue-on-error: true
 
       - name: Deduplicate
-        run: python scripts/deduplicate.py
+        run: python -m scripts.deduplicate
 
       - name: Check link health
-        run: python scripts/check_links.py
+        run: python -m scripts.check_links
         continue-on-error: true
 
       - name: Archive stale listings
-        run: python scripts/archive_stale.py
+        run: python -m scripts.archive_stale
 
       - name: Process community submissions
         if: github.event_name == 'issues'
-        run: python scripts/process_issues.py
+        run: python -m scripts.process_issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate README
-        run: python scripts/generate_readme.py
+        run: python -m scripts.generate_readme
 
       - name: Commit & push
         run: |
