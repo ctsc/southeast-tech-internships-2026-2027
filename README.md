@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: February 28, 2026 at 18:58 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: February 28, 2026 at 19:31 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -14,16 +14,16 @@ Use this repo to discover and track **tech internships** across software enginee
 
 | Category | Open Roles |
 |----------|-----------|
-| 💻 [Software Engineering](#-software-engineering) | 277 |
+| 💻 [Software Engineering](#-software-engineering) | 284 |
 | 🤖 [ML / AI / Data Science](#-ml--ai--data-science) | 107 |
-| 📊 [Data Science & Analytics](#-data-science--analytics) | 172 |
+| 📊 [Data Science & Analytics](#-data-science--analytics) | 175 |
 | 📈 [Quantitative Finance](#-quantitative-finance) | 9 |
 | 📱 [Product Management](#-product-management) | 1 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 31 |
-| 🔹 [Other](#-other) | 920 |
-| 🌴 [Southeast Internships](#-southeast-internships) | 236 |
+| 🔹 [Other](#-other) | 984 |
+| 🌴 [Southeast Internships](#-southeast-internships) | 241 |
 | 🎓 [SE Graduate & PhD](#-southeast-graduate--phd-internships) | 0 |
-| **Total** | **1517** |
+| **Total** | **1591** |
 
 ---
 
@@ -284,6 +284,11 @@ Use this repo to discover and track **tech internships** across software enginee
 | **Genuine Parts Company** | Mobile Software Development InternBirmingham, AL\|Full time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/mobile-software-development-intern/505/85815949952) | today |
 | **Genuine Parts Company** | Customer Software Development InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/customer-software-development-intern/505/85815949936) | today |
 | **CAE** | Integration Specialist Intern Co-Op | Tampa, FL | F26 | [Apply](https://cae.wd3.myworkdayjobs.com/career/job/Tampa/Integration-Specialist-Co-Op_120461?utm_source=Simplify&ref=Simplify) | today |
+| **Disney** | Software Engineering Intern, Summer 2026 | Lake Buena Vista, Florida, United States | F26 | [Apply](https://jobs.disneycareers.com/job/lake-buena-vista/software-engineering-intern-summer-2026/391/89103818608) | today |
+| **Capital One** | 9130705742402/02/2026Student Café Ambassador (Intern) - Uptown Dallas, Wynnewood Village, Stonebriar CentreFrisco, TX | Frisco, TX | F26 | [Apply](https://www.capitalonecareers.com/job/frisco/student-cafe-ambassador-intern-uptown-dallas-wynnewood-village-stonebriar-centre/1732/91307057424) | today |
+| **USAA** | IT Audit InternJan. 26, 2026San Antonio, TX | San Antonio, TX | F26 | [Apply](https://www.usaajobs.com/job/san-antonio/it-audit-intern/1207/91064327728) | today |
+| **USAA** | Audit InternJan. 26, 2026Plano, TX | Plano, TX | F26 | [Apply](https://www.usaajobs.com/job/plano/audit-intern/1207/91064327792) | today |
+| **USAA** | Climate and Geoscience Intern – P&C Climate Risk and Exposure AnalyticsFeb. 28, 2026San Antonio, TX | San Antonio, TX | F26 | [Apply](https://www.usaajobs.com/job/san-antonio/climate-and-geoscience-intern-p-and-c-climate-risk-and-exposure-analytics/1207/92233013424) | today |
 
 ---
 
@@ -576,6 +581,13 @@ No graduate-friendly Southeast listings yet. Check back soon!
 | **Genuine Parts Company** | Cloud SRE InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/cloud-sre-intern/505/86810984128) | today |
 | **Stripe** | Software Engineer, Intern | London | F26 | [Apply](https://stripe.com/jobs/search?gh_jid=7360840) | today |
 | **Grammarly** | Software Engineer Intern (Summer 2026) | Berlin, Hybrid | F26 | [Apply](https://job-boards.greenhouse.io/grammarly/jobs/7491439) | today |
+| **Affirm** | Software Engineering Intern - Summer 2026 | San Francisco, California, United States | F26 | [Apply](https://job-boards.greenhouse.io/affirm/jobs/7528020003) | today |
+| **Tripadvisor** | Software Engineering Internship 2026 (Viator) | Krakow | F26 | [Apply](https://job-boards.greenhouse.io/tripadvisor/jobs/7479794) | today |
+| **Disney** | Software Engineering Intern, Summer 2026 | Lake Buena Vista, Florida, United States | F26 | [Apply](https://jobs.disneycareers.com/job/lake-buena-vista/software-engineering-intern-summer-2026/391/89103818608) | today |
+| **Boeing** | Intern Software Engineer | Gdansk, Poland, and other locations | F26 | [Apply](https://jobs.boeing.com/job/gdansk/intern-software-engineer/185/90651992896) | today |
+| **USAA** | IT Audit InternJan. 26, 2026San Antonio, TX | San Antonio, TX | F26 | [Apply](https://www.usaajobs.com/job/san-antonio/it-audit-intern/1207/91064327728) | today |
+| **USAA** | Audit InternJan. 26, 2026Plano, TX | Plano, TX | F26 | [Apply](https://www.usaajobs.com/job/plano/audit-intern/1207/91064327792) | today |
+| **Chevron** | CHEVRON GBS BA- IT Internship 2026Buenos Aires, Argentina | Buenos Aires, Argentina | F26 | [Apply](https://careers.chevron.com/job/buenos-aires/chevron-gbs-ba-it-internship-2026/38138/91920281760) | today |
 | **Coinbase** | Software Engineer Intern 🔒 | Hybrid - San Francisco, CA | F26 | 🔒 Closed | today |
 | **Pinterest** | Software Engineering Intern 2026 (Mexico City) 🔒 | Mexico City, MX | F26 | 🔒 Closed | today |
 | **Dropbox** | Poland Software Engineering Intern (Summer 2026) 🔒 | Remote - Poland | F26 | 🔒 Closed | today |
@@ -883,6 +895,9 @@ No graduate-friendly Southeast listings yet. Check back soon!
 | **Bandwidth** | Go to Market Analytics Intern | Raleigh, NC | F26 | [Apply](https://job-boards.greenhouse.io/bandwidth/jobs/7485296?utm_source=Simplify&ref=Simplify) | today |
 | **Apollo Global** | 2026 Summer Associate – Investment Portfolio Management & Analytics Intern - Apollo Aligned Alternatives Fund - Aaa | El Segundo, CA | F26 | [Apply](https://athene.wd5.myworkdayjobs.com/Apollo_Careers/job/El-Segundo-California/XMLNAME-2026-Summer-Associate--Investment-Portfolio-Management---Analytics-Intern---Apollo-Aligned-Alternatives-Fund--AAA-_R253919-1?utm_source=Simplify&ref=Simplify) | today |
 | **Genuine Parts Company** | Business Intelligence Developer InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/business-intelligence-developer-intern/505/85815950112) | today |
+| **Faire** | Strategy & Analytics MBA Intern | New York City, NY | F26 | [Apply](https://boards.greenhouse.io/faire/jobs/8350876002?gh_jid=8350876002) | today |
+| **Boeing** | Elisa Rwagasana Ishimwe \| Information Technology and Data Analytics Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/ElisaRwagasanaIshimwe) | today |
+| **USAA** | Climate and Geoscience Intern – P&C Climate Risk and Exposure AnalyticsFeb. 28, 2026San Antonio, TX | San Antonio, TX | F26 | [Apply](https://www.usaajobs.com/job/san-antonio/climate-and-geoscience-intern-p-and-c-climate-risk-and-exposure-analytics/1207/92233013424) | today |
 | **Cypress Creek Renewables** | Summer Intern - Quantitative Analytics 🔒 | Washington, DC, Durham and 3 more | F26 | 🔒 Closed | today |
 | **Cypress Creek Renewables** | Data Engineering Intern 🔒 | Washington, DC, Durham and 3 more | F26 | 🔒 Closed | today |
 | **SMX** | Summer Internship-Foreign Policy - Intelligence and Data Analytics - Kapolei, HI 🔒 | Kapolei, HI | F26 | 🔒 Closed | today |
@@ -1879,6 +1894,70 @@ No graduate-friendly Southeast listings yet. Check back soon!
 | **Boston Dynamics** | Technical Operations Co-Op | Waltham, MA | F26 | [Apply](https://bostondynamics.wd1.myworkdayjobs.com/Boston_Dynamics/job/Waltham-Office-POST/Technical-Operations-Co-Op_R2386?utm_source=Simplify&ref=Simplify) | today |
 | **CAE** | Integration Specialist Intern Co-Op | Tampa, FL | F26 | [Apply](https://cae.wd3.myworkdayjobs.com/career/job/Tampa/Integration-Specialist-Co-Op_120461?utm_source=Simplify&ref=Simplify) | today |
 | **Okta** | Customer Success Intern (Summer 2026) | Chicago, Illinois | F26 | [Apply](https://www.okta.com/company/careers/opportunity/7565237?gh_jid=7565237) | today |
+| **Affirm** | Security Intern - Summer 2026 | San Francisco, California, United States | F26 | [Apply](https://job-boards.greenhouse.io/affirm/jobs/7519403003) | today |
+| **Mercury** | Product Design Intern | San Francisco, CA, New York and 4 more | F26 | [Apply](https://job-boards.greenhouse.io/mercury/jobs/5812407004) | today |
+| **Mercury** | Strategic Finance MBA Intern | San Francisco, CA, New York and 4 more | F26 | [Apply](https://job-boards.greenhouse.io/mercury/jobs/5775490004) | today |
+| **Faire** | Data Science Intern | Kitchener-Waterloo, ON, San Francisco, CA, Toronto, ON | F26 | [Apply](https://boards.greenhouse.io/faire/jobs/8376377002?gh_jid=8376377002) | today |
+| **Tripadvisor** | Local Marketing Intern - Spain (Prácticas) | Madrid, Spain | F26 | [Apply](https://job-boards.greenhouse.io/tripadvisor/jobs/7641550) | today |
+| **AT&T** | Additional internship opportunities | Unknown | F26 | [Apply](https://www.att.jobs/summer-internships) | today |
+| **AT&T** | Previous | Unknown | F26 | [Apply](https://www.att.jobs/search-jobs/intern+technology&p=1) | today |
+| **AT&T** | Next | Unknown | F26 | [Apply](https://www.att.jobs/search-jobs/intern+technology&p=2) | today |
+| **AT&T** | Internships with impact | Unknown | F26 | [Apply](https://life.att.jobs/2024-intern-experience/) | today |
+| **AT&T** | An internship FTW | Unknown | F26 | [Apply](https://life.att.jobs/supply-chain-internship/) | today |
+| **Disney** | Technology Support Intern - ILM London | London,  United Kingdom | F26 | [Apply](https://jobs.disneycareers.com/job/london/technology-support-intern-ilm-london/391/89671715648) | today |
+| **Disney** | 2026 Internship - Technology & Digital (10-Month Internship) | Lantau Island,  Hong Kong | F26 | [Apply](https://jobs.disneycareers.com/job/lantau-island/2026-internship-technology-and-digital-10-month-internship/391/90007558704) | today |
+| **Disney** | Site/System Reliability Engineering Intern, Summer 2026 | Glendale, California, United States | F26 | [Apply](https://jobs.disneycareers.com/job/glendale/site-system-reliability-engineering-intern-summer-2026/391/92130624048) | today |
+| **Disney** | Prev | Unknown | F26 | [Apply](https://jobs.disneycareers.com/search-jobs/intern+technology&p=1) | today |
+| **Disney** | Next | Unknown | F26 | [Apply](https://jobs.disneycareers.com/search-jobs/intern+technology&p=2) | today |
+| **Paramount** | English (United States) | Unknown | F26 | [Apply](https://careers.paramount.com/search-jobs/intern+technology?locale=en_US) | today |
+| **Boeing** | Meet Abbey Carlson: Former Intern Turned Space and Launch Engineer | Unknown | F26 | [Apply](https://jobs.boeing.com/Meet-Abbey-Carlson) | today |
+| **Boeing** | Tristan Crumley \| Design Engineer Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/TristanCrumley) | today |
+| **Boeing** | Adrian Sosa \| Structures Design Engineer Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/AdrianSosa) | today |
+| **Boeing** | Mya Beathley \| Engineering Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/MyaBeathley) | today |
+| **Boeing** | Eva Strang \| Strategy Analyst Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/EvaStrang) | today |
+| **Boeing** | Niyathi Gorantla \| Sustainability Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/NiyathiGorantla) | today |
+| **Boeing** | Atira Sarat \| Sustainability Innovation Research Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/meet-Atira) | today |
+| **Boeing** | Adrian Loekman \| Airplane Maintenance Engineering Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/meet-AdrianL) | today |
+| **Boeing** | Đoàn Sĩ Anh \| Retrofit Engineering Intern | Unknown | F26 | [Apply](https://jobs.boeing.com/meet-Doan) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program – Flight Software Test Intern | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-flight-software-test-intern/185/92180317696) | today |
+| **Boeing** | Front-end Engineer Intern | Seoul, South Korea | F26 | [Apply](https://jobs.boeing.com/job/seoul/front-end-engineer-intern/185/91850662768) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program –Thermal Engineering | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-thermal-engineering/185/92105502064) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program – Assembly, Test, and Launch (ATLO) Operations | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-assembly-test-and-launch-atlo-operations/185/92187099136) | today |
+| **Boeing** | Boeing Summer 2026 Internship Program (Paid) - Product Security Analyst Intern | Arlington, Virginia, and other locations | F26 | [Apply](https://jobs.boeing.com/job/arlington/boeing-summer-2026-internship-program-paid-product-security-analyst-intern/185/91426039728) | today |
+| **Boeing** | ENGINEERING SUMMER INTERNSHIP 2026 | Rzeszów, Poland, and other locations | F26 | [Apply](https://jobs.boeing.com/job/rzeszow/engineering-summer-internship-2026/185/92084617184) | today |
+| **Boeing** | Boeing Summer 2026 Internship Program (PAID) – Finance (Evergreen) | Hazelwood, Missouri, and other locations | F26 | [Apply](https://jobs.boeing.com/job/hazelwood/boeing-summer-2026-internship-program-paid-finance-evergreen/185/92068848704) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program – Site Security | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-site-security/185/92187099296) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program – Test Engineering | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-test-engineering/185/92187099232) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program –Spacecraft Harness Engineering | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-spacecraft-harness-engineering/185/92187099072) | today |
+| **Boeing** | Previous | Unknown | F26 | [Apply](https://jobs.boeing.com/search-jobs/intern+software&p=1) | today |
+| **Boeing** | Next | Unknown | F26 | [Apply](https://jobs.boeing.com/search-jobs/intern+software&p=2) | today |
+| **Citigroup** | Technology - Infrastructure, Summer Analyst (Internship), Philippines, 2026 | City of Taguig, Metro Manila, Philippines | F26 | [Apply](https://jobs.citi.com/job/city-of-taguig/technology-infrastructure-summer-analyst-internship-philippines-2026/287/89114693552) | today |
+| **Citigroup** | Previous | Unknown | F26 | [Apply](https://jobs.citi.com/search-jobs/intern+technology&p=1) | today |
+| **Citigroup** | Next | Unknown | F26 | [Apply](https://jobs.citi.com/search-jobs/intern+technology&p=2) | today |
+| **Capital One** | Early Internship Program | Unknown | F26 | [Apply](https://www.capitalonecareers.com/early-internships-program) | today |
+| **Capital One** | Internship Programs | Unknown | F26 | [Apply](https://www.capitalonecareers.com/internship-programs) | today |
+| **Capital One** | 9130705753602/02/2026Student Café Ambassador (Intern) - Anacostia, Chinatown, GeorgetownWashington D.C., DC | Washington D.C., DC | F26 | [Apply](https://www.capitalonecareers.com/job/washington-d-c/student-cafe-ambassador-intern-anacostia-chinatown-georgetown/1732/91307057536) | today |
+| **Capital One** | 9217634974402/26/2026Student Café Ambassador (Intern) - New York CityThe Bronx, NY | The Bronx, NY | F26 | [Apply](https://www.capitalonecareers.com/job/the-bronx/student-cafe-ambassador-intern-new-york-city/1732/92176349744) | today |
+| **Capital One** | 9217634953602/26/2026Student Café Ambassador (Intern) - Carytown and Short PumpRichmond, VA | Richmond, VA | F26 | [Apply](https://www.capitalonecareers.com/job/richmond/student-cafe-ambassador-intern-carytown-and-short-pump/1732/92176349536) | today |
+| **Capital One** | 9130705742402/02/2026Student Café Ambassador (Intern) - Uptown Dallas, Wynnewood Village, Stonebriar CentreFrisco, TX | Frisco, TX | F26 | [Apply](https://www.capitalonecareers.com/job/frisco/student-cafe-ambassador-intern-uptown-dallas-wynnewood-village-stonebriar-centre/1732/91307057424) | today |
+| **Capital One** | 8490660622408/11/2025Current PhD - Data Science Internship - Summer 2026McLean, VA | McLean, VA | F26 | [Apply](https://www.capitalonecareers.com/job/mclean/current-phd-data-science-internship-summer-2026/31238/84906606224) | today |
+| **Capital One** | 8490660614408/11/2025Current PhD, Applied Research Internship Program - Summer 2026New York, NY | New York, NY | F26 | [Apply](https://www.capitalonecareers.com/job/new-york/current-phd-applied-research-internship-program-summer-2026/31238/84906606144) | today |
+| **Capital One** | Previous | Unknown | F26 | [Apply](https://www.capitalonecareers.com/search-jobs/intern+technology&p=1) | today |
+| **Capital One** | Next | Unknown | F26 | [Apply](https://www.capitalonecareers.com/search-jobs/intern+technology&p=2) | today |
+| **Capital One** | Remove | Unknown | F26 | [Apply](https://www.capitalonecareers.com/search-jobs/intern+technology) | today |
+| **State Farm** | Internships | Unknown | F26 | [Apply](https://jobs.statefarm.com/become-an-intern) | today |
+| **USAA** | Find out what you need to know and do before beginning USAA's internship programLearn More | Unknown | F26 | [Apply](https://www.usaajobs.com/Intern-Hub) | today |
+| **USAA** | Learn more about the internship program job opportunities and career areasLearn More | Unknown | F26 | [Apply](https://www.usaajobs.com/careers) | today |
+| **Chevron** | internship programs | Unknown | F26 | [Apply](https://careers.chevron.com/internship) | today |
+| **Chevron** | Finance InternMaracaibo, Venezuela | Maracaibo, Venezuela | F26 | [Apply](https://careers.chevron.com/job/maracaibo/finance-intern/38138/92056023744) | today |
+| **Chevron** | Chevron Internship - Information TechnologyMakati City, Philippines | Makati City, Philippines | F26 | [Apply](https://careers.chevron.com/job/makati-city/chevron-internship-information-technology/38138/87729739376) | today |
+| **Chevron** | Operator InternEl Segundo, California | El Segundo, California | F26 | [Apply](https://careers.chevron.com/job/el-segundo/operator-intern/38138/92159516720) | today |
+| **Chevron** | CHEVRON GBS BA- HR InternshipBuenos Aires, Argentina | Buenos Aires, Argentina | F26 | [Apply](https://careers.chevron.com/job/buenos-aires/chevron-gbs-ba-hr-internship/38138/91940691696) | today |
+| **Chevron** | Inventory Control and Warehouse Operations InternMaracaibo, Venezuela | Maracaibo, Venezuela | F26 | [Apply](https://careers.chevron.com/job/maracaibo/inventory-control-and-warehouse-operations-intern/38138/92138690672) | today |
+| **Chevron** | previous page | Unknown | F26 | [Apply](https://careers.chevron.com/search-jobs/intern+technology&p=1) | today |
+| **Chevron** | next page | Unknown | F26 | [Apply](https://careers.chevron.com/search-jobs/intern+technology&p=2) | today |
+| **Lockheed Martin (Marietta)** | Prev | Unknown | F26 | [Apply](https://www.lockheedmartinjobs.com/search-jobs/intern+software+marietta&p=1) | today |
+| **Lockheed Martin (Marietta)** | Next | Unknown | F26 | [Apply](https://www.lockheedmartinjobs.com/search-jobs/intern+software+marietta&p=2) | today |
 | **Coinbase** | Business Controller Intern 🔒 | Hybrid - New York, NY | F26 | 🔒 Closed | today |
 | **Coinbase** | Product Design Intern 🔒 | Hybrid - San Francisco, CA | F26 | 🔒 Closed | today |
 | **Coinbase** | Strategic Sourcing Intern 🔒 | Hybrid - New York, NY | F26 | 🔒 Closed | today |
