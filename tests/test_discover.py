@@ -121,6 +121,26 @@ class TestUtilityFunctions:
     def test_title_matches_include_case_insensitive(self):
         assert _title_matches_include("INTERNSHIP Program", ["internship"])
 
+    def test_title_matches_include_word_boundary_rejects_internal(self):
+        """'intern' should NOT match 'internal' or 'international'."""
+        assert not _title_matches_include("Internal Revenue Accountant", ["intern"])
+
+    def test_title_matches_include_word_boundary_rejects_international(self):
+        assert not _title_matches_include("International Marketing Manager", ["intern"])
+
+    def test_title_matches_include_word_boundary_accepts_intern(self):
+        assert _title_matches_include("Software Intern", ["intern"])
+
+    def test_title_matches_include_word_boundary_accepts_internship(self):
+        assert _title_matches_include("Summer Internship Program", ["internship"])
+
+    def test_title_matches_include_word_boundary_coop(self):
+        assert _title_matches_include("Engineering Co-op Position", ["co-op"])
+
+    def test_title_matches_include_rejects_no_word_boundary(self):
+        """'intern' within 'internalize' should not match."""
+        assert not _title_matches_include("Internalize Process Lead", ["intern"])
+
     def test_title_matches_exclude_positive(self):
         assert _title_matches_exclude("Senior Software Intern", ["senior"])
 

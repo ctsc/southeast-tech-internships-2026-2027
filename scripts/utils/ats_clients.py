@@ -42,9 +42,12 @@ def _slugify(name: str) -> str:
 
 
 def _title_matches_include(title: str, keywords: list[str]) -> bool:
-    """Return True if the title contains at least one include keyword."""
+    """Return True if the title contains at least one include keyword (word-boundary match)."""
     title_lower = title.lower()
-    return any(kw in title_lower for kw in keywords)
+    for kw in keywords:
+        if re.search(r'\b' + re.escape(kw) + r'\b', title_lower):
+            return True
+    return False
 
 
 def _title_matches_exclude(title: str, keywords: list[str]) -> bool:

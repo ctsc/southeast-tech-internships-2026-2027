@@ -282,9 +282,12 @@ class GenericScraper:
         return results
 
     def _matches_intern_keywords(self, text: str) -> bool:
-        """Check if text contains any intern-related keywords."""
+        """Check if text contains any intern-related keywords (word-boundary match)."""
         text_lower = text.lower()
-        return any(kw in text_lower for kw in self._intern_keywords)
+        for kw in self._intern_keywords:
+            if re.search(r'\b' + re.escape(kw) + r'\b', text_lower):
+                return True
+        return False
 
     def _matches_exclude_keywords(self, text: str) -> bool:
         """Check if text contains any excluded keywords (senior, staff, etc.)."""

@@ -113,6 +113,7 @@ class AppConfig(BaseModel):
     filters: FiltersConfig = Field(default_factory=FiltersConfig)
     ai: AIConfig = Field(default_factory=AIConfig)
     schedule: ScheduleConfig = Field(default_factory=ScheduleConfig)
+    company_industries: dict[str, str] = {}
 
     @property
     def total_sources(self) -> int:

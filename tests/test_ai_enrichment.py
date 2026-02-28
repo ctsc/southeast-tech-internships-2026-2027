@@ -787,6 +787,7 @@ class TestDefaultMetadata:
             "remote_friendly",
             "tech_stack",
             "confidence",
+            "industry",
         }
         assert set(DEFAULT_METADATA.keys()) == expected_keys
 

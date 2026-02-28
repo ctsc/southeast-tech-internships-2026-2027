@@ -8,6 +8,7 @@ import logging
 
 from scripts.utils.config import get_config
 from scripts.utils.models import (
+    IndustrySector,
     JobListing,
     JobsDatabase,
     ListingStatus,
@@ -27,6 +28,29 @@ CATEGORY_INFO: list[tuple[RoleCategory, str, str, str]] = [
     (RoleCategory.HARDWARE, "Hardware Engineering", "-hardware-engineering", "🔧"),
     (RoleCategory.OTHER, "Other", "-other", "🔹"),
 ]
+
+
+INDUSTRY_EMOJI: dict[str, str] = {
+    IndustrySector.FINTECH: "💳",
+    IndustrySector.HEALTHCARE: "🏥",
+    IndustrySector.ENERGY: "⚡",
+    IndustrySector.ECOMMERCE: "🛒",
+    IndustrySector.BANKING: "🏦",
+    IndustrySector.AUTOMOTIVE: "🚗",
+    IndustrySector.GAMING: "🎮",
+    IndustrySector.SOCIAL_MEDIA: "💬",
+    IndustrySector.CYBERSECURITY: "🔐",
+    IndustrySector.CLOUD: "☁️",
+    IndustrySector.ENTERPRISE: "🏢",
+    IndustrySector.AI_ML: "🧠",
+    IndustrySector.AEROSPACE: "🚀",
+    IndustrySector.TELECOM: "📡",
+    IndustrySector.MEDIA: "🎬",
+    IndustrySector.FOOD: "🍔",
+    IndustrySector.LOGISTICS: "📦",
+    IndustrySector.SEMICONDUCTOR: "🔬",
+    IndustrySector.OTHER: "🏷️",
+}
 
 
 def _format_locations(locations: list[str], max_display: int = 3) -> str:
@@ -60,10 +84,13 @@ def _escape_markdown_cell(text: str) -> str:
 
 def _format_listing_row(listing: JobListing) -> str:
     """Format a single listing as a markdown table row."""
-    # Company name with FAANG+ indicator
+    # Company name with industry emoji and FAANG+ indicator
+    industry_emoji = INDUSTRY_EMOJI.get(listing.industry, "🏷️")
     company = f"**{_escape_markdown_cell(listing.company)}**"
     if listing.is_faang_plus:
-        company = f"🔥 {company}"
+        company = f"{industry_emoji} 🔥 {company}"
+    else:
+        company = f"{industry_emoji} {company}"
 
     # Role with status/flag indicators
     role = _escape_markdown_cell(listing.role)
@@ -217,6 +244,8 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("")
     parts.append(f"> 🤖 **Auto-updated every 6 hours** | Last updated: {timestamp}")
     parts.append(">")
+    parts.append("> Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)")
+    parts.append(">")
     parts.append("> Built and maintained by [Carter](https://github.com/ctsc) | President, IEEE @ Georgia State")
     parts.append("")
     parts.append(
@@ -257,6 +286,27 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("| F26 | Fall 2026 |")
     parts.append("| Sp27 | Spring 2027 |")
     parts.append("| S27 | Summer 2027 |")
+    parts.append("")
+    parts.append("**Industry**")
+    parts.append("")
+    parts.append("| Symbol | Industry |")
+    parts.append("|--------|----------|")
+    parts.append("| 💳 | Fintech |")
+    parts.append("| 🏦 | Banking / Finance |")
+    parts.append("| 🧠 | AI / ML |")
+    parts.append("| ☁️ | Cloud / Infrastructure |")
+    parts.append("| 🔐 | Cybersecurity |")
+    parts.append("| 🏢 | Enterprise / SaaS |")
+    parts.append("| 💬 | Social Media |")
+    parts.append("| 🎬 | Media / Entertainment |")
+    parts.append("| 🛒 | Ecommerce |")
+    parts.append("| 🚗 | Automotive |")
+    parts.append("| 🔬 | Semiconductor |")
+    parts.append("| 📦 | Logistics |")
+    parts.append("| 🏥 | Healthcare |")
+    parts.append("| ⚡ | Energy |")
+    parts.append("| 🍔 | Food / Beverage |")
+    parts.append("| 🏷️ | Other |")
     parts.append("")
     parts.append("---")
     parts.append("")

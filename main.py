@@ -5,11 +5,13 @@ Supports running the full pipeline or individual stages:
     python main.py --discover-only    # Discovery only
     python main.py --readme-only      # Regenerate README only
     python main.py --check-links-only # Link checking only
+    python main.py --clean            # Re-filter existing jobs.json
 """
 
 import argparse
 import asyncio
 import logging
+import re
 import sys
 
 logger = logging.getLogger("internship_pipeline")
@@ -105,6 +107,92 @@ def run_check_links_only() -> None:
     _run_step("Check link health", check_all_links, is_async=True)
 
 
+def run_clean() -> None:
+    """Re-filter existing jobs.json: remove listings that fail updated filters.
+
+    Removes listings whose titles match expanded exclude keywords or whose
+    titles don't pass word-boundary intern keyword matching.
+    """
+    import json
+    from datetime import datetime, timezone
+    from pathlib import Path
+
+    from scripts.utils.config import PROJECT_ROOT, get_config
+
+    config = get_config()
+    jobs_path = PROJECT_ROOT / "data" / "jobs.json"
+
+    if not jobs_path.exists():
+        logger.warning("jobs.json not found — nothing to clean")
+        return
+
+    with open(jobs_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    listings = data.get("listings", [])
+    original_count = len(listings)
+
+    exclude_keywords = [kw.lower() for kw in config.filters.keywords_exclude]
+    include_keywords = [kw.lower() for kw in config.filters.keywords_include]
+
+    cleaned: list[dict] = []
+    removed = 0
+    for listing in listings:
+        title = listing.get("role", "").lower()
+
+        # Check word-boundary include match
+        has_include = False
+        for kw in include_keywords:
+            if re.search(r'\b' + re.escape(kw) + r'\b', title):
+                has_include = True
+                break
+
+        if not has_include:
+            logger.info("Removing (no intern keyword): %s — %s", listing.get("company"), listing.get("role"))
+            removed += 1
+            continue
+
+        # Check exclude keywords (substring match is fine for excludes)
+        has_exclude = any(kw in title for kw in exclude_keywords)
+        if has_exclude:
+            logger.info("Removing (exclude keyword): %s — %s", listing.get("company"), listing.get("role"))
+            removed += 1
+            continue
+
+        cleaned.append(listing)
+
+    # Backfill industry from config mapping for existing listings
+    config_industries = config.company_industries
+    industry_updated = 0
+    for listing in cleaned:
+        current_industry = listing.get("industry", "other")
+        if current_industry == "other":
+            company = listing.get("company", "")
+            mapped = config_industries.get(company)
+            if mapped:
+                listing["industry"] = mapped
+                industry_updated += 1
+
+    if industry_updated:
+        logger.info("Backfilled industry for %d listings", industry_updated)
+
+    data["listings"] = cleaned
+    data["last_updated"] = datetime.now(timezone.utc).isoformat()
+    data["total_open"] = len([x for x in cleaned if x.get("status") == "open"])
+
+    tmp_path = jobs_path.with_suffix(".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, default=str)
+    tmp_path.replace(jobs_path)
+
+    logger.info(
+        "Clean complete: %d → %d listings (%d removed)",
+        original_count,
+        len(cleaned),
+        removed,
+    )
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse command-line arguments.
 
@@ -139,6 +227,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Run only the link health checker",
     )
+    group.add_argument(
+        "--clean",
+        action="store_true",
+        help="Re-filter existing jobs.json to remove non-tech/non-intern listings",
+    )
 
     return parser.parse_args(argv)
 
@@ -158,6 +251,8 @@ def main(argv: list[str] | None = None) -> None:
         run_readme_only()
     elif args.check_links_only:
         run_check_links_only()
+    elif args.clean:
+        run_clean()
     else:
         # Default to full pipeline (covers --full and no args)
         run_full_pipeline()

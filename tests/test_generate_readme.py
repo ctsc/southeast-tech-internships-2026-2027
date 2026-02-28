@@ -5,6 +5,7 @@ from datetime import date, datetime
 from unittest.mock import MagicMock, patch
 
 from scripts.utils.models import (
+    IndustrySector,
     JobListing,
     JobsDatabase,
     ListingStatus,
@@ -12,6 +13,7 @@ from scripts.utils.models import (
     SponsorshipStatus,
 )
 from scripts.utils.readme_renderer import (
+    INDUSTRY_EMOJI,
     _count_open,
     _format_listing_row,
     _format_locations,
@@ -599,3 +601,62 @@ class TestGenerateReadme:
         assert "[Apply](https://stripe.com/apply)" in result
         assert readme_path.exists()
         assert validate_markdown(result) is True
+
+
+# ---------------------------------------------------------------------------
+# Industry Emoji Tests
+# ---------------------------------------------------------------------------
+
+class TestIndustryEmoji:
+    def test_industry_emoji_dict_has_all_sectors(self):
+        """INDUSTRY_EMOJI should have an entry for every IndustrySector."""
+        for sector in IndustrySector:
+            assert sector in INDUSTRY_EMOJI, f"Missing emoji for {sector.value}"
+
+    def test_fintech_emoji_in_listing_row(self):
+        listing = _make_listing(company="Stripe", industry=IndustrySector.FINTECH)
+        row = _format_listing_row(listing)
+        assert "💳" in row
+        assert "**Stripe**" in row
+
+    def test_ai_ml_emoji_in_listing_row(self):
+        listing = _make_listing(company="OpenAI", industry=IndustrySector.AI_ML, is_faang_plus=True)
+        row = _format_listing_row(listing)
+        assert "🧠" in row
+        assert "🔥" in row
+        assert "**OpenAI**" in row
+
+    def test_default_industry_shows_other_emoji(self):
+        listing = _make_listing(company="UnknownCo")
+        row = _format_listing_row(listing)
+        assert "🏷️" in row
+
+    def test_cybersecurity_emoji(self):
+        listing = _make_listing(company="CrowdStrike", industry=IndustrySector.CYBERSECURITY)
+        row = _format_listing_row(listing)
+        assert "🔐" in row
+
+
+class TestReadmeHeader:
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_header_contains_georgia_southeast(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        db = _make_db([_make_listing()])
+        readme = render_readme(db)
+        assert "Catered to Georgia / Southeast" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_header_contains_star_message(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        db = _make_db([_make_listing()])
+        readme = render_readme(db)
+        assert "Leave a star on the repo" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config")
+    def test_legend_contains_industry_section(self, mock_config):
+        mock_config.return_value = _MOCK_CONFIG
+        db = _make_db([_make_listing()])
+        readme = render_readme(db)
+        assert "**Industry**" in readme
+        assert "💳" in readme
+        assert "Fintech" in readme

@@ -14,6 +14,7 @@ from typing import Optional
 from scripts.utils.ai_enrichment import enrich_listing, reset_budget
 from scripts.utils.config import PROJECT_ROOT, get_config
 from scripts.utils.models import (
+    IndustrySector,
     JobListing,
     JobsDatabase,
     ListingStatus,
@@ -220,12 +221,47 @@ def _parse_locations(raw_location: str, ai_locations: Optional[list[str]] = None
     return [raw_location.strip()] if raw_location.strip() else ["Unknown"]
 
 
-def _build_job_listing(raw: RawListing, metadata: dict) -> JobListing:
+def _map_industry(industry_str: str, company: str, config_industries: dict[str, str]) -> IndustrySector:
+    """Map an industry string to an IndustrySector enum value.
+
+    Uses AI-detected industry first, then falls back to the config mapping,
+    then defaults to OTHER.
+
+    Args:
+        industry_str: Industry string from AI enrichment.
+        company: Company name for config-based lookup.
+        config_industries: Mapping of company name -> industry from config.yaml.
+
+    Returns:
+        The corresponding IndustrySector enum value.
+    """
+    # Try AI-provided industry first
+    if industry_str and industry_str != "other":
+        try:
+            return IndustrySector(industry_str.lower().strip())
+        except ValueError:
+            pass
+
+    # Fall back to config mapping
+    config_industry = config_industries.get(company)
+    if config_industry:
+        try:
+            return IndustrySector(config_industry.lower().strip())
+        except ValueError:
+            pass
+
+    return IndustrySector.OTHER
+
+
+def _build_job_listing(
+    raw: RawListing, metadata: dict, config_industries: Optional[dict[str, str]] = None
+) -> JobListing:
     """Build a JobListing from raw listing data and AI-enriched metadata.
 
     Args:
         raw: The raw listing from discovery.
         metadata: Enriched metadata dict from AI validation.
+        config_industries: Company->industry mapping from config.yaml.
 
     Returns:
         A fully populated JobListing object.
@@ -240,6 +276,12 @@ def _build_job_listing(raw: RawListing, metadata: dict) -> JobListing:
     season = metadata.get("season", "none")
     if season == "none" and metadata.get("is_summer_2026"):
         season = "summer_2026"
+
+    industry = _map_industry(
+        metadata.get("industry", "other"),
+        raw.company,
+        config_industries or {},
+    )
 
     return JobListing(
         id=listing_id,
@@ -260,6 +302,7 @@ def _build_job_listing(raw: RawListing, metadata: dict) -> JobListing:
         status=ListingStatus.OPEN,
         tech_stack=metadata.get("tech_stack", []),
         season=season,
+        industry=industry,
     )
 
 
@@ -367,6 +410,12 @@ def validate_all() -> list[JobListing]:
     except Exception:
         role_categories_map = {}
 
+    # Load company -> industry mapping from config
+    try:
+        config_industries = config.company_industries
+    except Exception:
+        config_industries = {}
+
     for i, raw in enumerate(raw_listings):
         # Skip listings already in the database
         if raw.content_hash in existing_hashes:
@@ -447,7 +496,7 @@ def validate_all() -> list[JobListing]:
                 continue
 
             # Build validated listing
-            job = _build_job_listing(raw, metadata)
+            job = _build_job_listing(raw, metadata, config_industries)
             validated.append(job)
 
             logger.info(

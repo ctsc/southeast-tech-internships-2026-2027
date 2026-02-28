@@ -702,6 +702,29 @@ filters:
     - "director"
     - "manager"
     - "lead engineer"
+    - "sales"
+    - "banker"
+    - "merchant"
+    - "accounting"
+    - "accountant"
+    - "payroll"
+    - "recruiter"
+    - "recruiting"
+    - "legal counsel"
+    - "tax analyst"
+    - "tax information"
+    - "brand marketing"
+    - "influencer marketing"
+    - "events marketing"
+    - "executive assistant"
+    - "revenue accountant"
+    - "people team"
+    - "hr operations"
+    - "real estate"
+    - "insurance agent"
+    - "vice president"
+    - "onboarding lead"
+    - "internal audit"
   role_categories:
     swe:
       - "software engineer"
@@ -719,6 +742,17 @@ filters:
       - "devops"
       - "sre"
       - "site reliability"
+      - "cloud engineer"
+      - "cloud computing"
+      - "systems engineer"
+      - "technology intern"
+      - "technology operations"
+      - "solutions engineer"
+      - "IT intern"
+      - "cybersecurity"
+      - "security engineer"
+      - "information security"
+      - "network engineer"
     ml_ai:
       - "machine learning"
       - "ml engineer"
@@ -778,8 +812,219 @@ ai:
       "requires_advanced_degree": true/false,
       "remote_friendly": true/false,
       "tech_stack": ["Python", "React", ...],
+      "industry": "fintech|healthcare|energy|ecommerce|banking|automotive|gaming|social_media|cybersecurity|cloud|enterprise|ai_ml|aerospace|telecom|media|food|logistics|semiconductor|other",
       "confidence": 0.0-1.0
     }
+
+# ============================================================================
+# Company → Industry Mapping
+# ============================================================================
+company_industries:
+  # Fintech
+  Stripe: "fintech"
+  Plaid: "fintech"
+  Brex: "fintech"
+  Ramp: "fintech"
+  Coinbase: "fintech"
+  Robinhood: "fintech"
+  Chime: "fintech"
+  SoFi: "fintech"
+  Marqeta: "fintech"
+  Block (Square): "fintech"
+  Toast: "fintech"
+  Global Payments: "fintech"
+  Fiserv: "fintech"
+  InComm Payments: "fintech"
+  Cardlytics: "fintech"
+  GreenSky: "fintech"
+  Greenlight: "fintech"
+  Bakkt: "fintech"
+
+  # Banking / Finance
+  JPMorgan Chase: "banking"
+  Goldman Sachs: "banking"
+  Morgan Stanley: "banking"
+  Bloomberg: "banking"
+  Citadel: "banking"
+  Two Sigma: "banking"
+  Jane Street: "banking"
+  DE Shaw: "banking"
+  Hudson River Trading: "banking"
+  Intercontinental Exchange: "banking"
+
+  # AI / ML
+  OpenAI: "ai_ml"
+  Anthropic: "ai_ml"
+  Scale AI: "ai_ml"
+  Cohere: "ai_ml"
+  Hugging Face: "ai_ml"
+  Mistral AI: "ai_ml"
+  Perplexity AI: "ai_ml"
+  Together AI: "ai_ml"
+  Fireworks AI: "ai_ml"
+  Replicate: "ai_ml"
+  Weights & Biases: "ai_ml"
+  Labelbox: "ai_ml"
+  Snorkel AI: "ai_ml"
+  Anyscale: "ai_ml"
+  Groq: "ai_ml"
+  Databricks: "ai_ml"
+  Cursor: "ai_ml"
+
+  # Cloud / Infrastructure
+  Cloudflare: "cloud"
+  Vercel: "cloud"
+  Netlify: "cloud"
+  Render: "cloud"
+  Fly.io: "cloud"
+  Railway: "cloud"
+  Modal: "cloud"
+  Supabase: "cloud"
+  HashiCorp: "cloud"
+  Snowflake: "cloud"
+  MongoDB: "cloud"
+  Confluent: "cloud"
+  Cockroach Labs: "cloud"
+  VMware: "cloud"
+
+  # Cybersecurity
+  CrowdStrike: "cybersecurity"
+  Palo Alto Networks: "cybersecurity"
+  SentinelOne: "cybersecurity"
+  Zscaler: "cybersecurity"
+  Okta: "cybersecurity"
+  1Password: "cybersecurity"
+  Snyk: "cybersecurity"
+  Pindrop: "cybersecurity"
+  Ionic Security: "cybersecurity"
+
+  # Enterprise / SaaS
+  Salesforce: "enterprise"
+  Oracle: "enterprise"
+  IBM: "enterprise"
+  Cisco: "enterprise"
+  Adobe: "enterprise"
+  Datadog: "enterprise"
+  Elastic: "enterprise"
+  Grafana Labs: "enterprise"
+  Twilio: "enterprise"
+  SendGrid: "enterprise"
+  Zendesk: "enterprise"
+  Asana: "enterprise"
+  ClickUp: "enterprise"
+  monday.com: "enterprise"
+  Airtable: "enterprise"
+  Retool: "enterprise"
+  Linear: "enterprise"
+  Notion: "enterprise"
+  Figma: "enterprise"
+  Canva: "enterprise"
+  Miro: "enterprise"
+  Loom: "enterprise"
+  Amplitude: "enterprise"
+  Mixpanel: "enterprise"
+  LaunchDarkly: "enterprise"
+  Optimizely: "enterprise"
+  Contentful: "enterprise"
+  Postman: "enterprise"
+  GitLab: "enterprise"
+  Sourcegraph: "enterprise"
+  Grammarly: "enterprise"
+  Calendly: "enterprise"
+  Salesloft: "enterprise"
+  OneTrust: "enterprise"
+  FullStory: "enterprise"
+  NCR Atleos: "enterprise"
+  NCR Voyix: "enterprise"
+  Equifax: "enterprise"
+
+  # Social Media
+  Discord: "social_media"
+  Snap: "social_media"
+  Pinterest: "social_media"
+  Reddit: "social_media"
+  Twitch: "social_media"
+
+  # Media / Entertainment
+  Spotify: "media"
+  Netflix: "media"
+  Duolingo: "media"
+
+  # Ecommerce / Marketplace
+  Shopify: "ecommerce"
+  Instacart: "ecommerce"
+  DoorDash: "ecommerce"
+  Airbnb: "ecommerce"
+  Squarespace: "ecommerce"
+
+  # Automotive
+  Tesla: "automotive"
+
+  # Semiconductor
+  Nvidia: "semiconductor"
+  AMD: "semiconductor"
+  Intel: "semiconductor"
+  Qualcomm: "semiconductor"
+
+  # Logistics
+  Flexport: "logistics"
+  Samsara: "logistics"
+  UPS: "logistics"
+  Roadie: "logistics"
+
+  # Aerospace
+  # (none currently in config)
+
+  # Telecom
+  # (none currently in config)
+
+  # Food / Beverage
+  Coca-Cola: "food"
+
+  # Energy
+  Southern Company: "energy"
+
+  # Healthcare
+  Aflac: "healthcare"
+
+  # FAANG+
+  Google: "cloud"
+  Microsoft: "cloud"
+  Amazon: "ecommerce"
+  Apple: "enterprise"
+  Meta: "social_media"
+
+  # Rideshare
+  Lyft: "logistics"
+  Uber: "logistics"
+
+  # HR / Payroll
+  Rippling: "enterprise"
+  Gusto: "enterprise"
+  Deel: "enterprise"
+  Remote: "enterprise"
+  Justworks: "enterprise"
+  Navan: "enterprise"
+
+  # Other Georgia companies
+  Home Depot: "ecommerce"
+  Delta Air Lines: "logistics"
+  Cox Enterprises: "telecom"
+  Genuine Parts Company: "logistics"
+  Pactiv Evergreen: "other"
+  Mailchimp (Intuit): "enterprise"
+
+  # Data infra
+  dbt Labs: "cloud"
+  Airbyte: "cloud"
+  PlanetScale: "cloud"
+  Neon: "cloud"
+  ClickHouse: "cloud"
+  Timescale: "cloud"
+  Redpanda: "cloud"
+  Materialize: "cloud"
+  Replit: "ai_ml"
+  Warp: "enterprise"
 
 # ============================================================================
 # Schedule

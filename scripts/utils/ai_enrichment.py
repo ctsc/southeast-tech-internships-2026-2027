@@ -41,6 +41,7 @@ DEFAULT_METADATA: dict = {
     "remote_friendly": False,
     "tech_stack": [],
     "confidence": 0.0,
+    "industry": "other",
 }
 
 

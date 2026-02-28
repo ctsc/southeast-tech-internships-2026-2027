@@ -8,6 +8,7 @@ from pydantic import ValidationError
 from scripts.utils.models import (
     ATSType,
     Company,
+    IndustrySector,
     InternSeason,
     JobListing,
     JobsDatabase,
@@ -387,3 +388,84 @@ class TestJobsDatabase:
         restored = JobsDatabase(**data)
         assert len(restored.listings) == len(sample_jobs_database.listings)
         assert restored.total_open == sample_jobs_database.total_open
+
+
+# ── IndustrySector Tests ──────────────────────────────────────────────────
+
+
+class TestIndustrySector:
+    def test_all_values(self):
+        expected = {
+            "fintech", "healthcare", "energy", "ecommerce", "banking",
+            "automotive", "gaming", "social_media", "cybersecurity", "cloud",
+            "enterprise", "ai_ml", "aerospace", "telecom", "media",
+            "food", "logistics", "semiconductor", "other",
+        }
+        assert {e.value for e in IndustrySector} == expected
+
+    def test_str_enum(self):
+        assert IndustrySector.FINTECH == "fintech"
+        assert isinstance(IndustrySector.FINTECH, str)
+
+    def test_from_value(self):
+        assert IndustrySector("ai_ml") is IndustrySector.AI_ML
+        assert IndustrySector("cybersecurity") is IndustrySector.CYBERSECURITY
+
+    def test_invalid_value(self):
+        with pytest.raises(ValueError):
+            IndustrySector("invalid_industry")
+
+
+class TestJobListingIndustry:
+    def test_default_industry(self):
+        """JobListing defaults to IndustrySector.OTHER."""
+        listing = JobListing(
+            id="abc123",
+            company="TestCo",
+            company_slug="testco",
+            role="SWE Intern",
+            category=RoleCategory.SWE,
+            locations=["NYC"],
+            apply_url="https://example.com/apply",
+            date_added="2026-02-15",
+            date_last_verified="2026-02-20",
+            source="greenhouse_api",
+        )
+        assert listing.industry == IndustrySector.OTHER
+
+    def test_explicit_industry(self):
+        """JobListing accepts an explicit industry value."""
+        listing = JobListing(
+            id="abc123",
+            company="Stripe",
+            company_slug="stripe",
+            role="SWE Intern",
+            category=RoleCategory.SWE,
+            locations=["SF"],
+            apply_url="https://stripe.com/apply",
+            date_added="2026-02-15",
+            date_last_verified="2026-02-20",
+            source="greenhouse_api",
+            industry=IndustrySector.FINTECH,
+        )
+        assert listing.industry == IndustrySector.FINTECH
+
+    def test_industry_serialization(self):
+        """Industry field round-trips through serialization."""
+        listing = JobListing(
+            id="abc123",
+            company="CrowdStrike",
+            company_slug="crowdstrike",
+            role="Security Intern",
+            category=RoleCategory.SWE,
+            locations=["Austin, TX"],
+            apply_url="https://crowdstrike.com/apply",
+            date_added="2026-02-15",
+            date_last_verified="2026-02-20",
+            source="greenhouse_api",
+            industry=IndustrySector.CYBERSECURITY,
+        )
+        data = listing.model_dump(mode="json")
+        assert data["industry"] == "cybersecurity"
+        restored = JobListing(**data)
+        assert restored.industry == IndustrySector.CYBERSECURITY

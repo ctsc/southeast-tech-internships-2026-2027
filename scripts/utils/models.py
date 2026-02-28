@@ -51,6 +51,30 @@ class ListingStatus(str, Enum):
     UNKNOWN = "unknown"
 
 
+class IndustrySector(str, Enum):
+    """Industry/sector classification for companies."""
+
+    FINTECH = "fintech"
+    HEALTHCARE = "healthcare"
+    ENERGY = "energy"
+    ECOMMERCE = "ecommerce"
+    BANKING = "banking"
+    AUTOMOTIVE = "automotive"
+    GAMING = "gaming"
+    SOCIAL_MEDIA = "social_media"
+    CYBERSECURITY = "cybersecurity"
+    CLOUD = "cloud"
+    ENTERPRISE = "enterprise"
+    AI_ML = "ai_ml"
+    AEROSPACE = "aerospace"
+    TELECOM = "telecom"
+    MEDIA = "media"
+    FOOD = "food"
+    LOGISTICS = "logistics"
+    SEMICONDUCTOR = "semiconductor"
+    OTHER = "other"
+
+
 class ATSType(str, Enum):
     """Applicant Tracking System types."""
 
@@ -95,6 +119,7 @@ class JobListing(BaseModel):
     status: ListingStatus = ListingStatus.OPEN
     tech_stack: list[str] = []
     season: str = "summer_2026"
+    industry: IndustrySector = IndustrySector.OTHER
 
 
 class JobsDatabase(BaseModel):
