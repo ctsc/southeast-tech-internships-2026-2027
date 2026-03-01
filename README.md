@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 01, 2026 at 02:50 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 01, 2026 at 06:57 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -304,10 +304,10 @@ No graduate-friendly Southeast listings yet. Check back soon!
 
 | Company | Role | Location | Season | Apply | Posted |
 |---------|------|----------|--------|-------|------------|
-| **Stripe** | Software Engineer, Intern | Dublin | F26 | [Apply](https://stripe.com/jobs/search?gh_jid=7206494) | today |
-| **Grammarly** | Software Engineer Intern (Summer 2026) | Ukraine, Hybrid | F26 | [Apply](https://job-boards.greenhouse.io/grammarly/jobs/7657265) | today |
-| **Tripadvisor** | Software Engineering Internship 2026 (Viator) | Lisbon | F26 | [Apply](https://job-boards.greenhouse.io/tripadvisor/jobs/7479899) | today |
 | **Rigetti** | Software Engineering Intern - Computer Vision & Automation | Fremont, CA | F26 | [Apply](https://jobs.lever.co/rigetti/40442388-ca66-4899-ab45-d8a2658bd050/apply?utm_source=Simplify&ref=Simplify) | today |
+| **Stripe** | Software Engineer, Intern | London | F26 | [Apply](https://stripe.com/jobs/search?gh_jid=7360840) | today |
+| **Grammarly** | Software Engineer Intern (Summer 2026) | Berlin, Hybrid | F26 | [Apply](https://job-boards.greenhouse.io/grammarly/jobs/7491439) | today |
+| **Tripadvisor** | Software Engineering Internship 2026 (Viator) | Krakow | F26 | [Apply](https://job-boards.greenhouse.io/tripadvisor/jobs/7479794) | today |
 | **Stripe** | Software Engineer, Intern (Summer) | San Francisco, Seattle, New York City | F26 | [Apply](https://stripe.com/jobs/search?gh_jid=7210115) | 1d ago |
 | **Figma** | Software Engineer Intern, Developer Tools (2026) (London, United Kingdom) | London, England | F26 | [Apply](https://boards.greenhouse.io/figma/jobs/5621177004?gh_jid=5621177004) | 1d ago |
 | **Scale AI** | Software Engineering Intern (Summer 2026)  | San Francisco, CA | F26 | [Apply](https://job-boards.greenhouse.io/scaleai/jobs/4606014005) | 1d ago |
@@ -977,18 +977,18 @@ No graduate-friendly Southeast listings yet. Check back soon!
 
 | Company | Role | Location | Season | Apply | Posted |
 |---------|------|----------|--------|-------|------------|
-| **Okta** | Customer Success Intern (Summer 2026) | Dublin, Ireland | F26 | [Apply](https://www.okta.com/company/careers/opportunity/7646155?gh_jid=7646155) | today |
-| **Boeing** | Millennium Space Systems Summer 2026 Internship Program – Mechanical Engineering | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-mechanical-engineering/185/92187099312) | today |
 | **CACI** | Automations Intern - Summer 2026 | Oklahoma City, OK | F26 | [Apply](https://caci.wd1.myworkdayjobs.com/external/job/US-OK-Oklahoma-City/Automations-Intern---Summer-2026_321976?utm_source=Simplify&ref=Simplify) | today |
 | **General Motors** | Intern | Mountain View, CA, Sunnyvale and 1 more | F26 | [Apply](https://generalmotors.wd5.myworkdayjobs.com/en-CA/Careers_GM/job/Mountain-View-California-United-States-of-America/XMLNAME-2026-Summer-Intern---Software-Engineer--Autonomous-Robot--PhD-_JR-202524749?utm_source=Simplify&ref=Simplify) | today |
 | **Blackhawk Network Holdings** | Product Operations Intern | Pleasanton, CA | F26 | [Apply](https://careers-blackhawknetwork.icims.com/jobs/26276/job?mobile=true&needsRedirect=false&utm_source=Simplify&ref=Simplify) | today |
 | **Tatari** | Data Science BI – Intern | NYC | F26 | [Apply](https://job-boards.greenhouse.io/tatari/jobs/8443709002?utm_source=Simplify&ref=Simplify) | today |
 | **Northrop Grumman** | 2026 Engineering Intern - Northridge CA | Northridge, LA | F26 | [Apply](https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-California-Northridge/XMLNAME-2026-Engineering-Intern---Northridge-CA_R10210316?utm_source=Simplify&ref=Simplify) | today |
-| **Dropbox** | Content Design Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | today |
-| **Dropbox** | CX Technical Content Design Intern (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | today |
-| **Dropbox** | CX Video Content Design Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | today |
-| **Dropbox** | Research and Insights Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | today |
-| **Dropbox** | Support Enablement Engineer Intern  (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | today |
+| **Okta** | Customer Success Intern (Summer 2026) | Chicago, Illinois | F26 | [Apply](https://www.okta.com/company/careers/opportunity/7565237?gh_jid=7565237) | today |
+| **Boeing** | Millennium Space Systems Summer 2026 Internship Program – Test Engineering | El Segundo, California | F26 | [Apply](https://jobs.boeing.com/job/el-segundo/millennium-space-systems-summer-2026-internship-program-test-engineering/185/92187099232) | today |
+| **Dropbox** | Content Design Intern (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | today |
+| **Dropbox** | CX Technical Content Design Intern (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | today |
+| **Dropbox** | CX Video Content Design Intern (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | today |
+| **Dropbox** | Research and Insights Intern (Summer 2026) 🔒 | Remote - US: All locations | F26 | 🔒 Closed | today |
+| **Dropbox** | Support Enablement Engineer Intern  (Summer 2026) 🔒 | Remote - Canada: Select locations | F26 | 🔒 Closed | today |
 | **Vercel** | Data Platform & Engineering Intern | Hybrid - San Francisco | F26 | [Apply](https://job-boards.greenhouse.io/vercel/jobs/5810803004) | 1d ago |
 | **Scale AI** | Technical Advisor Intern - GenAI (Winter/Spring 2026) | San Francisco, CA | F26 | [Apply](https://job-boards.greenhouse.io/scaleai/jobs/4611533005) | 1d ago |
 | **Twitch** | Graduate Applied Science Intern | San Francisco, CA | F26 | [Apply](https://job-boards.greenhouse.io/twitch/jobs/8204076002) | 1d ago |
