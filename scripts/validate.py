@@ -296,6 +296,7 @@ def _build_job_listing(
         is_faang_plus=raw.is_faang_plus,
         requires_advanced_degree=metadata.get("requires_advanced_degree", False),
         remote_friendly=metadata.get("remote_friendly", False),
+        open_to_international=metadata.get("open_to_international", False),
         date_added=today,
         date_last_verified=today,
         source=raw.source,

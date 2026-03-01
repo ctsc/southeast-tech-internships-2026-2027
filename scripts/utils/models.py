@@ -114,6 +114,7 @@ class JobListing(BaseModel):
     requires_advanced_degree: bool = False
     graduate_friendly: bool = False
     remote_friendly: bool = False
+    open_to_international: bool = False
     date_added: date
     date_last_verified: date
     source: str  # "greenhouse_api", "lever_api", "scrape", "community"

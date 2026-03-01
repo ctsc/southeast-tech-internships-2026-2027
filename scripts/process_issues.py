@@ -91,6 +91,7 @@ def _parse_issue_body(body: str) -> Optional[dict]:
         "us_citizenship": bool(re.search(r"\[(?:x|X)\]\s*Requires U\.S\. citizenship", flags_raw)),
         "remote_friendly": bool(re.search(r"\[(?:x|X)\]\s*Remote friendly", flags_raw)),
         "advanced_degree": bool(re.search(r"\[(?:x|X)\]\s*Requires advanced degree", flags_raw)),
+        "open_to_international": bool(re.search(r"\[(?:x|X)\]\s*Open to international students", flags_raw)),
     }
 
     return {
@@ -294,6 +295,7 @@ def _build_job_listing(parsed: dict) -> JobListing:
         is_faang_plus=False,
         requires_advanced_degree=flags.get("advanced_degree", False),
         remote_friendly=flags.get("remote_friendly", False),
+        open_to_international=flags.get("open_to_international", False),
         date_added=today,
         date_last_verified=today,
         source="community",

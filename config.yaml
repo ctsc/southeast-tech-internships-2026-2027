@@ -59,7 +59,7 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "stripe"
     company: "Stripe"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "figma"
     company: "Figma"
     is_faang_plus: false
@@ -74,7 +74,7 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "coinbase"
     company: "Coinbase"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "datadog"
     company: "Datadog"
     is_faang_plus: false
@@ -89,40 +89,40 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "discord"
     company: "Discord"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "palantir"
     company: "Palantir"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "robinhood"
     company: "Robinhood"
     is_faang_plus: false
   - token: "doordash"
     company: "DoorDash"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "instacart"
     company: "Instacart"
     is_faang_plus: false
   - token: "pinterest"
     company: "Pinterest"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "snap"
     company: "Snap"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "spotify"
     company: "Spotify"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "twitch"
     company: "Twitch"
     is_faang_plus: false
   - token: "cloudflare"
     company: "Cloudflare"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "databricks"
     company: "Databricks"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "snowflake"
     company: "Snowflake"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "mongodb"
     company: "MongoDB"
     is_faang_plus: false
@@ -209,7 +209,7 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "dropbox"
     company: "Dropbox"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "box"
     company: "Box"
     is_faang_plus: false
@@ -218,7 +218,7 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "twilio"
     company: "Twilio"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "sendgrid"
     company: "SendGrid"
     is_faang_plus: false
@@ -340,7 +340,7 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "mailchimp"
     company: "Mailchimp (Intuit)"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "cardlytics"
     company: "Cardlytics"
     is_faang_plus: false
@@ -360,10 +360,10 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "uber"
     company: "Uber"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "airbnb"
     company: "Airbnb"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "block"
     company: "Block (Square)"
     is_faang_plus: false
@@ -396,7 +396,7 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "crowdstrike"
     company: "CrowdStrike"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "paloaltonetworks"
     company: "Palo Alto Networks"
     is_faang_plus: false
@@ -502,7 +502,7 @@ greenhouse_boards:
   # --- Dev Tools / Infrastructure ---
   - token: "atlassian"
     company: "Atlassian"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "jetbrains"
     company: "JetBrains"
     is_faang_plus: false
@@ -537,7 +537,7 @@ greenhouse_boards:
   # --- Southeast Region Companies ---
   - token: "mailchimp"
     company: "Mailchimp (Intuit)"
-    is_faang_plus: false
+    is_faang_plus: true
   - token: "kabbage"
     company: "Kabbage (Amex)"
     is_faang_plus: false
@@ -609,7 +609,7 @@ lever_boards:
     is_faang_plus: true
   - company_slug: "shopify"
     company: "Shopify"
-    is_faang_plus: false
+    is_faang_plus: true
   - company_slug: "tailscale"
     company: "Tailscale"
     is_faang_plus: false
@@ -852,16 +852,16 @@ scrape_sources:
   # --- Major Georgia Employers ---
   - company: "Home Depot"
     url: "https://careers.homedepot.com/job-search-results/?keyword=intern+technology"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "UPS"
     url: "https://www.jobs-ups.com/search-jobs/intern%20technology/1187/1"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Coca-Cola"
     url: "https://careers.coca-colacompany.com/search-jobs/intern+technology"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Delta Air Lines"
     url: "https://delta.avature.net/en_US/careers/SearchJobs/intern+technology"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Southern Company"
     url: "https://southerncompany.jobs/jobs/?q=intern+technology"
     is_faang_plus: false
@@ -896,51 +896,51 @@ scrape_sources:
   # --- Other Top Tech Companies ---
   - company: "Tesla"
     url: "https://www.tesla.com/careers/search/?query=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Nvidia"
     url: "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite?q=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "AMD"
     url: "https://careers.amd.com/careers-home/jobs?keywords=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Intel"
     url: "https://jobs.intel.com/en/search-jobs/intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Qualcomm"
     url: "https://careers.qualcomm.com/careers?query=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "IBM"
     url: "https://www.ibm.com/careers/search?query=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Oracle"
     url: "https://careers.oracle.com/jobs/?keyword=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Salesforce"
     url: "https://careers.salesforce.com/en/jobs/?search=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Adobe"
     url: "https://careers.adobe.com/us/en/search-results?keywords=intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "VMware"
     url: "https://careers.vmware.com/main/jobs?keywords=intern+software"
     is_faang_plus: false
   - company: "Cisco"
     url: "https://jobs.cisco.com/jobs/SearchJobs/intern+software"
-    is_faang_plus: false
+    is_faang_plus: true
 
   # --- Finance / Quant ---
   - company: "JPMorgan Chase"
     url: "https://careers.jpmorgan.com/us/en/students/programs/software-engineer-summer"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Goldman Sachs"
     url: "https://www.goldmansachs.com/careers/students/programs/americas/summer-analyst.html"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Morgan Stanley"
     url: "https://morganstanley.tal.net/vx/lang-en-GB/candidate/jobboard/requisition/default/campaign/14/type/6"
     is_faang_plus: false
   - company: "Bloomberg"
     url: "https://careers.bloomberg.com/job/search?qf=internship&qe=Software+Engineering"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Citadel"
     url: "https://www.citadel.com/careers/open-opportunities/?keyword=intern"
     is_faang_plus: false
@@ -999,7 +999,7 @@ scrape_sources:
   # --- Entertainment / Media ---
   - company: "Disney"
     url: "https://jobs.disneycareers.com/search-jobs/intern+technology"
-    is_faang_plus: false
+    is_faang_plus: true
   - company: "Warner Bros. Discovery"
     url: "https://careers.wbd.com/global/en/search-results?keywords=intern+technology"
     is_faang_plus: false
@@ -1119,6 +1119,21 @@ scrape_sources:
     is_faang_plus: false
   - company: "Emerson"
     url: "https://www.emerson.com/en-us/careers/search-results?keyword=intern+software"
+    is_faang_plus: false
+  - company: "Cox Automotive"
+    url: "https://jobs.coxenterprises.com/en/jobs/?search=intern+technology+automotive"
+    is_faang_plus: false
+  - company: "Truist Financial"
+    url: "https://careers.truist.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "Lowe's"
+    url: "https://talent.lowes.com/us/en/search-results?keywords=intern+technology"
+    is_faang_plus: false
+  - company: "Invesco"
+    url: "https://careers.invesco.com/search-jobs/intern+technology"
+    is_faang_plus: false
+  - company: "CORPAY (FleetCor)"
+    url: "https://careers.corpay.com/search-jobs/intern+technology"
     is_faang_plus: false
 
 # ============================================================================
@@ -1264,6 +1279,7 @@ ai:
       "requires_advanced_degree": true/false,
       "graduate_friendly": true/false,
       "remote_friendly": true/false,
+      "open_to_international": true/false,
       "tech_stack": ["Python", "React", ...],
       "industry": "fintech|healthcare|energy|ecommerce|banking|automotive|gaming|social_media|cybersecurity|cloud|enterprise|ai_ml|aerospace|telecom|media|food|logistics|semiconductor|other",
       "confidence": 0.0-1.0

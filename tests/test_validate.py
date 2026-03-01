@@ -605,6 +605,15 @@ class TestBuildJobListing:
         assert job.tech_stack == []
         assert job.remote_friendly is False
         assert job.requires_advanced_degree is False
+        assert job.open_to_international is False
+
+    def test_open_to_international_mapping(self):
+        """Maps open_to_international from AI metadata."""
+        raw = _make_raw_listing()
+        metadata = _make_valid_metadata()
+        metadata["open_to_international"] = True
+        job = _build_job_listing(raw, metadata)
+        assert job.open_to_international is True
 
     def test_backward_compat_is_summer_2026(self):
         """Legacy cached responses with is_summer_2026 are handled."""

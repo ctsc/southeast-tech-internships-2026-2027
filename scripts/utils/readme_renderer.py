@@ -1,7 +1,8 @@
 """Markdown table generation logic for rendering the README from job data.
 
 Transforms a JobsDatabase into a beautifully formatted README.md with
-categorized internship tables, stats, legend, and Southeast focus sections.
+categorized internship tables, stats, and legend. Only includes Southeast
+region listings (GA, FL, AL, TX, SC, NC, TN).
 """
 
 import logging
@@ -88,8 +89,8 @@ def _format_listing_row(listing: JobListing) -> str:
     flags = []
     if listing.status == ListingStatus.CLOSED:
         flags.append("🔒")
-    if listing.requires_advanced_degree:
-        flags.append("🎓")
+    if listing.open_to_international:
+        flags.append("🌍")
     if listing.remote_friendly:
         flags.append("🏠")
     if flags:
@@ -174,76 +175,20 @@ def _is_southeast_listing(listing: JobListing) -> bool:
     return False
 
 
-def _render_southeast_section(listings: list[JobListing]) -> str:
-    """Render the Southeast-focused section."""
-    se_listings = [
-        x for x in listings
-        if x.status == ListingStatus.OPEN and _is_southeast_listing(x)
-    ]
-
-    lines = [
-        "## 🌴 Southeast Internships",
-        "",
-        "> Internships in Georgia, Florida, Alabama, Texas, South Carolina, North Carolina, and Tennessee.",
-        "",
-    ]
-
-    if not se_listings:
-        lines.append("No Southeast-based listings yet. Check back soon!")
-        lines.append("")
-        return "\n".join(lines)
-
-    sorted_listings = sorted(se_listings, key=lambda x: x.date_added, reverse=True)
-
-    lines.append("| Company | Role | Location | Season | Apply | Posted |")
-    lines.append("|---------|------|----------|--------|-------|------------|")
-    for listing in sorted_listings:
-        lines.append(_format_listing_row(listing))
-    lines.append("")
-    return "\n".join(lines)
-
-
-def _render_southeast_graduate_section(listings: list[JobListing]) -> str:
-    """Render the Southeast Graduate & PhD section."""
-    se_grad_listings = [
-        x for x in listings
-        if x.status == ListingStatus.OPEN
-        and _is_southeast_listing(x)
-        and (x.requires_advanced_degree or x.graduate_friendly)
-    ]
-
-    lines = [
-        "## 🎓 Southeast Graduate & PhD Internships",
-        "",
-        "> Graduate-friendly internships in the Southeast — for Master's and PhD candidates.",
-        "",
-    ]
-
-    if not se_grad_listings:
-        lines.append("No graduate-friendly Southeast listings yet. Check back soon!")
-        lines.append("")
-        return "\n".join(lines)
-
-    sorted_listings = sorted(se_grad_listings, key=lambda x: x.date_added, reverse=True)
-
-    lines.append("| Company | Role | Location | Season | Apply | Posted |")
-    lines.append("|---------|------|----------|--------|-------|------------|")
-    for listing in sorted_listings:
-        lines.append(_format_listing_row(listing))
-    lines.append("")
-    return "\n".join(lines)
-
-
 def _count_open(listings: list[JobListing], category: RoleCategory) -> int:
-    """Count open listings for a given category."""
+    """Count open SE listings for a given category."""
     return len([
         x for x in listings
-        if x.category == category and x.status == ListingStatus.OPEN
+        if x.category == category
+        and x.status == ListingStatus.OPEN
+        and _is_southeast_listing(x)
     ])
 
 
 def render_readme(jobs_db: JobsDatabase) -> str:
     """Render a complete README.md from a JobsDatabase.
+
+    Only includes listings in the Southeast region (GA, FL, AL, TX, SC, NC, TN).
 
     Args:
         jobs_db: The jobs database to render.
@@ -262,7 +207,7 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     listings = jobs_db.listings
     timestamp = jobs_db.last_updated.strftime("%B %d, %Y at %H:%M UTC")
 
-    # Compute category counts
+    # Compute category counts (SE-only)
     category_counts: dict[RoleCategory, int] = {}
     for cat, _, _, _ in CATEGORY_INFO:
         category_counts[cat] = _count_open(listings, cat)
@@ -300,20 +245,6 @@ def render_readme(jobs_db: JobsDatabase) -> str:
             continue
         parts.append(f"| {emoji} [{title}](#{anchor}) | {count} |")
 
-    # Location-based section counts
-    se_count = len([
-        x for x in listings
-        if x.status == ListingStatus.OPEN and _is_southeast_listing(x)
-    ])
-    se_grad_count = len([
-        x for x in listings
-        if x.status == ListingStatus.OPEN
-        and _is_southeast_listing(x)
-        and (x.requires_advanced_degree or x.graduate_friendly)
-    ])
-    parts.append(f"| 🌴 [Southeast Internships](#-southeast-internships) | {se_count} |")
-    parts.append(f"| 🎓 [SE Graduate & PhD](#-southeast-graduate--phd-internships) | {se_grad_count} |")
-
     parts.append(f"| **Total** | **{total_open}** |")
     parts.append("")
     parts.append("---")
@@ -324,9 +255,9 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("")
     parts.append("| Symbol | Meaning |")
     parts.append("|--------|---------|")
-    parts.append("| 🔥 | FAANG+ company |")
+    parts.append("| 🔥 | Major tech company |")
     parts.append("| 🔒 | Application closed |")
-    parts.append("| 🎓 | Advanced degree required |")
+    parts.append("| 🌍 | Open to international students |")
     parts.append("| 🏠 | Remote friendly |")
     parts.append("| S26 | Summer 2026 |")
     parts.append("| F26 | Fall 2026 |")
@@ -336,19 +267,12 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("---")
     parts.append("")
 
-    # --- Southeast Section ---
-    parts.append(_render_southeast_section(listings))
-    parts.append("---")
-    parts.append("")
-
-    # --- Southeast Graduate & PhD Section ---
-    parts.append(_render_southeast_graduate_section(listings))
-    parts.append("---")
-    parts.append("")
-
-    # --- Category Sections ---
+    # --- Category Sections (SE-only) ---
     for cat, title, anchor, emoji in CATEGORY_INFO:
-        cat_listings = [x for x in listings if x.category == cat]
+        cat_listings = [
+            x for x in listings
+            if x.category == cat and _is_southeast_listing(x)
+        ]
         # Skip OTHER section if empty
         if cat == RoleCategory.OTHER and not cat_listings:
             continue

@@ -18,8 +18,6 @@ from scripts.utils.readme_renderer import (
     _format_relative_date,
     _is_southeast_listing,
     _render_category_section,
-    _render_southeast_graduate_section,
-    _render_southeast_section,
     render_readme,
 )
 from scripts.generate_readme import (
@@ -188,10 +186,16 @@ class TestFormatListingRow:
         assert "🔒 Closed" in row
         assert "[Apply](" not in row
 
-    def test_advanced_degree_emoji(self):
+    def test_no_advanced_degree_emoji(self):
+        """🎓 emoji should NOT appear in rows (removed from renderer)."""
         listing = _make_listing(requires_advanced_degree=True)
         row = _format_listing_row(listing)
-        assert "🎓" in row
+        assert "🎓" not in row
+
+    def test_open_to_international_emoji(self):
+        listing = _make_listing(open_to_international=True)
+        row = _format_listing_row(listing)
+        assert "🌍" in row
 
     def test_remote_friendly_emoji(self):
         listing = _make_listing(remote_friendly=True)
@@ -201,12 +205,12 @@ class TestFormatListingRow:
     def test_multiple_flags(self):
         listing = _make_listing(
             is_faang_plus=True,
-            requires_advanced_degree=True,
+            open_to_international=True,
             remote_friendly=True,
         )
         row = _format_listing_row(listing)
         assert "🔥" in row
-        assert "🎓" in row
+        assert "🌍" in row
         assert "🏠" in row
 
     def test_row_is_pipe_delimited(self):
@@ -236,21 +240,28 @@ class TestCountOpen:
     def test_empty_list(self):
         assert _count_open([], RoleCategory.SWE) == 0
 
-    def test_counts_only_open(self):
+    def test_counts_only_open_se_listings(self):
         listings = [
-            _make_listing(category=RoleCategory.SWE, status=ListingStatus.OPEN),
-            _make_listing(id="closed1", category=RoleCategory.SWE, status=ListingStatus.CLOSED),
-            _make_listing(id="open2", category=RoleCategory.SWE, status=ListingStatus.OPEN),
+            _make_listing(category=RoleCategory.SWE, status=ListingStatus.OPEN, locations=["Atlanta, GA"]),
+            _make_listing(id="closed1", category=RoleCategory.SWE, status=ListingStatus.CLOSED, locations=["Atlanta, GA"]),
+            _make_listing(id="open2", category=RoleCategory.SWE, status=ListingStatus.OPEN, locations=["Miami, FL"]),
         ]
         assert _count_open(listings, RoleCategory.SWE) == 2
 
     def test_counts_correct_category(self):
         listings = [
-            _make_listing(category=RoleCategory.SWE, status=ListingStatus.OPEN),
-            _make_listing(id="ml1", category=RoleCategory.ML_AI, status=ListingStatus.OPEN),
+            _make_listing(category=RoleCategory.SWE, status=ListingStatus.OPEN, locations=["Atlanta, GA"]),
+            _make_listing(id="ml1", category=RoleCategory.ML_AI, status=ListingStatus.OPEN, locations=["Atlanta, GA"]),
         ]
         assert _count_open(listings, RoleCategory.SWE) == 1
         assert _count_open(listings, RoleCategory.ML_AI) == 1
+
+    def test_excludes_non_se_listings(self):
+        """Non-SE listings should not be counted."""
+        listings = [
+            _make_listing(category=RoleCategory.SWE, status=ListingStatus.OPEN, locations=["San Francisco, CA"]),
+        ]
+        assert _count_open(listings, RoleCategory.SWE) == 0
 
 
 # ---------------------------------------------------------------------------
@@ -296,19 +307,28 @@ class TestRenderReadme:
         assert "**Total** | **0**" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
-    def test_single_swe_listing(self, mock_config):
-        db = _make_db([_make_listing()])
+    def test_se_listing_appears_in_category(self, mock_config):
+        """SE listings should appear in category sections."""
+        db = _make_db([_make_listing(locations=["Atlanta, GA"])])
         readme = render_readme(db)
         assert "**TestCo**" in readme
         assert "Software Engineer Intern" in readme
         assert "[Apply](" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_non_se_listing_excluded_from_categories(self, mock_config):
+        """Non-SE listings should NOT appear in category sections."""
+        db = _make_db([_make_listing(locations=["San Francisco, CA"])])
+        readme = render_readme(db)
+        # The listing should not appear in the table rows
+        assert "[Apply](https://example.com/apply)" not in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_multiple_categories(self, mock_config):
         listings = [
-            _make_listing(id="swe1", category=RoleCategory.SWE),
-            _make_listing(id="ml1", category=RoleCategory.ML_AI, role="ML Intern"),
-            _make_listing(id="pm1", category=RoleCategory.PM, role="PM Intern"),
+            _make_listing(id="swe1", category=RoleCategory.SWE, locations=["Atlanta, GA"]),
+            _make_listing(id="ml1", category=RoleCategory.ML_AI, role="ML Intern", locations=["Miami, FL"]),
+            _make_listing(id="pm1", category=RoleCategory.PM, role="PM Intern", locations=["Nashville, TN"]),
         ]
         db = _make_db(listings)
         readme = render_readme(db)
@@ -317,17 +337,17 @@ class TestRenderReadme:
         assert "## 📱 Product Management" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
-    def test_stats_counts_correct(self, mock_config):
+    def test_stats_counts_se_only(self, mock_config):
+        """Stats should only count SE listings."""
         listings = [
-            _make_listing(id="s1", category=RoleCategory.SWE),
-            _make_listing(id="s2", category=RoleCategory.SWE),
-            _make_listing(id="m1", category=RoleCategory.ML_AI),
+            _make_listing(id="s1", category=RoleCategory.SWE, locations=["Atlanta, GA"]),
+            _make_listing(id="s2", category=RoleCategory.SWE, locations=["San Francisco, CA"]),
+            _make_listing(id="m1", category=RoleCategory.ML_AI, locations=["Miami, FL"]),
         ]
         db = _make_db(listings)
         readme = render_readme(db)
-        assert "**Total** | **3**" in readme
-        # SWE count should be 2
-        assert "| 2 |" in readme
+        # Total should be 2 (only SE listings: Atlanta + Miami)
+        assert "**Total** | **2**" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_header_with_timestamp(self, mock_config):
@@ -348,16 +368,18 @@ class TestRenderReadme:
         db = _make_db([])
         readme = render_readme(db)
         assert "| Symbol | Meaning |" in readme
-        assert "| 🔥 | FAANG+ company |" in readme
+        assert "| 🔥 | Major tech company |" in readme
         assert "🛂" not in readme
         assert "🇺🇸" not in readme
         assert "| 🔒 | Application closed |" in readme
-        assert "| 🎓 | Advanced degree required |" in readme
+        assert "| 🌍 | Open to international students |" in readme
         assert "| 🏠 | Remote friendly |" in readme
         assert "| S26 | Summer 2026 |" in readme
         assert "| F26 | Fall 2026 |" in readme
         assert "| Sp27 | Spring 2027 |" in readme
         assert "| S27 | Summer 2027 |" in readme
+        # 🎓 should NOT be in legend
+        assert "🎓" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_no_georgia_section(self, mock_config):
@@ -365,6 +387,22 @@ class TestRenderReadme:
         db = _make_db(listings)
         readme = render_readme(db)
         assert "## 🍑 Georgia Internships" not in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_no_southeast_section(self, mock_config):
+        """Separate SE section should no longer exist."""
+        listings = [_make_listing(locations=["Atlanta, GA"])]
+        db = _make_db(listings)
+        readme = render_readme(db)
+        assert "## 🌴 Southeast Internships" not in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_no_graduate_section(self, mock_config):
+        """Separate SE graduate section should no longer exist."""
+        listings = [_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)]
+        db = _make_db(listings)
+        readme = render_readme(db)
+        assert "## 🎓 Southeast Graduate & PhD Internships" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_contributing_section(self, mock_config):
@@ -388,46 +426,46 @@ class TestRenderReadme:
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_company_names_bold(self, mock_config):
-        db = _make_db([_make_listing(company="Anthropic")])
+        db = _make_db([_make_listing(company="Anthropic", locations=["Atlanta, GA"])])
         readme = render_readme(db)
         assert "**Anthropic**" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_apply_link_format(self, mock_config):
-        db = _make_db([_make_listing(apply_url="https://example.com/job/123")])
+        db = _make_db([_make_listing(apply_url="https://example.com/job/123", locations=["Atlanta, GA"])])
         readme = render_readme(db)
         assert "[Apply](https://example.com/job/123)" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_closed_listing_shows_closed_instead_of_apply(self, mock_config):
-        db = _make_db([_make_listing(status=ListingStatus.CLOSED)])
+        db = _make_db([_make_listing(status=ListingStatus.CLOSED, locations=["Atlanta, GA"])])
         readme = render_readme(db)
         assert "🔒 Closed" in readme
         assert "[Apply](" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_other_category_hidden_when_empty(self, mock_config):
-        db = _make_db([_make_listing(category=RoleCategory.SWE)])
+        db = _make_db([_make_listing(category=RoleCategory.SWE, locations=["Atlanta, GA"])])
         readme = render_readme(db)
         assert "## 🔹 Other" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_other_category_shown_when_populated(self, mock_config):
-        db = _make_db([_make_listing(category=RoleCategory.OTHER)])
+        db = _make_db([_make_listing(category=RoleCategory.OTHER, locations=["Atlanta, GA"])])
         readme = render_readme(db)
         assert "## 🔹 Other" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_locations_truncated_in_row(self, mock_config):
-        listing = _make_listing(locations=["NYC", "SF", "LA", "Chicago", "Seattle"])
+        listing = _make_listing(locations=["Atlanta, GA", "SF", "LA", "Chicago", "Seattle"])
         db = _make_db([listing])
         readme = render_readme(db)
         assert "and 2 more" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_sort_newest_first(self, mock_config):
-        older = _make_listing(id="old", role="Old Role", date_added=date(2026, 1, 1))
-        newer = _make_listing(id="new", role="New Role", date_added=date(2026, 2, 25))
+        older = _make_listing(id="old", role="Old Role", date_added=date(2026, 1, 1), locations=["Atlanta, GA"])
+        newer = _make_listing(id="new", role="New Role", date_added=date(2026, 2, 25), locations=["Atlanta, GA"])
         db = _make_db([older, newer])
         readme = render_readme(db)
         new_pos = readme.index("New Role")
@@ -455,7 +493,7 @@ class TestValidateMarkdown:
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_valid_readme_passes(self, mock_config):
-        db = _make_db([_make_listing()])
+        db = _make_db([_make_listing(locations=["Atlanta, GA"])])
         content = render_readme(db)
         assert validate_markdown(content) is True
 
@@ -558,7 +596,7 @@ class TestGenerateReadme:
                     "company_slug": "stripe",
                     "role": "Backend Intern",
                     "category": "swe",
-                    "locations": ["Seattle, WA"],
+                    "locations": ["Atlanta, GA"],
                     "apply_url": "https://stripe.com/apply",
                     "date_added": "2026-02-10",
                     "date_last_verified": "2026-02-20",
@@ -580,10 +618,6 @@ class TestGenerateReadme:
         assert readme_path.exists()
         assert validate_markdown(result) is True
 
-
-# ---------------------------------------------------------------------------
-# Industry Emoji Tests
-# ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------
 # _is_southeast_listing
@@ -639,39 +673,6 @@ class TestIsSoutheastListing:
         assert _is_southeast_listing(listing) is True
 
 
-# ---------------------------------------------------------------------------
-# _render_southeast_section
-# ---------------------------------------------------------------------------
-
-class TestRenderSoutheastSection:
-    def test_empty_when_no_se_listings(self):
-        listings = [_make_listing(locations=["San Francisco, CA"])]
-        section = _render_southeast_section(listings)
-        assert "## 🌴 Southeast Internships" in section
-        assert "No Southeast-based listings" in section
-
-    def test_with_se_listings(self):
-        listings = [_make_listing(locations=["Atlanta, GA"])]
-        section = _render_southeast_section(listings)
-        assert "| Company | Role | Location | Season | Apply | Posted |" in section
-        assert "**TestCo**" in section
-
-    def test_excludes_closed_listings(self):
-        closed = _make_listing(locations=["Miami, FL"], status=ListingStatus.CLOSED)
-        section = _render_southeast_section([closed])
-        assert "No Southeast-based listings" in section
-
-    def test_includes_multiple_states(self):
-        listings = [
-            _make_listing(id="ga1", locations=["Atlanta, GA"]),
-            _make_listing(id="fl1", locations=["Miami, FL"]),
-            _make_listing(id="nc1", locations=["Charlotte, NC"]),
-        ]
-        section = _render_southeast_section(listings)
-        # All three should be in the section
-        assert section.count("**TestCo**") == 3
-
-
 class TestReadmeHeader:
     @patch("scripts.utils.readme_renderer.get_config")
     def test_header_contains_georgia_southeast(self, mock_config):
@@ -703,76 +704,19 @@ class TestReadmeHeader:
         assert "🍑" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config")
-    def test_stats_table_has_se_graduate_link(self, mock_config):
+    def test_no_se_stats_row(self, mock_config):
+        """No separate SE or grad row in stats table."""
         mock_config.return_value = _MOCK_CONFIG
-        db = _make_db([_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)])
+        db = _make_db([_make_listing(locations=["Atlanta, GA"])])
         readme = render_readme(db)
-        assert "🎓 [SE Graduate & PhD](#-southeast-graduate--phd-internships)" in readme
+        assert "🌴" not in readme
+        assert "SE Graduate" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config")
-    def test_stats_table_has_southeast_link(self, mock_config):
+    def test_legend_says_major_tech(self, mock_config):
+        """Legend should say 'Major tech company' not 'FAANG+'."""
         mock_config.return_value = _MOCK_CONFIG
-        db = _make_db([_make_listing(locations=["Miami, FL"])])
+        db = _make_db([])
         readme = render_readme(db)
-        assert "🌴 [Southeast Internships](#-southeast-internships)" in readme
-
-    @patch("scripts.utils.readme_renderer.get_config")
-    def test_southeast_section_present(self, mock_config):
-        mock_config.return_value = _MOCK_CONFIG
-        listings = [_make_listing(locations=["Orlando, FL"])]
-        db = _make_db(listings)
-        readme = render_readme(db)
-        assert "## 🌴 Southeast Internships" in readme
-
-    @patch("scripts.utils.readme_renderer.get_config")
-    def test_se_graduate_section_present(self, mock_config):
-        mock_config.return_value = _MOCK_CONFIG
-        listings = [_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)]
-        db = _make_db(listings)
-        readme = render_readme(db)
-        assert "## 🎓 Southeast Graduate & PhD Internships" in readme
-
-
-# ---------------------------------------------------------------------------
-# _render_southeast_graduate_section
-# ---------------------------------------------------------------------------
-
-class TestRenderSoutheastGraduateSection:
-    def test_empty_when_no_grad_se_listings(self):
-        listings = [_make_listing(locations=["Atlanta, GA"])]
-        section = _render_southeast_graduate_section(listings)
-        assert "## 🎓 Southeast Graduate & PhD Internships" in section
-        assert "No graduate-friendly Southeast listings" in section
-
-    def test_with_graduate_friendly_listing(self):
-        listings = [_make_listing(locations=["Atlanta, GA"], graduate_friendly=True)]
-        section = _render_southeast_graduate_section(listings)
-        assert "| Company | Role | Location | Season | Apply | Posted |" in section
-        assert "**TestCo**" in section
-
-    def test_with_advanced_degree_listing(self):
-        listings = [_make_listing(locations=["Miami, FL"], requires_advanced_degree=True)]
-        section = _render_southeast_graduate_section(listings)
-        assert "**TestCo**" in section
-
-    def test_excludes_non_se_graduate_listings(self):
-        listings = [_make_listing(locations=["San Francisco, CA"], graduate_friendly=True)]
-        section = _render_southeast_graduate_section(listings)
-        assert "No graduate-friendly Southeast listings" in section
-
-    def test_excludes_closed_listings(self):
-        closed = _make_listing(
-            locations=["Atlanta, GA"],
-            graduate_friendly=True,
-            status=ListingStatus.CLOSED,
-        )
-        section = _render_southeast_graduate_section([closed])
-        assert "No graduate-friendly Southeast listings" in section
-
-    def test_includes_both_grad_types(self):
-        listings = [
-            _make_listing(id="gf1", locations=["Atlanta, GA"], graduate_friendly=True),
-            _make_listing(id="ad1", locations=["Nashville, TN"], requires_advanced_degree=True),
-        ]
-        section = _render_southeast_graduate_section(listings)
-        assert section.count("**TestCo**") == 2
+        assert "Major tech company" in readme
+        assert "FAANG+" not in readme

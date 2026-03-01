@@ -279,6 +279,15 @@ class TestJobListing:
         listing = JobListing(**sample_job_listing_data)
         assert listing.graduate_friendly is False
 
+    def test_open_to_international_default(self, sample_job_listing_data):
+        listing = JobListing(**sample_job_listing_data)
+        assert listing.open_to_international is False
+
+    def test_open_to_international_true(self, sample_job_listing_data):
+        data = {**sample_job_listing_data, "open_to_international": True}
+        listing = JobListing(**data)
+        assert listing.open_to_international is True
+
     def test_serialization_roundtrip(self, sample_job_listing):
         """Serialize to dict and back — should produce identical model."""
         data = sample_job_listing.model_dump(mode="json")

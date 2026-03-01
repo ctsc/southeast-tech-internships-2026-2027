@@ -40,6 +40,7 @@ DEFAULT_METADATA: dict = {
     "requires_advanced_degree": False,
     "graduate_friendly": False,
     "remote_friendly": False,
+    "open_to_international": False,
     "tech_stack": [],
     "confidence": 0.0,
     "industry": "other",

@@ -786,6 +786,7 @@ class TestDefaultMetadata:
             "requires_advanced_degree",
             "graduate_friendly",
             "remote_friendly",
+            "open_to_international",
             "tech_stack",
             "confidence",
             "industry",

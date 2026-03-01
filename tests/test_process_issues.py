@@ -49,6 +49,7 @@ def _make_issue_body(
     us_citizenship: bool = False,
     remote: bool = True,
     advanced_degree: bool = False,
+    open_to_international: bool = False,
 ) -> str:
     """Build a realistic GitHub issue form body."""
     flags = []
@@ -56,6 +57,7 @@ def _make_issue_body(
     flags.append(f"- [{'X' if us_citizenship else ' '}] Requires U.S. citizenship")
     flags.append(f"- [{'X' if remote else ' '}] Remote friendly")
     flags.append(f"- [{'X' if advanced_degree else ' '}] Requires advanced degree (Master's/PhD)")
+    flags.append(f"- [{'X' if open_to_international else ' '}] Open to international students")
 
     return (
         f"### Company Name\n\n{company}\n\n"
@@ -166,6 +168,12 @@ class TestParseIssueBody:
         result = _parse_issue_body(body)
         assert result["flags"]["advanced_degree"] is True
 
+    def test_checkbox_open_to_international_checked(self):
+        """Open to international checkbox is parsed when checked."""
+        body = _make_issue_body(open_to_international=True)
+        result = _parse_issue_body(body)
+        assert result["flags"]["open_to_international"] is True
+
     def test_all_checkboxes_unchecked(self):
         """All unchecked checkboxes return False."""
         body = _make_issue_body(
@@ -173,12 +181,14 @@ class TestParseIssueBody:
             us_citizenship=False,
             remote=False,
             advanced_degree=False,
+            open_to_international=False,
         )
         result = _parse_issue_body(body)
         assert result["flags"]["sponsors"] is False
         assert result["flags"]["us_citizenship"] is False
         assert result["flags"]["remote_friendly"] is False
         assert result["flags"]["advanced_degree"] is False
+        assert result["flags"]["open_to_international"] is False
 
     def test_lowercase_x_in_checkbox(self):
         """Lowercase [x] is also recognized as checked."""
@@ -358,6 +368,24 @@ class TestBuildJobListing:
         job = _build_job_listing(parsed)
         assert job.requires_advanced_degree is True
         assert job.category == RoleCategory.ML_AI
+
+    def test_open_to_international_flag(self):
+        parsed = {
+            "company": "GlobalCo",
+            "role": "SWE Intern",
+            "url": "https://globalco.com/1",
+            "location": "Atlanta, GA",
+            "category": "Software Engineering",
+            "flags": {
+                "sponsors": False,
+                "us_citizenship": False,
+                "remote_friendly": False,
+                "advanced_degree": False,
+                "open_to_international": True,
+            },
+        }
+        job = _build_job_listing(parsed)
+        assert job.open_to_international is True
 
 
 # ======================================================================
