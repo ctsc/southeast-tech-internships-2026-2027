@@ -1,10 +1,10 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 01, 2026 at 06:57 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 01, 2026 at 13:04 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
-> Built and maintained by [Carter](https://github.com/ctsc) | [progsu](https://progsu.com/)
+> Built and maintained by [Carter](https://github.com/ctsc) | President, IEEE @ Georgia State
 
 Use this repo to discover and track **tech internships** across software engineering, ML/AI, data science, quant, and more.
 
@@ -20,8 +20,8 @@ Use this repo to discover and track **tech internships** across software enginee
 | 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 3 |
-| 🔹 [Other](#-other) | 145 |
-| **Total** | **241** |
+| 🔹 [Other](#-other) | 143 |
+| **Total** | **239** |
 
 ---
 
@@ -263,7 +263,6 @@ No listings yet. Check back soon!
 | **SWBC** | AI Intern | San Antonio, TX | F26 | [Apply](https://swbc.wd1.myworkdayjobs.com/swbccareers/job/San-Antonio-TX/AI-Intern_R0014508?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Aypa Power** | Technology and Data Intern | Austin, TX | F26 | [Apply](https://job-boards.greenhouse.io/aypapower/jobs/5124955008?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Harris Central Appraisal District** | GIS Summer Internship | Houston, TX | F26 | [Apply](https://hcad.wd5.myworkdayjobs.com/HCADCareers/job/Houston-Texas/GIS-Summer-Internship_JR417?utm_source=Simplify&ref=Simplify) | 1d ago |
-| **Trane Technologies** | Intern-Engineering | Greenville, SC | F26 | [Apply](https://careers.tranetechnologies.com/global/en/job/2601035?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **SAS** | Customer Intelligence Consultant Intern | Morrisville, NC | F26 | [Apply](https://careers-sas.icims.com/jobs/40452/job?mobile=true&needsRedirect=false&utm_source=Simplify&ref=Simplify) | 1d ago |
 | **SWBC** | ETL Intern | San Antonio, TX | F26 | [Apply](https://swbc.wd1.myworkdayjobs.com/swbccareers/job/San-Antonio-TX/ETL-Intern_R0014476-1?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **University of Virginia** | Biocomplexity Computing For Global Challenges Undergraduate Summer Intern - Student Wage | Charlottesville, VA | F26 | [Apply](https://uva.wd1.myworkdayjobs.com/uvastudentjobs/job/Charlottesville-VA/Biocomplexity-Computing-For-Global-Challenges-Undergraduate-Summer-Intern--Student-Wage-_R0080600?utm_source=Simplify&ref=Simplify) | 1d ago |
@@ -280,7 +279,6 @@ No listings yet. Check back soon!
 | **Samsung Research America** | Intern - AI/ML Wireless Research - Summer | Plano, TX | F26 | [Apply](https://job-boards.greenhouse.io/samsungresearchamericainternship/jobs/8416982002?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Atlas Energy Solutions** | Mine Planning / Geology Intern | Kermit, TX | F26 | [Apply](https://job-boards.greenhouse.io/atlassand/jobs/8418768002?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Amentum** | Geospatial Science Intern | Houston, TX | F26 | [Apply](https://jacobs.taleo.net/careersection/ex3/jobdetail.ftl?job=ADV000CKF&utm_source=Simplify&ref=Simplify) | 1d ago |
-| **Trane Technologies** | Intern Engineer | Greenville, SC | F26 | [Apply](https://careers.tranetechnologies.com/global/en/job/2601036?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Arcadis** | Transportation Planning Intern | Atlanta, GA | F26 | [Apply](https://ebcs.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37926?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Albemarle** | Corporate Intern Program | Charlotte, NC | F26 | [Apply](https://albemarle.wd5.myworkdayjobs.com/External/job/Charlotte-North-Carolina-United-States-of-America/Summer-2026-Corporate-Internship-Program_REQ-29199-1?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **CFD Research Corporation** | Intern – Atmospheric Science Summer 2026 - Huntsville - AL | Huntsville, AL | F26 | [Apply](https://www.cfd-research.com/jobs?gh_jid=4120216009&utm_source=Simplify&ref=Simplify) | 1d ago |
@@ -330,6 +328,8 @@ No listings yet. Check back soon!
 | **Genuine Parts Company** | Customer Software Development InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/customer-software-development-intern/505/85815949936) | 1d ago |
 | **CAE** | Integration Specialist Intern Co-Op | Tampa, FL | F26 | [Apply](https://cae.wd3.myworkdayjobs.com/career/job/Tampa/Integration-Specialist-Co-Op_120461?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Capital One** | 9130705742402/02/2026Student Café Ambassador (Intern) - Uptown Dallas, Wynnewood Village, Stonebriar CentreFrisco, TX | Frisco, TX | F26 | [Apply](https://www.capitalonecareers.com/job/frisco/student-cafe-ambassador-intern-uptown-dallas-wynnewood-village-stonebriar-centre/1732/91307057424) | 1d ago |
+| **Trane Technologies** | Intern-Engineering 🔒 | Greenville, SC | F26 | 🔒 Closed | 1d ago |
+| **Trane Technologies** | Intern Engineer 🔒 | Greenville, SC | F26 | 🔒 Closed | 1d ago |
 | **Exiger** | Defense Sustainment Integration Intern 🔒 | Huntsville, AL | F26 | 🔒 Closed | 1d ago |
 
 ---
