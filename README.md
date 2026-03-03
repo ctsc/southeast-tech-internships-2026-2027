@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 03, 2026 at 13:12 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 03, 2026 at 19:07 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -20,8 +20,8 @@ Use this repo to discover and track **tech internships** across software enginee
 | 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 4 |
-| 🔹 [Other](#-other) | 155 |
-| **Total** | **257** |
+| 🔹 [Other](#-other) | 156 |
+| **Total** | **258** |
 
 ---
 
@@ -203,6 +203,7 @@ No listings yet. Check back soon!
 | **Continental** | Intern – Project Lifecycle Support - Complaint Connect / IT - Year-Round | Rock Hill, SC | F26 | [Apply](https://jobs.smartrecruiters.com/Continental/744000112280847?utm_source=Simplify&ref=Simplify) | today |
 | **Flextronics International** | Test Engineering Intern | Austin, TX | F26 | [Apply](https://flextronics.wd1.myworkdayjobs.com/Careers/job/USA-TX-Austin/Test-Engineering-Intern_WD216485?utm_source=Simplify&ref=Simplify) | today |
 | **Rheem** | R&D Co-Op | Montgomery, AL | F26 | [Apply](https://hdde.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/3742?utm_source=Simplify&ref=Simplify) | today |
+| **Vulcan Elements** | Materials Analysis Intern - Summer 2026 | Research Triangle, Durham, NC | F26 | [Apply](https://job-boards.greenhouse.io/vulcanelements/jobs/5135780008?utm_source=Simplify&ref=Simplify) | today |
 | **Concord** | AI Data Cataloging Intern | Nashville, TN | F26 | [Apply](https://careers-concord.icims.com/jobs/2030/job?mobile=true&needsRedirect=false&utm_source=Simplify&ref=Simplify) | 1d ago |
 | **The Walt Disney Company** | Labor Systems Web Integration Intern | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Lake-Buena-Vista-FL-USA/Labor-Systems-Web-Integration-Intern--Summer-Fall-2026_10142310-2?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **World Kinect** | Technology Intern | Miami, FL | F26 | [Apply](https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/MIAMI-FL/Technology-Internship---Summer-2026_R22263?utm_source=Simplify&ref=Simplify) | 3d ago |
