@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 03, 2026 at 02:42 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 03, 2026 at 07:03 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -16,12 +16,12 @@ Use this repo to discover and track **tech internships** across software enginee
 |----------|-----------|
 | 💻 [Software Engineering](#-software-engineering) | 44 |
 | 🤖 [ML / AI / Data Science](#-ml--ai--data-science) | 14 |
-| 📊 [Data Science & Analytics](#-data-science--analytics) | 39 |
+| 📊 [Data Science & Analytics](#-data-science--analytics) | 40 |
 | 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 4 |
 | 🔹 [Other](#-other) | 155 |
-| **Total** | **256** |
+| **Total** | **257** |
 
 ---
 
@@ -46,12 +46,12 @@ Use this repo to discover and track **tech internships** across software enginee
 |---------|------|----------|--------|-------|------------|
 | **Premier** | Software Engineer Intern | Charlotte, NC | F26 | [Apply](https://premierinc.wd1.myworkdayjobs.com/external_professional/job/Charlotte-NC/Software-Engineer-Intern_R0008139?utm_source=Simplify&ref=Simplify) | today |
 | **Elsevier** | Software Engineer Intern | NYC, Louisiana, Florida and 4 more | F26 | [Apply](https://relx.wd3.myworkdayjobs.com/ElsevierJobs/job/Pennsylvania/Software-Engineer-Intern--LEARN-_R109539?utm_source=Simplify&ref=Simplify) | today |
+| **Proofpoint** | Software Engineer Intern | Concord, NH, Mississippi and 35 more | F26 | [Apply](https://proofpoint.wd5.myworkdayjobs.com/proofpointcareers/job/Oregon/Software-Engineer-Intern_R13822?utm_source=Simplify&ref=Simplify) | today |
 | **Elsevier** | Simulation Software Engineer Intern | NYC, Florida, Massachusetts and 2 more | F26 | [Apply](https://relx.wd3.myworkdayjobs.com/ElsevierJobs/job/Pennsylvania/Simulation-Software-Engineer-Intern_R110008?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **KION Group** | Intern Software Engineer | Atlanta, GA | F26 | [Apply](https://kiongroup.wd3.myworkdayjobs.com/kiongroup/job/Atlanta-GA-United-States/Intern---Software-Engineer_JR-0087191?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **Cadence Design Systems** | Intern-Software Engineering | Austin, TX | F26 | [Apply](https://cadence.wd1.myworkdayjobs.com/External_Careers/job/AUSTIN/Intern-Software-Engineering_R53488?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **The Walt Disney Company** | Software Engineering Intern | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Lake-Buena-Vista-FL-USA/Software-Engineering-Intern--Summer-2026-_10135863-1?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **Trimble** | Software Engineer Intern | Atlanta, GA | F26 | [Apply](https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/job/US---Atlanta-GA/Software-Engineer-Intern_R52484?utm_source=Simplify&ref=Simplify) | 3d ago |
-| **Proofpoint** | Software Engineer Intern | Concord, NH, Mississippi and 23 more | F26 | [Apply](https://proofpoint.wd5.myworkdayjobs.com/proofpointcareers/job/Pennsylvania/Software-Engineer-Intern_R13765?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **CAE** | Software Engineering Intern/Co-op | Arlington, TX | F26 | [Apply](https://cae.wd3.myworkdayjobs.com/career/job/Arlington-TX/Software-Engineering-Co-Op_120654?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **Elsevier** | Software Engineer Intern - Compass | NYC, Florida, Massachusetts and 3 more | F26 | [Apply](https://relx.wd3.myworkdayjobs.com/ElsevierJobs/job/Pennsylvania/Software-Engineer-Intern--Compass-_R109540?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **Advance Auto Parts** | Software Engineer Intern | Raleigh, NC | F26 | [Apply](https://advanceauto.wd5.myworkdayjobs.com/advanceexternalcareers/job/Raleigh-NC/Software-Engineering-Intern_R-0572668?utm_source=Simplify&ref=Simplify) | 3d ago |
@@ -120,6 +120,7 @@ Use this repo to discover and track **tech internships** across software enginee
 |---------|------|----------|--------|-------|------------|
 | **CareBridge** | Data Analytics Intern-Summer 2026 | Mason, OH, Indianapolis and 3 more | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ANT/job/IN-INDIANAPOLIS-220-VIRGINIA-AVE/Data-Analytics-Intern--Summer-2026_JR183877-1?utm_source=Simplify&ref=Simplify) | today |
 | **Jones Lang LaSalle (JLL)** | Technology and Business Intelligence Intern | Charlotte, NC | F26 | [Apply](https://jll.wd1.myworkdayjobs.com/jllcareers/job/Charlotte-NC/Technology-and-Business-Intelligence-Summer-2026-Internship---Charlotte--NC_REQ478660-1?utm_source=Simplify&ref=Simplify) | today |
+| **Elevance Health** | Data Analytics Intern-Summer 2026 | Mason, OH, Indianapolis and 3 more | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ELV-ET/job/IN-INDIANAPOLIS-220-VIRGINIA-AVE/Data-Analytics-Intern--Summer-2026_JR183877?utm_source=Simplify&ref=Simplify) | today |
 | **Nokia** | Care Data Analytics & AI Intern | Dallas, TX | F26 | [Apply](https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/31829?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **Hearst** | Specialty Markets Analytics Intern | Gwinnett County, GA | F26 | [Apply](https://eevd.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2026195?utm_source=Simplify&ref=Simplify) | 3d ago |
 | **Trane Technologies** | Universal Test Data Analyst Intern | Clarksville, TN | F26 | [Apply](https://careers.tranetechnologies.com/global/en/job/2601864?utm_source=Simplify&ref=Simplify) | 3d ago |
