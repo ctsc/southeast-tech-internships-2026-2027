@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 04, 2026 at 02:34 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 04, 2026 at 06:59 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -16,11 +16,11 @@ Use this repo to discover and track **tech internships** across software enginee
 |----------|-----------|
 | 💻 [Software Engineering](#-software-engineering) | 46 |
 | 🤖 [ML / AI / Data Science](#-ml--ai--data-science) | 14 |
-| 📊 [Data Science & Analytics](#-data-science--analytics) | 42 |
+| 📊 [Data Science & Analytics](#-data-science--analytics) | 44 |
 | 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 4 |
-| 🔹 [Other](#-other) | 165 |
+| 🔹 [Other](#-other) | 163 |
 | **Total** | **271** |
 
 ---
@@ -44,9 +44,10 @@ Use this repo to discover and track **tech internships** across software enginee
 
 | Company | Role | Location | Season | Apply | Posted |
 |---------|------|----------|--------|-------|------------|
-| **SolarWinds** | Software Engineer Intern | Austin, TX | F26 | [Apply](https://jobs.solarwinds.com/job-detail/?gh_jid=4644519005&gh_jid=4644519005&utm_source=Simplify&ref=Simplify) | today |
 | **Toshiba Global Commerce** | Agentic Software Engineering Intern | Durham, NC | F26 | [Apply](https://job-boards.greenhouse.io/toshibaglobalcommercesolutions/jobs/5065014007?utm_source=Simplify&ref=Simplify) | today |
 | **HNTB** | Strategic Technology Intern | Tampa, FL, Tallahassee and 1 more | F26 | [Apply](https://hntb.wd5.myworkdayjobs.com/hntb_careers/job/Tampa-FL/Strategic-Technology-Intern---Summer-2026_R-29173-1?utm_source=Simplify&ref=Simplify) | today |
+| **LPL Financial Holdings** | Intern - Technology - Software Developer | Fort Mill, SC, San Diego and 3 more | F26 | [Apply](https://lplfinancial.wd1.myworkdayjobs.com/university/job/San-Diego-CA/Internship-Summer-2026---Technology--Software-Development_R-046201?utm_source=Simplify&ref=Simplify) | today |
+| **SolarWinds** | Software Engineer Intern 🔒 | Austin, TX | F26 | 🔒 Closed | today |
 | **Premier** | Software Engineer Intern | Charlotte, NC | F26 | [Apply](https://premierinc.wd1.myworkdayjobs.com/external_professional/job/Charlotte-NC/Software-Engineer-Intern_R0008139?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Elsevier** | Software Engineer Intern | NYC, Louisiana, Florida and 4 more | F26 | [Apply](https://relx.wd3.myworkdayjobs.com/ElsevierJobs/job/Pennsylvania/Software-Engineer-Intern--LEARN-_R109539?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Proofpoint** | Software Engineer Intern | Concord, NH, Mississippi and 35 more | F26 | [Apply](https://proofpoint.wd5.myworkdayjobs.com/proofpointcareers/job/Oregon/Software-Engineer-Intern_R13822?utm_source=Simplify&ref=Simplify) | 1d ago |
@@ -123,12 +124,14 @@ Use this repo to discover and track **tech internships** across software enginee
 |---------|------|----------|--------|-------|------------|
 | **Cart.com** | Data & Analytics Intern | Houston, TX | F26 | [Apply](https://wd1.myworkdaysite.com/recruiting/cart/Cart/job/Houston-TX-Headquarters/Data---Analytics-Intern_R-102238?utm_source=Simplify&ref=Simplify) | today |
 | **Toshiba Global Commerce** | Data Analytics Intern | Durham, NC | F26 | [Apply](https://job-boards.greenhouse.io/toshibaglobalcommercesolutions/jobs/5059322007?utm_source=Simplify&ref=Simplify) | today |
+| **Scout Motors** | Intern – Information Technology - Data Engineer | Charlotte, NC | F26 | [Apply](https://job-boards.greenhouse.io/scoutmotors/jobs/5068176007?utm_source=Simplify&ref=Simplify) | today |
+| **LPL Financial Holdings** | FAR Program: Summer 2026 Internship - Data Analytics | Fort Mill, SC, Charlotte and 1 more | F26 | [Apply](https://lplfinancial.wd1.myworkdayjobs.com/university/job/FAR-Program--Summer-2026-Internship---Data-Analytics_R-045030-1?utm_source=Simplify&ref=Simplify) | today |
+| **LPL Financial Holdings** | Intern - Technology - Data & Analytics | Fort Mill, SC, Charlotte and 3 more | F26 | [Apply](https://lplfinancial.wd1.myworkdayjobs.com/university/job/Fort-MillCharlotte/Internship-Summer-2026---Technology--Data---Analytics_R-046202?utm_source=Simplify&ref=Simplify) | today |
 | **CareBridge** | Data Analytics Intern-Summer 2026 | Mason, OH, Indianapolis and 3 more | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ANT/job/IN-INDIANAPOLIS-220-VIRGINIA-AVE/Data-Analytics-Intern--Summer-2026_JR183877-1?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Jones Lang LaSalle (JLL)** | Technology and Business Intelligence Intern | Charlotte, NC | F26 | [Apply](https://jll.wd1.myworkdayjobs.com/jllcareers/job/Charlotte-NC/Technology-and-Business-Intelligence-Summer-2026-Internship---Charlotte--NC_REQ478660-1?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Elevance Health** | Data Analytics Intern-Summer 2026 | Mason, OH, Indianapolis and 3 more | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ELV-ET/job/IN-INDIANAPOLIS-220-VIRGINIA-AVE/Data-Analytics-Intern--Summer-2026_JR183877?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Nokia** | Care Data Analytics & AI Intern | Dallas, TX | F26 | [Apply](https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/31829?utm_source=Simplify&ref=Simplify) | 4d ago |
 | **Hearst** | Specialty Markets Analytics Intern | Gwinnett County, GA | F26 | [Apply](https://eevd.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2026195?utm_source=Simplify&ref=Simplify) | 4d ago |
-| **Trane Technologies** | Universal Test Data Analyst Intern | Clarksville, TN | F26 | [Apply](https://careers.tranetechnologies.com/global/en/job/2601864?utm_source=Simplify&ref=Simplify) | 4d ago |
 | **VSP Vision** | Data Analytics Intern - Data Analytics | Lewisville, TX | F26 | [Apply](https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Lewisville-TX/Internship---Data-Analytics_R-9180?utm_source=Simplify&ref=Simplify) | 4d ago |
 | **The Walt Disney Company** | Consumer Insight – Measurement & Analytics Intern | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareer/job/Celebration-FL-USA/Consumer-Insight--Measurement---Analytics-Intern--Summer-Fall-2026_10139200-1?utm_source=Simplify&ref=Simplify) | 4d ago |
 | **RTX** | 2026 – GEC Risk Monitoring & Analytics Intern | Florida | F26 | [Apply](https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-FL-REMOTE/XMLNAME-2026---GEC-Risk-Monitoring---Analytics-Intern---Remote_01822464?utm_source=Simplify&ref=Simplify) | 4d ago |
@@ -165,6 +168,7 @@ Use this repo to discover and track **tech internships** across software enginee
 | **USAA** | Climate and Geoscience Intern – P&C Climate Risk and Exposure AnalyticsFeb. 28, 2026San Antonio, TX | San Antonio, TX | F26 | [Apply](https://www.usaajobs.com/job/san-antonio/climate-and-geoscience-intern-p-and-c-climate-risk-and-exposure-analytics/1207/92233013424) | 4d ago |
 | **Cypress Creek Renewables** | Summer Intern - Quantitative Analytics 🔒 | Washington, DC, Durham and 3 more | F26 | 🔒 Closed | 4d ago |
 | **Cypress Creek Renewables** | Data Engineering Intern 🔒 | Washington, DC, Durham and 3 more | F26 | 🔒 Closed | 4d ago |
+| **Trane Technologies** | Universal Test Data Analyst Intern 🔒 | Clarksville, TN | F26 | 🔒 Closed | 4d ago |
 
 ---
 
@@ -201,7 +205,6 @@ No listings yet. Check back soon!
 | **Capital One** | 9235876710403/03/2026Student Café Ambassador (Intern) - Gulfgate Center and Houston GalleriaHouston, TX | Houston, TX | F26 | [Apply](https://www.capitalonecareers.com/job/houston/student-cafe-ambassador-intern-gulfgate-center-and-houston-galleria/1732/92358767104) | today |
 | **Genuine Parts Company** | Product Information Management Intern | Birmingham, AL | F26 | [Apply](https://genpt.wd1.myworkdayjobs.com/Careers/job/Birmingham-AL-USA/Product-Information-Management-Intern_R26_0000007166?utm_source=Simplify&ref=Simplify) | today |
 | **Johnson & Johnson** | Product Management VC Co-Op Fall 2026 | Jacksonville, FL | F26 | [Apply](https://jj.wd5.myworkdayjobs.com/JJ/job/Jacksonville-Florida-United-States-of-America/Product-Management-VC-Co-Op-Fall-2026_R-061871?utm_source=Simplify&ref=Simplify) | today |
-| **Salesforce** | Summer 2026 Intern - Employee Success Product Analyst | Indianapolis, IN, Atlanta and 1 more | F26 | [Apply](https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Indiana---Indianapolis/Summer-2026-Intern---Employee-Success-Product-Analyst_JR328304-2?utm_source=Simplify&ref=Simplify) | today |
 | **Royal Bank of Canada** | Edge AI Intern | Orlando, FL | F26 | [Apply](https://rbc.wd3.myworkdayjobs.com/rbcglobal1/job/Orlando-Florida-United-States-of-America/Edge-AI-Intern--Summer-2026_R-0000157134?utm_source=Simplify&ref=Simplify) | today |
 | **Inogen** | R&D Engineering Intern - Remote Therapeutic Monitoring | Plano, TX | F26 | [Apply](https://jobs.jobvite.com/inogen/job/osfIzfwI?nl=1&nl=1&fr=false&utm_source=Simplify&ref=Simplify) | today |
 | **EXP** | Environmental Intern | Raleigh, NC, Altamonte Springs and 1 more | F26 | [Apply](https://elcn.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/112033?utm_source=Simplify&ref=Simplify) | today |
@@ -216,7 +219,6 @@ No listings yet. Check back soon!
 | **EquipmentShare** | Intern Uptime Management Center | Columbia, MO | F26 | [Apply](https://www.equipmentshare.com/careers/openings/?gh_jid=7623018&utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Apex Companies** | Intern – Office | Tampa, FL | F26 | [Apply](https://job-boards.greenhouse.io/apexcompanies/jobs/5137825008?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Continental** | Intern – Project Lifecycle Support - Complaint Connect / IT - Year-Round | Rock Hill, SC | F26 | [Apply](https://jobs.smartrecruiters.com/Continental/744000112280847?utm_source=Simplify&ref=Simplify) | 1d ago |
-| **Flextronics International** | Test Engineering Intern | Austin, TX | F26 | [Apply](https://flextronics.wd1.myworkdayjobs.com/Careers/job/USA-TX-Austin/Test-Engineering-Intern_WD216485?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Rheem** | R&D Co-Op | Montgomery, AL | F26 | [Apply](https://hdde.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/3742?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Vulcan Elements** | Materials Analysis Intern - Summer 2026 | Research Triangle, Durham, NC | F26 | [Apply](https://job-boards.greenhouse.io/vulcanelements/jobs/5135780008?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Concord** | AI Data Cataloging Intern | Nashville, TN | F26 | [Apply](https://careers-concord.icims.com/jobs/2030/job?mobile=true&needsRedirect=false&utm_source=Simplify&ref=Simplify) | 2d ago |
