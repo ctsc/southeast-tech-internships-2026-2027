@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 04, 2026 at 06:59 UTC
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 04, 2026 at 13:11 UTC
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -20,8 +20,8 @@ Use this repo to discover and track **tech internships** across software enginee
 | 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 4 |
-| 🔹 [Other](#-other) | 163 |
-| **Total** | **271** |
+| 🔹 [Other](#-other) | 165 |
+| **Total** | **273** |
 
 ---
 
@@ -210,6 +210,8 @@ No listings yet. Check back soon!
 | **EXP** | Environmental Intern | Raleigh, NC, Altamonte Springs and 1 more | F26 | [Apply](https://elcn.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/112033?utm_source=Simplify&ref=Simplify) | today |
 | **Scout Motors** | Intern Engineer - R&D - Vehicle & Validation | Charlotte, NC | F26 | [Apply](https://job-boards.greenhouse.io/scoutmotors/jobs/5065701007?utm_source=Simplify&ref=Simplify) | today |
 | **Creation Technologies** | Engineering Intern | Dallas, TX | F26 | [Apply](https://creationtech.wd1.myworkdayjobs.com/Creation/job/Dallas-US/Engineering-Intern_JR6254?utm_source=Simplify&ref=Simplify) | today |
+| **Marmon Holdings** | Engineering Intern | Decatur, AL | F26 | [Apply](https://marmon.wd501.myworkdayjobs.com/Marmon_MSIP_Internships/job/Cullman-AL/Engineering-Intern---Summer-2026_JR0000037705-3?utm_source=Simplify&ref=Simplify) | today |
+| **Marmon Holdings** | Product Management/Marketing Intern - Summer 2026 | Charlotte, NC | F26 | [Apply](https://marmon.wd501.myworkdayjobs.com/Marmon_MSIP_Internships/job/Charlotte-NC/Product-Management-Marketing-Intern---Summer-2026_JR0000037719-3?utm_source=Simplify&ref=Simplify) | today |
 | **Genuine Parts Company** | Finance InternBirmingham, AL\|Part time\| | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/finance-intern/505/92321051664) | 1d ago |
 | **Lockheed Martin (Marietta)** | Operations Engineer - InternMarietta, GeorgiaDate Posted: 03/01/2026Job ID: 701279BR | Marietta, Georgia | F26 | [Apply](https://www.lockheedmartinjobs.com/job/marietta/operations-engineer-intern/694/92315434288) | 1d ago |
 | **Samsung** | Software Development Internship - Agentic AI tools | Plano, TX | F26 | [Apply](https://sec.wd3.myworkdayjobs.com/Samsung_Careers/job/6555-Excellence-Way-Plano-TX-USA/Software-Development-Internship--Agentic-AI-tools-_R114687?utm_source=Simplify&ref=Simplify) | 1d ago |
