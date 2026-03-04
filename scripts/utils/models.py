@@ -121,6 +121,8 @@ class JobListing(BaseModel):
     status: ListingStatus = ListingStatus.OPEN
     tech_stack: list[str] = []
     season: str = "summer_2026"
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
     industry: IndustrySector = IndustrySector.OTHER
 
 
@@ -148,6 +150,7 @@ class RawListing(BaseModel):
     url: str
     source: str  # "greenhouse_api", "lever_api", "ashby_api", "scrape", "github_monitor"
     is_faang_plus: bool = False
+    description: str = ""
     raw_data: dict = {}
     discovered_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 

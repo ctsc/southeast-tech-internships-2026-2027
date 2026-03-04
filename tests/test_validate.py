@@ -30,6 +30,7 @@ from scripts.utils.models import (
 )
 from scripts.validate import (
     _build_job_listing,
+    _extract_season_from_text,
     _find_latest_raw_discovery,
     _generate_listing_id,
     _get_existing_hashes,
@@ -37,6 +38,7 @@ from scripts.validate import (
     _load_raw_listings,
     _map_category,
     _map_sponsorship,
+    _month_to_season,
     _parse_locations,
     _save_database,
     _slugify,
@@ -633,6 +635,30 @@ class TestBuildJobListing:
         job = _build_job_listing(raw, metadata)
         assert job.season == "fall_2026"
 
+    @patch("scripts.validate.is_big_tech", return_value=True)
+    def test_big_tech_auto_tags_faang_plus(self, mock_is_big_tech):
+        """Companies on the big_tech list get is_faang_plus=True."""
+        raw = _make_raw_listing(company="Anthropic", is_faang_plus=False)
+        metadata = _make_valid_metadata()
+        job = _build_job_listing(raw, metadata)
+        assert job.is_faang_plus is True
+
+    @patch("scripts.validate.is_big_tech", return_value=False)
+    def test_non_big_tech_stays_false(self, mock_is_big_tech):
+        """Companies NOT on the big_tech list keep is_faang_plus from raw."""
+        raw = _make_raw_listing(company="SmallStartup", is_faang_plus=False)
+        metadata = _make_valid_metadata()
+        job = _build_job_listing(raw, metadata)
+        assert job.is_faang_plus is False
+
+    @patch("scripts.validate.is_big_tech", return_value=False)
+    def test_raw_faang_flag_preserved(self, mock_is_big_tech):
+        """Raw is_faang_plus=True is preserved even if not on big_tech list."""
+        raw = _make_raw_listing(is_faang_plus=True)
+        metadata = _make_valid_metadata()
+        job = _build_job_listing(raw, metadata)
+        assert job.is_faang_plus is True
+
 
 # ======================================================================
 # Tests for _save_database
@@ -1168,3 +1194,291 @@ class TestValidateAll:
 
         assert len(result) == 1
         assert result[0].company == "ValidCo"
+
+
+# ======================================================================
+# Tests for _month_to_season
+# ======================================================================
+
+
+class TestMonthToSeason:
+    """Tests for the _month_to_season helper."""
+
+    def test_january_is_spring(self):
+        assert _month_to_season(1, 2026) == "spring_2026"
+
+    def test_february_is_spring(self):
+        assert _month_to_season(2, 2027) == "spring_2027"
+
+    def test_march_is_spring(self):
+        assert _month_to_season(3, 2026) == "spring_2026"
+
+    def test_april_is_spring(self):
+        assert _month_to_season(4, 2026) == "spring_2026"
+
+    def test_may_is_summer(self):
+        assert _month_to_season(5, 2026) == "summer_2026"
+
+    def test_june_is_summer(self):
+        assert _month_to_season(6, 2026) == "summer_2026"
+
+    def test_july_is_summer(self):
+        assert _month_to_season(7, 2027) == "summer_2027"
+
+    def test_august_is_summer(self):
+        assert _month_to_season(8, 2026) == "summer_2026"
+
+    def test_september_is_fall(self):
+        assert _month_to_season(9, 2026) == "fall_2026"
+
+    def test_october_is_fall(self):
+        assert _month_to_season(10, 2026) == "fall_2026"
+
+    def test_november_is_fall(self):
+        assert _month_to_season(11, 2026) == "fall_2026"
+
+    def test_december_is_fall(self):
+        assert _month_to_season(12, 2026) == "fall_2026"
+
+
+# ======================================================================
+# Tests for _extract_season_from_text
+# ======================================================================
+
+
+class TestExtractSeasonFromText:
+    """Tests for the deterministic season regex parser."""
+
+    # -- Pattern 1: Full date range --
+
+    def test_full_date_range(self):
+        season, start, end = _extract_season_from_text(
+            "June 2, 2026 - August 15, 2026"
+        )
+        assert season == "summer_2026"
+        assert start == "2026-06-02"
+        assert end == "2026-08-15"
+
+    def test_full_date_range_with_comma(self):
+        season, start, end = _extract_season_from_text(
+            "May 15, 2026 - August 8, 2026"
+        )
+        assert season == "summer_2026"
+        assert start == "2026-05-15"
+        assert end == "2026-08-08"
+
+    def test_full_date_range_en_dash(self):
+        season, start, end = _extract_season_from_text(
+            "January 10, 2027 \u2013 April 20, 2027"
+        )
+        assert season == "spring_2027"
+        assert start == "2027-01-10"
+        assert end == "2027-04-20"
+
+    def test_full_date_range_fall(self):
+        season, start, end = _extract_season_from_text(
+            "September 5, 2026 - December 12, 2026"
+        )
+        assert season == "fall_2026"
+        assert start == "2026-09-05"
+        assert end == "2026-12-12"
+
+    # -- Pattern 2: Month range --
+
+    def test_month_range(self):
+        season, start, end = _extract_season_from_text(
+            "May - August 2026"
+        )
+        assert season == "summer_2026"
+        assert start == "2026-05"
+        assert end == "2026-08"
+
+    def test_month_range_jun_aug(self):
+        season, start, end = _extract_season_from_text(
+            "Jun - Aug 2026"
+        )
+        assert season == "summer_2026"
+        assert start == "2026-06"
+        assert end == "2026-08"
+
+    def test_month_range_fall(self):
+        season, start, end = _extract_season_from_text(
+            "September - December 2026"
+        )
+        assert season == "fall_2026"
+        assert start == "2026-09"
+        assert end == "2026-12"
+
+    def test_month_range_spring(self):
+        season, start, end = _extract_season_from_text(
+            "January - April 2027"
+        )
+        assert season == "spring_2027"
+        assert start == "2027-01"
+        assert end == "2027-04"
+
+    # -- Pattern 3: Starting month --
+
+    def test_starting_month(self):
+        season, start, end = _extract_season_from_text(
+            "Internship starting June 2026"
+        )
+        assert season == "summer_2026"
+        assert start == "2026-06"
+        assert end is None
+
+    def test_begins_month(self):
+        season, start, end = _extract_season_from_text(
+            "Program begins January 2027"
+        )
+        assert season == "spring_2027"
+        assert start == "2027-01"
+        assert end is None
+
+    def test_from_month(self):
+        season, start, end = _extract_season_from_text(
+            "Available from September 2026"
+        )
+        assert season == "fall_2026"
+        assert start == "2026-09"
+        assert end is None
+
+    # -- Pattern 4: Season keyword --
+
+    def test_summer_keyword(self):
+        season, start, end = _extract_season_from_text(
+            "Software Engineer Intern - Summer 2026"
+        )
+        assert season == "summer_2026"
+        assert start is None
+        assert end is None
+
+    def test_fall_keyword(self):
+        season, start, end = _extract_season_from_text(
+            "Fall 2026 Data Science Intern"
+        )
+        assert season == "fall_2026"
+        assert start is None
+        assert end is None
+
+    def test_spring_keyword(self):
+        season, start, end = _extract_season_from_text(
+            "Spring 2027 Engineering Co-op"
+        )
+        assert season == "spring_2027"
+        assert start is None
+        assert end is None
+
+    def test_autumn_keyword(self):
+        season, start, end = _extract_season_from_text(
+            "Autumn 2026 Intern"
+        )
+        assert season == "fall_2026"
+        assert start is None
+        assert end is None
+
+    def test_winter_maps_to_spring(self):
+        season, start, end = _extract_season_from_text(
+            "Winter 2027 Intern"
+        )
+        assert season == "spring_2027"
+        assert start is None
+        assert end is None
+
+    # -- No match --
+
+    def test_no_match_returns_none(self):
+        season, start, end = _extract_season_from_text(
+            "Software Engineer Intern"
+        )
+        assert season is None
+        assert start is None
+        assert end is None
+
+    def test_empty_string(self):
+        season, start, end = _extract_season_from_text("")
+        assert season is None
+
+    def test_none_input(self):
+        season, start, end = _extract_season_from_text(None)
+        assert season is None
+
+    # -- Priority (pattern 1 wins over pattern 4) --
+
+    def test_full_date_takes_priority_over_keyword(self):
+        """Full date range should win even if 'Summer' keyword is present."""
+        season, start, end = _extract_season_from_text(
+            "Summer 2026 Internship: June 2, 2026 - August 15, 2026"
+        )
+        assert season == "summer_2026"
+        assert start == "2026-06-02"
+        assert end == "2026-08-15"
+
+    def test_abbreviation_months(self):
+        season, start, end = _extract_season_from_text(
+            "Sept - Dec 2026 internship"
+        )
+        assert season == "fall_2026"
+        assert start == "2026-09"
+        assert end == "2026-12"
+
+
+# ======================================================================
+# Tests for _build_job_listing season priority chain
+# ======================================================================
+
+
+class TestBuildJobListingSeasonPriority:
+    """Tests for season classification priority in _build_job_listing."""
+
+    def test_description_regex_beats_ai(self):
+        """Season from description regex takes priority over AI metadata."""
+        raw = _make_raw_listing(
+            title="SWE Intern",
+            description="Internship runs May - August 2026",
+        )
+        metadata = _make_valid_metadata(season="fall_2026")
+        job = _build_job_listing(raw, metadata)
+        assert job.season == "summer_2026"
+        assert job.start_date == "2026-05"
+        assert job.end_date == "2026-08"
+
+    def test_title_regex_beats_ai(self):
+        """Season from title regex takes priority over AI metadata."""
+        raw = _make_raw_listing(title="Summer 2026 SWE Intern")
+        metadata = _make_valid_metadata(season="fall_2026")
+        job = _build_job_listing(raw, metadata)
+        assert job.season == "summer_2026"
+
+    def test_ai_used_when_no_regex_match(self):
+        """AI metadata season used when no regex match."""
+        raw = _make_raw_listing(title="SWE Intern")
+        metadata = _make_valid_metadata(season="fall_2026")
+        job = _build_job_listing(raw, metadata)
+        assert job.season == "fall_2026"
+
+    def test_legacy_is_summer_2026_fallback(self):
+        """Legacy is_summer_2026 fallback works when season is 'none'."""
+        raw = _make_raw_listing(title="SWE Intern")
+        metadata = _make_valid_metadata(season="none")
+        metadata["is_summer_2026"] = True
+        job = _build_job_listing(raw, metadata)
+        assert job.season == "summer_2026"
+
+    def test_start_date_end_date_from_metadata(self):
+        """start_date and end_date from AI metadata are set on listing."""
+        raw = _make_raw_listing(title="SWE Intern")
+        metadata = _make_valid_metadata(season="summer_2026")
+        metadata["start_date"] = "2026-06-01"
+        metadata["end_date"] = "2026-08-15"
+        job = _build_job_listing(raw, metadata)
+        assert job.start_date == "2026-06-01"
+        assert job.end_date == "2026-08-15"
+
+    def test_start_date_none_by_default(self):
+        """start_date and end_date default to None."""
+        raw = _make_raw_listing(title="SWE Intern")
+        metadata = _make_valid_metadata(season="summer_2026")
+        job = _build_job_listing(raw, metadata)
+        assert job.start_date is None
+        assert job.end_date is None

@@ -7,12 +7,13 @@ filters by validation criteria, and appends valid listings to jobs.json.
 import hashlib
 import json
 import logging
+import re as _re
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Optional
 
 from scripts.utils.ai_enrichment import enrich_listing, reset_budget
-from scripts.utils.config import PROJECT_ROOT, get_config
+from scripts.utils.config import PROJECT_ROOT, get_config, is_big_tech
 from scripts.utils.models import (
     IndustrySector,
     JobListing,
@@ -24,6 +25,144 @@ from scripts.utils.models import (
 )
 
 logger = logging.getLogger(__name__)
+
+# ---------------------------------------------------------------------------
+# Deterministic date→season parsing
+# ---------------------------------------------------------------------------
+
+# Month name/abbreviation → month number
+MONTH_MAP: dict[str, int] = {
+    "january": 1, "jan": 1,
+    "february": 2, "feb": 2,
+    "march": 3, "mar": 3,
+    "april": 4, "apr": 4,
+    "may": 5,
+    "june": 6, "jun": 6,
+    "july": 7, "jul": 7,
+    "august": 8, "aug": 8,
+    "september": 9, "sep": 9, "sept": 9,
+    "october": 10, "oct": 10,
+    "november": 11, "nov": 11,
+    "december": 12, "dec": 12,
+}
+
+# Season keyword → season value (used as fallback regex)
+_SEASON_KEYWORDS: dict[str, str] = {
+    "summer": "summer",
+    "fall": "fall",
+    "autumn": "fall",
+    "spring": "spring",
+    "winter": "spring",  # winter start ≈ spring internship
+}
+
+
+def _month_to_season(month: int, year: int) -> str:
+    """Map a start month + year to an InternSeason string.
+
+    Season boundaries:
+      - Spring: Jan–Apr start
+      - Summer: May–Aug start
+      - Fall: Sep–Dec start
+
+    Args:
+        month: 1–12 start month.
+        year: 4-digit year.
+
+    Returns:
+        Season string like ``"summer_2026"``.
+    """
+    if month <= 4:
+        return f"spring_{year}"
+    elif month <= 8:
+        return f"summer_{year}"
+    else:
+        return f"fall_{year}"
+
+
+def _extract_season_from_text(
+    text: str,
+) -> tuple[Optional[str], Optional[str], Optional[str]]:
+    """Extract season, start_date, end_date from free text using regex.
+
+    Tries patterns in priority order:
+      1. Full date range:  "June 2, 2026 - August 15, 2026"
+      2. Month range:      "May - August 2026"
+      3. Starting month:   "starting June 2026" / "begins May 2026"
+      4. Season keyword:   "Summer 2026"
+
+    Args:
+        text: Job title or description text.
+
+    Returns:
+        Tuple of (season, start_date, end_date). Any element may be None.
+    """
+    if not text:
+        return None, None, None
+
+    text_lower = text.lower()
+
+    # Month name regex fragment
+    _month_names = "|".join(MONTH_MAP.keys())
+
+    # Pattern 1: Full date range — "June 2, 2026 - August 15, 2026"
+    pat1 = (
+        rf"({_month_names})\s+(\d{{1,2}}),?\s+(\d{{4}})"
+        rf"\s*[-–—to]+\s*"
+        rf"({_month_names})\s+(\d{{1,2}}),?\s+(\d{{4}})"
+    )
+    m = _re.search(pat1, text_lower)
+    if m:
+        start_month_str, start_day, start_year = m.group(1), m.group(2), m.group(3)
+        end_month_str, end_day, end_year = m.group(4), m.group(5), m.group(6)
+        sm = MONTH_MAP.get(start_month_str)
+        em = MONTH_MAP.get(end_month_str)
+        if sm and em:
+            sy, ey = int(start_year), int(end_year)
+            start_date = f"{sy}-{sm:02d}-{int(start_day):02d}"
+            end_date = f"{ey}-{em:02d}-{int(end_day):02d}"
+            season = _month_to_season(sm, sy)
+            return season, start_date, end_date
+
+    # Pattern 2: Month range — "May - August 2026" or "May through August 2026"
+    pat2 = (
+        rf"({_month_names})\s*[-–—to]+\s*({_month_names})\s+(\d{{4}})"
+    )
+    m = _re.search(pat2, text_lower)
+    if m:
+        start_month_str, end_month_str, year_str = m.group(1), m.group(2), m.group(3)
+        sm = MONTH_MAP.get(start_month_str)
+        em = MONTH_MAP.get(end_month_str)
+        if sm and em:
+            yr = int(year_str)
+            start_date = f"{yr}-{sm:02d}"
+            end_date = f"{yr}-{em:02d}"
+            season = _month_to_season(sm, yr)
+            return season, start_date, end_date
+
+    # Pattern 3: Starting month — "starting June 2026", "begins May 2026", "from June 2026"
+    pat3 = rf"(?:start(?:ing|s)?|begin(?:ning|s)?|from)\s+({_month_names})\s+(\d{{4}})"
+    m = _re.search(pat3, text_lower)
+    if m:
+        month_str, year_str = m.group(1), m.group(2)
+        sm = MONTH_MAP.get(month_str)
+        if sm:
+            yr = int(year_str)
+            start_date = f"{yr}-{sm:02d}"
+            season = _month_to_season(sm, yr)
+            return season, start_date, None
+
+    # Pattern 4: Season keyword — "Summer 2026", "Fall 2026"
+    season_names = "|".join(_SEASON_KEYWORDS.keys())
+    pat4 = rf"\b({season_names})\s+(\d{{4}})\b"
+    m = _re.search(pat4, text_lower)
+    if m:
+        keyword, year_str = m.group(1), m.group(2)
+        season_prefix = _SEASON_KEYWORDS.get(keyword)
+        if season_prefix:
+            season = f"{season_prefix}_{year_str}"
+            return season, None, None
+
+    return None, None, None
 
 DATA_DIR = PROJECT_ROOT / "data"
 JOBS_PATH = DATA_DIR / "jobs.json"
@@ -272,8 +411,36 @@ def _build_job_listing(
     listing_id = _generate_listing_id(raw.company, raw.title, locations)
     today = date.today()
 
-    # Determine season from AI metadata (with backward compat for cached responses)
-    season = metadata.get("season", "none")
+    # Determine season using priority chain:
+    #   1. Regex on description
+    #   2. Regex on title
+    #   3. AI metadata
+    #   4. Legacy "is_summer_2026" fallback
+    season = None
+    start_date = metadata.get("start_date")
+    end_date = metadata.get("end_date")
+
+    # Priority 1: regex on description
+    if raw.description:
+        regex_season, regex_start, regex_end = _extract_season_from_text(raw.description)
+        if regex_season:
+            season = regex_season
+            start_date = start_date or regex_start
+            end_date = end_date or regex_end
+
+    # Priority 2: regex on title
+    if not season:
+        regex_season, regex_start, regex_end = _extract_season_from_text(raw.title)
+        if regex_season:
+            season = regex_season
+            start_date = start_date or regex_start
+            end_date = end_date or regex_end
+
+    # Priority 3: AI metadata
+    if not season:
+        season = metadata.get("season", "none")
+
+    # Priority 4: legacy backward compat
     if season == "none" and metadata.get("is_summer_2026"):
         season = "summer_2026"
 
@@ -293,7 +460,7 @@ def _build_job_listing(
         apply_url=raw.url,
         sponsorship=_map_sponsorship(metadata.get("sponsorship", "unknown")),
         requires_us_citizenship=metadata.get("sponsorship", "").lower() == "us_citizenship",
-        is_faang_plus=raw.is_faang_plus,
+        is_faang_plus=raw.is_faang_plus or is_big_tech(raw.company),
         requires_advanced_degree=metadata.get("requires_advanced_degree", False),
         remote_friendly=metadata.get("remote_friendly", False),
         open_to_international=metadata.get("open_to_international", False),
@@ -303,6 +470,8 @@ def _build_job_listing(
         status=ListingStatus.OPEN,
         tech_stack=metadata.get("tech_stack", []),
         season=season,
+        start_date=start_date,
+        end_date=end_date,
         industry=industry,
     )
 

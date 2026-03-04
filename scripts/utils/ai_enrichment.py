@@ -44,6 +44,8 @@ DEFAULT_METADATA: dict = {
     "tech_stack": [],
     "confidence": 0.0,
     "industry": "other",
+    "start_date": None,
+    "end_date": None,
 }
 
 
@@ -190,18 +192,31 @@ def _parse_gemini_response(text: str) -> dict:
 def _format_listing_prompt(raw_listing: object) -> str:
     """Format a RawListing into a user prompt for Gemini.
 
+    Includes the job description (truncated to 2000 chars) when available,
+    which helps Gemini determine remote_friendly and open_to_international.
+
     Args:
         raw_listing: A RawListing instance.
 
     Returns:
         Formatted string with listing details.
     """
-    return (
-        f"Company: {raw_listing.company}\n"
-        f"Title: {raw_listing.title}\n"
-        f"Location: {raw_listing.location}\n"
-        f"URL: {raw_listing.url}"
-    )
+    parts = [
+        f"Company: {raw_listing.company}",
+        f"Title: {raw_listing.title}",
+        f"Location: {raw_listing.location}",
+        f"URL: {raw_listing.url}",
+    ]
+
+    description = getattr(raw_listing, "description", "")
+    if description:
+        # Truncate to 2000 chars to stay within token limits
+        truncated = description[:2000]
+        if len(description) > 2000:
+            truncated += "..."
+        parts.append(f"Description: {truncated}")
+
+    return "\n".join(parts)
 
 
 def enrich_listing(

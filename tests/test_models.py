@@ -13,6 +13,7 @@ from scripts.utils.models import (
     JobListing,
     JobsDatabase,
     ListingStatus,
+    RawListing,
     RoleCategory,
     SponsorshipStatus,
 )
@@ -288,6 +289,39 @@ class TestJobListing:
         listing = JobListing(**data)
         assert listing.open_to_international is True
 
+    def test_start_date_default_none(self, sample_job_listing_data):
+        listing = JobListing(**sample_job_listing_data)
+        assert listing.start_date is None
+
+    def test_end_date_default_none(self, sample_job_listing_data):
+        listing = JobListing(**sample_job_listing_data)
+        assert listing.end_date is None
+
+    def test_start_date_full(self, sample_job_listing_data):
+        data = {**sample_job_listing_data, "start_date": "2026-06-01"}
+        listing = JobListing(**data)
+        assert listing.start_date == "2026-06-01"
+
+    def test_start_date_month_only(self, sample_job_listing_data):
+        data = {**sample_job_listing_data, "start_date": "2026-06"}
+        listing = JobListing(**data)
+        assert listing.start_date == "2026-06"
+
+    def test_end_date_set(self, sample_job_listing_data):
+        data = {**sample_job_listing_data, "end_date": "2026-08-15"}
+        listing = JobListing(**data)
+        assert listing.end_date == "2026-08-15"
+
+    def test_date_fields_roundtrip(self, sample_job_listing_data):
+        data = {**sample_job_listing_data, "start_date": "2026-06", "end_date": "2026-08"}
+        listing = JobListing(**data)
+        dumped = listing.model_dump(mode="json")
+        assert dumped["start_date"] == "2026-06"
+        assert dumped["end_date"] == "2026-08"
+        restored = JobListing(**dumped)
+        assert restored.start_date == "2026-06"
+        assert restored.end_date == "2026-08"
+
     def test_serialization_roundtrip(self, sample_job_listing):
         """Serialize to dict and back — should produce identical model."""
         data = sample_job_listing.model_dump(mode="json")
@@ -484,3 +518,51 @@ class TestJobListingIndustry:
         assert data["industry"] == "cybersecurity"
         restored = JobListing(**data)
         assert restored.industry == IndustrySector.CYBERSECURITY
+
+
+# ── RawListing Description Tests ──────────────────────────────────────────
+
+
+class TestRawListingDescription:
+    """Tests for the description field on RawListing."""
+
+    def test_description_defaults_to_empty(self):
+        """RawListing.description defaults to empty string."""
+        raw = RawListing(
+            company="TestCo",
+            company_slug="testco",
+            title="Intern",
+            location="NYC",
+            url="https://example.com/apply",
+            source="greenhouse_api",
+        )
+        assert raw.description == ""
+
+    def test_description_set_explicitly(self):
+        """RawListing accepts an explicit description."""
+        raw = RawListing(
+            company="TestCo",
+            company_slug="testco",
+            title="Intern",
+            location="NYC",
+            url="https://example.com/apply",
+            source="greenhouse_api",
+            description="We are looking for an intern to join our team.",
+        )
+        assert raw.description == "We are looking for an intern to join our team."
+
+    def test_description_serialization(self):
+        """Description field round-trips through serialization."""
+        raw = RawListing(
+            company="TestCo",
+            company_slug="testco",
+            title="Intern",
+            location="NYC",
+            url="https://example.com/apply",
+            source="greenhouse_api",
+            description="A great internship opportunity.",
+        )
+        data = raw.model_dump(mode="json")
+        assert data["description"] == "A great internship opportunity."
+        restored = RawListing(**data)
+        assert restored.description == "A great internship opportunity."

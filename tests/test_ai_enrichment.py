@@ -372,6 +372,47 @@ class TestFormatListingPrompt:
         p2 = _format_listing_prompt(raw_listing_2)
         assert p1 != p2
 
+    def test_includes_description_when_present(self):
+        """Prompt should include description when set on the listing."""
+        raw = RawListing(
+            company="TestCo",
+            company_slug="testco",
+            title="Intern",
+            location="NYC",
+            url="https://example.com/apply",
+            source="greenhouse_api",
+            description="We are looking for a talented intern.",
+        )
+        result = _format_listing_prompt(raw)
+        assert "Description: We are looking for a talented intern." in result
+        lines = result.strip().split("\n")
+        assert len(lines) == 5
+
+    def test_excludes_description_when_empty(self, raw_listing):
+        """Prompt should not include Description line when description is empty."""
+        result = _format_listing_prompt(raw_listing)
+        assert "Description:" not in result
+
+    def test_truncates_long_description(self):
+        """Description is truncated to 2000 chars with ellipsis."""
+        long_desc = "A" * 3000
+        raw = RawListing(
+            company="TestCo",
+            company_slug="testco",
+            title="Intern",
+            location="NYC",
+            url="https://example.com/apply",
+            source="greenhouse_api",
+            description=long_desc,
+        )
+        result = _format_listing_prompt(raw)
+        assert "Description:" in result
+        # Should end with "..."
+        desc_line = [line for line in result.split("\n") if line.startswith("Description:")][0]
+        assert desc_line.endswith("...")
+        # Should be truncated (2000 chars + "Description: " prefix + "...")
+        assert len(desc_line) < 2100
+
 
 # ======================================================================
 # Tests: enrich_listing
@@ -790,6 +831,8 @@ class TestDefaultMetadata:
             "tech_stack",
             "confidence",
             "industry",
+            "start_date",
+            "end_date",
         }
         assert set(DEFAULT_METADATA.keys()) == expected_keys
 
@@ -804,6 +847,14 @@ class TestDefaultMetadata:
     def test_default_is_internship_true(self):
         """Default assumes it is an internship (benefit of the doubt)."""
         assert DEFAULT_METADATA["is_internship"] is True
+
+    def test_default_start_date_is_none(self):
+        """Default start_date should be None."""
+        assert DEFAULT_METADATA["start_date"] is None
+
+    def test_default_end_date_is_none(self):
+        """Default end_date should be None."""
+        assert DEFAULT_METADATA["end_date"] is None
 
 
 # ======================================================================

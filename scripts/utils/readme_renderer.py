@@ -185,6 +185,16 @@ def _count_open(listings: list[JobListing], category: RoleCategory) -> int:
     ])
 
 
+def _count_open_faang(listings: list[JobListing]) -> int:
+    """Count open SE listings that are FAANG+/big tech."""
+    return len([
+        x for x in listings
+        if x.is_faang_plus
+        and x.status == ListingStatus.OPEN
+        and _is_southeast_listing(x)
+    ])
+
+
 def render_readme(jobs_db: JobsDatabase) -> str:
     """Render a complete README.md from a JobsDatabase.
 
@@ -224,7 +234,7 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append(">")
     parts.append("> Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)")
     parts.append(">")
-    parts.append("> Built and maintained by [Carter](https://github.com/ctsc) | President, IEEE @ Georgia State")
+    parts.append("> Built and maintained by [Carter](https://github.com/ctsc)")
     parts.append("")
     parts.append(
         "Use this repo to discover and track **tech internships** "
@@ -245,6 +255,8 @@ def render_readme(jobs_db: JobsDatabase) -> str:
             continue
         parts.append(f"| {emoji} [{title}](#{anchor}) | {count} |")
 
+    big_tech_count = _count_open_faang(listings)
+    parts.append(f"| 🔥 [Big Tech in Atlanta](#-big-tech-in-atlanta) | {big_tech_count} |")
     parts.append(f"| **Total** | **{total_open}** |")
     parts.append("")
     parts.append("---")
@@ -264,6 +276,18 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("| Sp27 | Spring 2027 |")
     parts.append("| S27 | Summer 2027 |")
     parts.append("")
+    parts.append("---")
+    parts.append("")
+
+    # --- Big Tech in Atlanta ---
+    big_tech_listings = [
+        x for x in listings
+        if x.is_faang_plus and _is_southeast_listing(x)
+    ]
+    big_tech_section = _render_category_section(
+        RoleCategory.SWE, "🔥", "Big Tech in Atlanta", big_tech_listings,
+    )
+    parts.append(big_tech_section)
     parts.append("---")
     parts.append("")
 

@@ -16,6 +16,122 @@ project:
     - "summer_2027"
 
 # ============================================================================
+# Big Tech Companies — Centralized list for 🔥 tagging
+# ============================================================================
+# Any company on this list will automatically get is_faang_plus: true.
+# This replaces scattered is_faang_plus booleans as the source of truth.
+big_tech_companies:
+  # FAANG
+  - "Google"
+  - "Microsoft"
+  - "Amazon"
+  - "Apple"
+  - "Meta"
+  - "Netflix"
+  # Mega-cap / Iconic Tech
+  - "Nvidia"
+  - "Tesla"
+  - "Adobe"
+  - "Salesforce"
+  - "Oracle"
+  - "IBM"
+  - "Intel"
+  - "AMD"
+  - "Qualcomm"
+  - "Cisco"
+  - "VMware"
+  # Cloud & Infrastructure
+  - "Snowflake"
+  - "Databricks"
+  - "Cloudflare"
+  - "Atlassian"
+  - "Dropbox"
+  - "Twilio"
+  # Top-Tier Startups / Unicorns
+  - "OpenAI"
+  - "Anthropic"
+  - "Stripe"
+  - "Coinbase"
+  - "Palantir"
+  - "Uber"
+  - "Lyft"
+  - "Airbnb"
+  - "DoorDash"
+  - "Instacart"
+  - "Shopify"
+  - "Spotify"
+  - "Discord"
+  - "Snap"
+  - "Pinterest"
+  - "Reddit"
+  - "Figma"
+  - "Notion"
+  - "Datadog"
+  - "CrowdStrike"
+  - "Ramp"
+  - "Plaid"
+  - "Scale AI"
+  - "Robinhood"
+  - "Duolingo"
+  - "Canva"
+  - "Grammarly"
+  - "Rippling"
+  # Finance / Quant
+  - "JPMorgan Chase"
+  - "Goldman Sachs"
+  - "Bloomberg"
+  - "Citadel"
+  - "Two Sigma"
+  - "Jane Street"
+  - "DE Shaw"
+  - "Hudson River Trading"
+  - "Capital One"
+  # Defense / Aerospace
+  - "Lockheed Martin"
+  - "Northrop Grumman"
+  - "Raytheon"
+  - "Boeing"
+  - "SpaceX"
+  - "Anduril"
+  # Entertainment / Media
+  - "Disney"
+  - "Electronic Arts"
+  - "Epic Games"
+  # Georgia Majors
+  - "Home Depot"
+  - "UPS"
+  - "Coca-Cola"
+  - "Delta Air Lines"
+  - "Mailchimp (Intuit)"
+  # Autonomous Vehicles
+  - "Waymo"
+  # Payments / Fintech
+  - "PayPal"
+  - "Visa"
+  - "Mastercard"
+  - "BlackRock"
+  # Enterprise SaaS
+  - "ServiceNow"
+  - "Workday"
+  - "HubSpot"
+  - "DocuSign"
+  # Quant / Trading
+  - "Optiver"
+  - "IMC Trading"
+  # Other Notable
+  - "Block (Square)"
+  - "Toast"
+  - "Samsara"
+  - "Palo Alto Networks"
+  - "Okta"
+  - "MongoDB"
+  - "Brex"
+  - "Dell Technologies"
+  - "General Motors"
+  - "eBay"
+  - "Zoom"
+
+# ============================================================================
 # Georgia Focus — Priority locations and settings for GA-based internships
 # ============================================================================
 georgia_focus:
@@ -555,7 +671,7 @@ greenhouse_boards:
   - token: "zipline"
     company: "Zipline"
     is_faang_plus: false
-  - token: "anduril"
+  - token: "andurilindustries"
     company: "Anduril"
     is_faang_plus: false
   - token: "shield-ai"
@@ -597,6 +713,83 @@ greenhouse_boards:
     is_faang_plus: false
   - token: "booking"
     company: "Booking.com"
+    is_faang_plus: false
+
+  # --- Autonomous Vehicles ---
+  - token: "waymo"
+    company: "Waymo"
+    is_faang_plus: true
+  - token: "aurorainnovation"
+    company: "Aurora Innovation"
+    is_faang_plus: false
+  - token: "nuro"
+    company: "Nuro"
+    is_faang_plus: false
+  - token: "appliedintuition"
+    company: "Applied Intuition"
+    is_faang_plus: false
+
+  # --- EV / Automotive ---
+  - token: "lucidmotors"
+    company: "Lucid Motors"
+    is_faang_plus: false
+
+  # --- SaaS ---
+  - token: "hubspotjobs"
+    company: "HubSpot"
+    is_faang_plus: false
+
+  # --- Quant / Trading Firms ---
+  - token: "optiverus"
+    company: "Optiver"
+    is_faang_plus: false
+  - token: "virtu"
+    company: "Virtu Financial"
+    is_faang_plus: false
+  - token: "imc"
+    company: "IMC Trading"
+    is_faang_plus: false
+  - token: "akunacapital"
+    company: "Akuna Capital"
+    is_faang_plus: false
+  - token: "fiveringsllc"
+    company: "Five Rings Capital"
+    is_faang_plus: false
+
+  # --- Atlanta / Georgia Companies ---
+  - token: "qgenda"
+    company: "QGenda"
+    is_faang_plus: false
+  - token: "prizepicks"
+    company: "PrizePicks"
+    is_faang_plus: false
+  - token: "fanduel"
+    company: "FanDuel"
+    is_faang_plus: false
+
+  # --- Major Tech / AI ---
+  - token: "xai"
+    company: "xAI"
+    is_faang_plus: false
+  - token: "verkada"
+    company: "Verkada"
+    is_faang_plus: false
+  - token: "klaviyocampus"
+    company: "Klaviyo"
+    is_faang_plus: false
+  - token: "carta"
+    company: "Carta"
+    is_faang_plus: false
+
+  # --- Southeast Region ---
+  - token: "pendo"
+    company: "Pendo"
+    is_faang_plus: false
+  - token: "axon"
+    company: "Axon"
+    is_faang_plus: false
+  - token: "redhat"
+    company: "Red Hat"
     is_faang_plus: false
 
 # ============================================================================
@@ -728,6 +921,16 @@ lever_boards:
     company: "tldraw"
     is_faang_plus: false
 
+  # --- Atlanta / Georgia ---
+  - company_slug: "hermeus"
+    company: "Hermeus"
+    is_faang_plus: false
+
+  # --- Southeast Region ---
+  - company_slug: "bandwidth"
+    company: "Bandwidth"
+    is_faang_plus: false
+
 # ============================================================================
 # ATS API Sources — Ashby Boards
 # ============================================================================
@@ -825,6 +1028,17 @@ ashby_boards:
     is_faang_plus: false
   - company_slug: "weaviate"
     company: "Weaviate"
+    is_faang_plus: false
+
+  # --- Major Tech / AI ---
+  - company_slug: "harvey"
+    company: "Harvey"
+    is_faang_plus: false
+  - company_slug: "whatnot"
+    company: "Whatnot"
+    is_faang_plus: false
+  - company_slug: "cognition"
+    company: "Cognition AI"
     is_faang_plus: false
 
 # ============================================================================
@@ -1135,6 +1349,75 @@ scrape_sources:
   - company: "CORPAY (FleetCor)"
     url: "https://careers.corpay.com/search-jobs/intern+technology"
     is_faang_plus: false
+  - company: "PDI Technologies"
+    url: "https://pditechnologies.com/careers/"
+    is_faang_plus: false
+  - company: "Waystar"
+    url: "https://careers.waystar.com/search/searchjobs?q=intern+technology"
+    is_faang_plus: false
+
+  # --- Enterprise SaaS ---
+  - company: "ServiceNow"
+    url: "https://careers.smartrecruiters.com/ServiceNow/?search=intern"
+    is_faang_plus: false
+  - company: "Workday"
+    url: "https://workday.wd5.myworkdayjobs.com/Workday/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "Zoom"
+    url: "https://zoom.wd5.myworkdayjobs.com/Zoom/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "DocuSign"
+    url: "https://careers.docusign.com/search-jobs/intern"
+    is_faang_plus: false
+
+  # --- Fintech / Payments ---
+  - company: "PayPal"
+    url: "https://paypal.wd1.myworkdayjobs.com/jobs/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "Visa"
+    url: "https://careers.smartrecruiters.com/Visa/?search=intern+software"
+    is_faang_plus: false
+  - company: "Mastercard"
+    url: "https://mastercard.wd1.myworkdayjobs.com/CorporateCareers/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "BlackRock"
+    url: "https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+
+  # --- Semiconductor / Hardware ---
+  - company: "Marvell Technology"
+    url: "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "Analog Devices"
+    url: "https://analogdevices.wd1.myworkdayjobs.com/External/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "Dell Technologies"
+    url: "https://dell.wd1.myworkdayjobs.com/External/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+
+  # --- Automotive ---
+  - company: "General Motors"
+    url: "https://generalmotors.wd5.myworkdayjobs.com/Careers_GM/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "Toyota"
+    url: "https://toyota.wd5.myworkdayjobs.com/TMNA/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "Rivian"
+    url: "https://careers.rivian.com/search/searchjobs?q=intern"
+    is_faang_plus: false
+
+  # --- Networking / Cybersecurity ---
+  - company: "Arista Networks"
+    url: "https://careers.smartrecruiters.com/AristaNetworks/?search=intern"
+    is_faang_plus: false
+
+  # --- Southeast ---
+  - company: "Manhattan Associates"
+    url: "https://manh.wd5.myworkdayjobs.com/External/0/refreshFacet/318c8bb6f553100021d223d9780d30be"
+    is_faang_plus: false
+  - company: "eBay"
+    url: "https://careers.smartrecruiters.com/eBayInc/?search=intern"
+    is_faang_plus: false
 
 # ============================================================================
 # GitHub Repo Monitors
@@ -1269,9 +1552,19 @@ ai:
   enrichment_prompt: |
     Analyze this job listing and extract structured metadata.
     Return JSON only, no markdown, no explanation.
+
+    If a job description is provided, use it to determine:
+    - remote_friendly: true if the description mentions remote work, hybrid, or work-from-home options
+    - open_to_international: true if the description does NOT require US citizenship/permanent residency,
+      or explicitly mentions visa sponsorship or international candidates welcome
+    - sponsorship: check for visa sponsorship mentions in the description
+    - tech_stack: extract specific technologies mentioned in the description
+
     {
       "is_internship": true/false,
       "season": "summer_2026|fall_2026|spring_2027|summer_2027|none",
+      "start_date": "YYYY-MM-DD or YYYY-MM or null",
+      "end_date": "YYYY-MM-DD or YYYY-MM or null",
       "category": "swe|ml_ai|data_science|quant|pm|hardware|other",
       "locations": ["city, state abbreviation"],
       "is_georgia": true/false,
@@ -1629,6 +1922,75 @@ company_industries:
   Materialize: "cloud"
   Replit: "ai_ml"
   Warp: "enterprise"
+
+  # Autonomous Vehicles (new)
+  Waymo: "automotive"
+  Aurora Innovation: "automotive"
+  Nuro: "automotive"
+  Applied Intuition: "automotive"
+  Lucid Motors: "automotive"
+
+  # Enterprise SaaS (new)
+  HubSpot: "enterprise"
+  ServiceNow: "enterprise"
+  Workday: "enterprise"
+  Zoom: "enterprise"
+  DocuSign: "enterprise"
+
+  # Payments / Fintech (new)
+  PayPal: "fintech"
+  Visa: "fintech"
+  Mastercard: "fintech"
+  BlackRock: "banking"
+
+  # Quant / Trading (new)
+  Optiver: "fintech"
+  Virtu Financial: "fintech"
+  IMC Trading: "fintech"
+  Akuna Capital: "fintech"
+  Five Rings Capital: "fintech"
+
+  # Semiconductor / Hardware (new)
+  Marvell Technology: "semiconductor"
+  Analog Devices: "semiconductor"
+  Dell Technologies: "enterprise"
+
+  # Automotive (new)
+  General Motors: "automotive"
+  Toyota: "automotive"
+  Rivian: "automotive"
+
+  # Networking (new)
+  Arista Networks: "cybersecurity"
+
+  # Southeast (new)
+  Manhattan Associates: "enterprise"
+
+  # Ecommerce (new)
+  eBay: "ecommerce"
+
+  # Atlanta / Georgia (new)
+  QGenda: "healthcare"
+  PrizePicks: "media"
+  FanDuel: "media"
+  Hermeus: "aerospace"
+  PDI Technologies: "enterprise"
+  Waystar: "healthcare"
+
+  # Major Tech / AI (new)
+  xAI: "ai_ml"
+  Verkada: "cybersecurity"
+  Klaviyo: "enterprise"
+  Carta: "fintech"
+  Harvey: "ai_ml"
+  Whatnot: "ecommerce"
+  Cognition AI: "ai_ml"
+
+  # Southeast Region (new)
+  Pendo: "enterprise"
+  Axon: "enterprise"
+  Red Hat: "cloud"
+  Bandwidth: "telecom"
 
 # ============================================================================
 # Schedule

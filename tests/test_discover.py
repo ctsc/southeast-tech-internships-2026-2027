@@ -20,6 +20,7 @@ from scripts.utils.ats_clients import (
     AshbyClient,
     GreenhouseClient,
     LeverClient,
+    _html_to_text,
     _slugify,
     _title_matches_exclude,
     _title_matches_include,
@@ -146,6 +147,29 @@ class TestUtilityFunctions:
 
     def test_title_matches_exclude_negative(self):
         assert not _title_matches_exclude("Software Intern", ["senior", "staff"])
+
+
+class TestHtmlToText:
+    """Tests for the HTML-to-text helper."""
+
+    def test_strips_html_tags(self):
+        assert _html_to_text("<p>Hello <b>world</b></p>") == "Hello world"
+
+    def test_empty_string(self):
+        assert _html_to_text("") == ""
+
+    def test_plain_text_passthrough(self):
+        assert _html_to_text("No HTML here") == "No HTML here"
+
+    def test_nested_tags(self):
+        result = _html_to_text("<div><ul><li>Item 1</li><li>Item 2</li></ul></div>")
+        assert "Item 1" in result
+        assert "Item 2" in result
+
+    def test_handles_malformed_html(self):
+        # Should not raise
+        result = _html_to_text("<p>Unclosed tag")
+        assert "Unclosed tag" in result
 
 
 # ======================================================================
@@ -372,6 +396,58 @@ class TestGreenhouseClient:
 
         assert results == []
 
+    @pytest.mark.asyncio
+    async def test_extracts_description_from_content(self, filters, greenhouse_board):
+        """Greenhouse content HTML is extracted as description."""
+        mock_response = httpx.Response(
+            200,
+            json={
+                "jobs": [
+                    {
+                        "title": "Software Intern",
+                        "location": {"name": "Remote"},
+                        "absolute_url": "https://boards.greenhouse.io/testco/jobs/1",
+                        "id": 1,
+                        "content": "<p>We are looking for an <b>intern</b> to join our team.</p>",
+                    },
+                ]
+            },
+            request=httpx.Request("GET", "https://boards-api.greenhouse.io/v1/boards/testco/jobs"),
+        )
+
+        client = GreenhouseClient(filters)
+        with patch.object(client, "_request", new_callable=AsyncMock, return_value=mock_response):
+            results = await client.fetch_listings(greenhouse_board)
+
+        assert len(results) == 1
+        assert "intern" in results[0].description.lower()
+        assert "<p>" not in results[0].description
+
+    @pytest.mark.asyncio
+    async def test_empty_description_when_no_content(self, filters, greenhouse_board):
+        """Description defaults to empty string when no content field."""
+        mock_response = httpx.Response(
+            200,
+            json={
+                "jobs": [
+                    {
+                        "title": "ML Intern",
+                        "location": {"name": "Remote"},
+                        "absolute_url": "https://boards.greenhouse.io/testco/jobs/1",
+                        "id": 1,
+                    },
+                ]
+            },
+            request=httpx.Request("GET", "https://boards-api.greenhouse.io/v1/boards/testco/jobs"),
+        )
+
+        client = GreenhouseClient(filters)
+        with patch.object(client, "_request", new_callable=AsyncMock, return_value=mock_response):
+            results = await client.fetch_listings(greenhouse_board)
+
+        assert len(results) == 1
+        assert results[0].description == ""
+
 
 # ======================================================================
 # LeverClient
@@ -534,6 +610,53 @@ class TestLeverClient:
 
         assert len(results) == 1
         assert results[0].title == "Software Engineering Co-Op"
+
+    @pytest.mark.asyncio
+    async def test_extracts_description_plain(self, filters, lever_board):
+        """Lever descriptionPlain is extracted as description."""
+        mock_response = httpx.Response(
+            200,
+            json=[
+                {
+                    "text": "Software Intern",
+                    "categories": {"location": "NYC"},
+                    "hostedUrl": "https://jobs.lever.co/testco/abc123",
+                    "descriptionPlain": "Join our team as an intern working on exciting projects.",
+                },
+            ],
+            request=httpx.Request("GET", "https://api.lever.co/v0/postings/testco"),
+        )
+
+        client = LeverClient(filters)
+        with patch.object(client, "_request", new_callable=AsyncMock, return_value=mock_response):
+            results = await client.fetch_listings(lever_board)
+
+        assert len(results) == 1
+        assert "intern" in results[0].description.lower()
+
+    @pytest.mark.asyncio
+    async def test_falls_back_to_html_description(self, filters, lever_board):
+        """Lever falls back to HTML description when descriptionPlain is missing."""
+        mock_response = httpx.Response(
+            200,
+            json=[
+                {
+                    "text": "Software Intern",
+                    "categories": {"location": "NYC"},
+                    "hostedUrl": "https://jobs.lever.co/testco/abc123",
+                    "description": "<p>Join our team as an intern.</p>",
+                },
+            ],
+            request=httpx.Request("GET", "https://api.lever.co/v0/postings/testco"),
+        )
+
+        client = LeverClient(filters)
+        with patch.object(client, "_request", new_callable=AsyncMock, return_value=mock_response):
+            results = await client.fetch_listings(lever_board)
+
+        assert len(results) == 1
+        assert "intern" in results[0].description.lower()
+        assert "<p>" not in results[0].description
 
 
 # ======================================================================
@@ -731,6 +854,41 @@ class TestAshbyClient:
             results = await client.fetch_listings(ashby_board)
 
         assert results == []
+
+    @pytest.mark.asyncio
+    async def test_extracts_description_plain(self, filters, ashby_board):
+        """Ashby descriptionPlain is extracted as description."""
+        mock_response = httpx.Response(
+            200,
+            json={
+                "data": {
+                    "jobBoard": {
+                        "teams": [
+                            {
+                                "jobs": [
+                                    {
+                                        "id": "job1",
+                                        "title": "Software Intern",
+                                        "locationName": "NYC",
+                                        "employmentType": "Intern",
+                                        "externalLink": None,
+                                        "descriptionPlain": "Work on exciting engineering projects as an intern.",
+                                    },
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            request=httpx.Request("POST", "https://jobs.ashbyhq.com/api/non-user-graphql"),
+        )
+
+        client = AshbyClient(filters)
+        with patch.object(client, "_request", new_callable=AsyncMock, return_value=mock_response):
+            results = await client.fetch_listings(ashby_board)
+
+        assert len(results) == 1
+        assert "intern" in results[0].description.lower()
 
 
 # ======================================================================

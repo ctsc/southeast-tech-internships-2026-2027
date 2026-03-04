@@ -9,6 +9,7 @@ import logging
 import re
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
+from html.parser import HTMLParser
 
 import httpx
 from tenacity import (
@@ -32,6 +33,32 @@ USER_AGENT = (
     "InternshipTracker/1.0 (github.com/ctsc/atlanta-tech-internships-2026)"
 )
 DEFAULT_TIMEOUT = 15.0
+
+
+class _HTMLTextExtractor(HTMLParser):
+    """Simple HTML-to-text extractor that strips tags."""
+
+    def __init__(self):
+        super().__init__()
+        self._parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self._parts.append(data)
+
+    def get_text(self) -> str:
+        return " ".join(self._parts)
+
+
+def _html_to_text(html: str) -> str:
+    """Convert HTML content to plain text by stripping tags."""
+    extractor = _HTMLTextExtractor()
+    try:
+        extractor.feed(html)
+        text = extractor.get_text()
+        # Normalize whitespace: collapse multiple spaces into one
+        return re.sub(r"\s+", " ", text).strip()
+    except Exception:
+        return ""
 
 
 def _slugify(name: str) -> str:
@@ -134,7 +161,7 @@ class GreenhouseClient(BaseATSClient):
         Returns:
             Filtered list of RawListing objects.
         """
-        url = f"https://boards-api.greenhouse.io/v1/boards/{board.token}/jobs"
+        url = f"https://boards-api.greenhouse.io/v1/boards/{board.token}/jobs?content=true"
         results: list[RawListing] = []
 
         async with self._build_client() as client:
@@ -174,6 +201,12 @@ class GreenhouseClient(BaseATSClient):
             if not apply_url:
                 continue
 
+            # Extract description from content HTML
+            description = ""
+            content_html = job.get("content", "")
+            if content_html:
+                description = _html_to_text(content_html)
+
             listing = RawListing(
                 company=board.company,
                 company_slug=_slugify(board.company),
@@ -182,6 +215,7 @@ class GreenhouseClient(BaseATSClient):
                 url=apply_url,
                 source="greenhouse_api",
                 is_faang_plus=board.is_faang_plus,
+                description=description,
                 raw_data=job,
                 discovered_at=datetime.now(timezone.utc),
             )
@@ -273,6 +307,13 @@ class LeverClient(BaseATSClient):
             if not hosted_url:
                 continue
 
+            # Extract description from Lever response
+            description = posting.get("descriptionPlain", "")
+            if not description:
+                desc_html = posting.get("description", "")
+                if desc_html:
+                    description = _html_to_text(desc_html)
+
             listing = RawListing(
                 company=board.company,
                 company_slug=_slugify(board.company),
@@ -281,6 +322,7 @@ class LeverClient(BaseATSClient):
                 url=hosted_url,
                 source="lever_api",
                 is_faang_plus=board.is_faang_plus,
+                description=description,
                 raw_data=posting,
                 discovered_at=datetime.now(timezone.utc),
             )
@@ -317,6 +359,7 @@ query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {
           locationName
           employmentType
           externalLink
+          descriptionPlain
         }
       }
     }
@@ -408,6 +451,9 @@ query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {
                 else:
                     continue
 
+                # Extract description from Ashby response
+                description = job.get("descriptionPlain", "") or ""
+
                 listing = RawListing(
                     company=board.company,
                     company_slug=_slugify(board.company),
@@ -416,6 +462,7 @@ query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {
                     url=apply_url,
                     source="ashby_api",
                     is_faang_plus=board.is_faang_plus,
+                    description=description,
                     raw_data=job,
                     discovered_at=datetime.now(timezone.utc),
                 )

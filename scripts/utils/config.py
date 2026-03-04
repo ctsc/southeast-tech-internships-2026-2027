@@ -105,6 +105,7 @@ class AppConfig(BaseModel):
     """Complete application configuration loaded from config.yaml."""
     project: ProjectConfig
     georgia_focus: GeorgiaFocusConfig = Field(default_factory=GeorgiaFocusConfig)
+    big_tech_companies: list[str] = []
     greenhouse_boards: list[GreenhouseBoard] = []
     lever_boards: list[LeverBoard] = []
     ashby_boards: list[AshbyBoard] = []
@@ -125,6 +126,24 @@ class AppConfig(BaseModel):
             + len(self.scrape_sources)
             + len(self.github_monitors)
         )
+
+
+def is_big_tech(company_name: str, config: Optional["AppConfig"] = None) -> bool:
+    """Check if a company name matches the centralized big tech list.
+
+    Uses case-insensitive comparison.
+
+    Args:
+        company_name: Company name to check.
+        config: Optional AppConfig. If None, loads via get_config().
+
+    Returns:
+        True if the company is on the big_tech_companies list.
+    """
+    if config is None:
+        config = get_config()
+    name_lower = company_name.lower().strip()
+    return any(bt.lower().strip() == name_lower for bt in config.big_tech_companies)
 
 
 # ---------------------------------------------------------------------------

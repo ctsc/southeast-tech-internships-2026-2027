@@ -176,6 +176,47 @@ def run_clean() -> None:
     if industry_updated:
         logger.info("Backfilled industry for %d listings", industry_updated)
 
+    # Backfill is_faang_plus from centralized big tech list
+    from scripts.utils.config import is_big_tech
+
+    faang_updated = 0
+    for listing in cleaned:
+        if not listing.get("is_faang_plus", False):
+            company = listing.get("company", "")
+            if is_big_tech(company, config):
+                listing["is_faang_plus"] = True
+                faang_updated += 1
+
+    if faang_updated:
+        logger.info("Backfilled is_faang_plus for %d listings", faang_updated)
+
+    # Backfill season classification using deterministic date parsing
+    from scripts.validate import _extract_season_from_text
+
+    season_updated = 0
+    for listing in cleaned:
+        current_season = listing.get("season", "summer_2026")
+        # Re-classify listings that are fall_2026 (likely default/wrong) or "none"
+        if current_season in ("fall_2026", "none"):
+            title = listing.get("role", "")
+            regex_season, regex_start, regex_end = _extract_season_from_text(title)
+            if regex_season:
+                listing["season"] = regex_season
+                if regex_start and not listing.get("start_date"):
+                    listing["start_date"] = regex_start
+                if regex_end and not listing.get("end_date"):
+                    listing["end_date"] = regex_end
+                season_updated += 1
+            else:
+                # Default misclassified fall_2026 to summer_2026
+                # (most internships with no season info are summer)
+                if current_season == "fall_2026":
+                    listing["season"] = "summer_2026"
+                    season_updated += 1
+
+    if season_updated:
+        logger.info("Backfilled season for %d listings", season_updated)
+
     data["listings"] = cleaned
     data["last_updated"] = datetime.now(timezone.utc).isoformat()
     data["total_open"] = len([x for x in cleaned if x.get("status") == "open"])

@@ -17,6 +17,7 @@ from scripts.utils.config import (
     ProjectConfig,
     ScheduleConfig,
     ScrapeSource,
+    is_big_tech,
     load_config,
 )
 
@@ -322,3 +323,66 @@ class TestLoadConfig:
     def test_load_config_returns_app_config_type(self, config_yaml_file):
         config = load_config(config_path=config_yaml_file)
         assert isinstance(config, AppConfig)
+
+
+# ── Big Tech Companies Tests ──────────────────────────────────────────────
+
+
+class TestBigTechCompanies:
+    """Tests for the big_tech_companies list and is_big_tech() helper."""
+
+    def test_big_tech_defaults_to_empty(self, minimal_config_dict):
+        """big_tech_companies defaults to empty list."""
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert config.big_tech_companies == []
+
+    def test_big_tech_loaded_from_config(self, minimal_config_dict):
+        """big_tech_companies loads a list of company names."""
+        minimal_config_dict["big_tech_companies"] = ["Google", "Meta", "Apple"]
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert len(config.big_tech_companies) == 3
+        assert "Google" in config.big_tech_companies
+
+    def test_is_big_tech_exact_match(self, minimal_config_dict):
+        """is_big_tech returns True for exact match."""
+        minimal_config_dict["big_tech_companies"] = ["Google", "Meta"]
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert is_big_tech("Google", config) is True
+        assert is_big_tech("Meta", config) is True
+
+    def test_is_big_tech_case_insensitive(self, minimal_config_dict):
+        """is_big_tech is case insensitive."""
+        minimal_config_dict["big_tech_companies"] = ["Google"]
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert is_big_tech("google", config) is True
+        assert is_big_tech("GOOGLE", config) is True
+        assert is_big_tech("GoOgLe", config) is True
+
+    def test_is_big_tech_strips_whitespace(self, minimal_config_dict):
+        """is_big_tech strips leading/trailing whitespace."""
+        minimal_config_dict["big_tech_companies"] = ["Google"]
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert is_big_tech("  Google  ", config) is True
+
+    def test_is_big_tech_returns_false_for_non_match(self, minimal_config_dict):
+        """is_big_tech returns False for companies not on the list."""
+        minimal_config_dict["big_tech_companies"] = ["Google", "Meta"]
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert is_big_tech("SmallStartup", config) is False
+        assert is_big_tech("", config) is False
+
+    def test_is_big_tech_empty_list(self, minimal_config_dict):
+        """is_big_tech returns False when list is empty."""
+        config = AppConfig.model_validate(minimal_config_dict)
+        assert is_big_tech("Google", config) is False
+
+    def test_real_config_has_big_tech(self):
+        """Real config.yaml should have big_tech_companies populated."""
+        real_config = Path(__file__).resolve().parent.parent / "config.yaml"
+        if not real_config.exists():
+            pytest.skip("Real config.yaml not found")
+        config = load_config(config_path=real_config)
+        assert len(config.big_tech_companies) >= 50
+        assert is_big_tech("Google", config) is True
+        assert is_big_tech("Anthropic", config) is True
+        assert is_big_tech("Stripe", config) is True

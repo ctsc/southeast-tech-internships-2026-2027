@@ -13,6 +13,7 @@ from scripts.utils.models import (
 )
 from scripts.utils.readme_renderer import (
     _count_open,
+    _count_open_faang,
     _format_listing_row,
     _format_locations,
     _format_relative_date,
@@ -265,6 +266,138 @@ class TestCountOpen:
 
 
 # ---------------------------------------------------------------------------
+# _count_open_faang
+# ---------------------------------------------------------------------------
+
+class TestCountOpenFaang:
+    def test_empty_list(self):
+        assert _count_open_faang([]) == 0
+
+    def test_filters_correctly(self):
+        """Only counts open + SE + faang_plus listings."""
+        listings = [
+            # open, SE, faang → counted
+            _make_listing(id="a", is_faang_plus=True, status=ListingStatus.OPEN, locations=["Atlanta, GA"]),
+            # open, SE, not faang → excluded
+            _make_listing(id="b", is_faang_plus=False, status=ListingStatus.OPEN, locations=["Atlanta, GA"]),
+            # closed, SE, faang → excluded
+            _make_listing(id="c", is_faang_plus=True, status=ListingStatus.CLOSED, locations=["Atlanta, GA"]),
+            # open, non-SE, faang → excluded
+            _make_listing(id="d", is_faang_plus=True, status=ListingStatus.OPEN, locations=["San Francisco, CA"]),
+        ]
+        assert _count_open_faang(listings) == 1
+
+
+# ---------------------------------------------------------------------------
+# Big Tech in Atlanta section
+# ---------------------------------------------------------------------------
+
+class TestBigTechSection:
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_section_heading_present(self, mock_config):
+        """Big Tech section heading appears when FAANG+ SE listings exist."""
+        db = _make_db([_make_listing(is_faang_plus=True, locations=["Atlanta, GA"])])
+        readme = render_readme(db)
+        assert "## 🔥 Big Tech in Atlanta" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_section_before_first_category(self, mock_config):
+        """Big Tech section appears before the first category section."""
+        db = _make_db([_make_listing(is_faang_plus=True, locations=["Atlanta, GA"])])
+        readme = render_readme(db)
+        big_tech_pos = readme.index("## 🔥 Big Tech in Atlanta")
+        swe_pos = readme.index("## 💻 Software Engineering")
+        assert big_tech_pos < swe_pos
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_listing_in_both_sections(self, mock_config):
+        """FAANG+ listing appears in Big Tech AND its category section."""
+        listing = _make_listing(
+            company="Google", is_faang_plus=True,
+            category=RoleCategory.SWE, locations=["Atlanta, GA"],
+        )
+        db = _make_db([listing])
+        readme = render_readme(db)
+        # Split at first category section to isolate Big Tech section
+        big_tech_end = readme.index("## 💻 Software Engineering")
+        big_tech_part = readme[:big_tech_end]
+        category_part = readme[big_tech_end:]
+        assert "**Google**" in big_tech_part
+        assert "**Google**" in category_part
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_stats_row_present(self, mock_config):
+        """Stats table has a Big Tech row with correct count."""
+        listings = [
+            _make_listing(id="f1", is_faang_plus=True, locations=["Atlanta, GA"]),
+            _make_listing(id="f2", is_faang_plus=True, locations=["Miami, FL"]),
+        ]
+        db = _make_db(listings)
+        readme = render_readme(db)
+        assert "🔥 [Big Tech in Atlanta](#-big-tech-in-atlanta) | 2 |" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_total_not_double_counted(self, mock_config):
+        """Total should equal sum of category counts, not inflated by Big Tech."""
+        listings = [
+            _make_listing(id="f1", is_faang_plus=True, category=RoleCategory.SWE, locations=["Atlanta, GA"]),
+            _make_listing(id="f2", is_faang_plus=False, category=RoleCategory.ML_AI, locations=["Miami, FL"]),
+        ]
+        db = _make_db(listings)
+        readme = render_readme(db)
+        # 1 SWE + 1 ML_AI = 2 total (Big Tech count is separate)
+        assert "**Total** | **2**" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_empty_section_shows_placeholder(self, mock_config):
+        """Big Tech section with no FAANG+ SE listings shows placeholder."""
+        db = _make_db([_make_listing(is_faang_plus=False, locations=["Atlanta, GA"])])
+        readme = render_readme(db)
+        assert "## 🔥 Big Tech in Atlanta" in readme
+        # Find placeholder in the Big Tech section
+        big_tech_start = readme.index("## 🔥 Big Tech in Atlanta")
+        swe_start = readme.index("## 💻 Software Engineering")
+        big_tech_section = readme[big_tech_start:swe_start]
+        assert "No listings yet" in big_tech_section
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_non_se_faang_excluded(self, mock_config):
+        """Non-SE FAANG+ listings should not appear in Big Tech section."""
+        listing = _make_listing(
+            is_faang_plus=True, locations=["San Francisco, CA"],
+        )
+        db = _make_db([listing])
+        readme = render_readme(db)
+        big_tech_start = readme.index("## 🔥 Big Tech in Atlanta")
+        swe_start = readme.index("## 💻 Software Engineering")
+        big_tech_section = readme[big_tech_start:swe_start]
+        assert "[Apply](" not in big_tech_section
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_stats_row_shown_when_zero(self, mock_config):
+        """Stats Big Tech row is always present even with 0 count."""
+        db = _make_db([])
+        readme = render_readme(db)
+        assert "🔥 [Big Tech in Atlanta](#-big-tech-in-atlanta) | 0 |" in readme
+
+    @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
+    def test_closed_faang_in_section_not_in_stats(self, mock_config):
+        """Closed FAANG+ listings appear in section but not counted in stats."""
+        listing = _make_listing(
+            is_faang_plus=True, status=ListingStatus.CLOSED, locations=["Atlanta, GA"],
+        )
+        db = _make_db([listing])
+        readme = render_readme(db)
+        # Stats count should be 0 (closed not counted)
+        assert "🔥 [Big Tech in Atlanta](#-big-tech-in-atlanta) | 0 |" in readme
+        # But the listing should appear in the section
+        big_tech_start = readme.index("## 🔥 Big Tech in Atlanta")
+        swe_start = readme.index("## 💻 Software Engineering")
+        big_tech_section = readme[big_tech_start:swe_start]
+        assert "🔒 Closed" in big_tech_section
+
+
+# ---------------------------------------------------------------------------
 # _render_category_section
 # ---------------------------------------------------------------------------
 
@@ -360,8 +493,7 @@ class TestRenderReadme:
         db = _make_db([])
         readme = render_readme(db)
         assert "Carter" in readme
-        assert "IEEE" in readme
-        assert "Georgia State" in readme
+        assert "IEEE" not in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_legend_table_present(self, mock_config):

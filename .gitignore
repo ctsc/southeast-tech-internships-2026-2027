@@ -12,6 +12,9 @@ build/
 venv/
 .venv/
 
+# Claude
+CLAUDE.md
+
 # Cache
 data/.cache/
 .pytest_cache/
