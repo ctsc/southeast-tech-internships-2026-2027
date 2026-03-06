@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 05, 2026 at 09:46 PM EST
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 06, 2026 at 02:12 AM EST
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -16,16 +16,16 @@ Use this repo to discover and track **tech internships** across software enginee
 
 | Category | Open Roles |
 |----------|-----------|
-| 💻 [Software Engineering](#-software-engineering) | 50 |
+| 💻 [Software Engineering](#-software-engineering) | 51 |
 | 🤖 [ML / AI / Data Science](#-ml--ai--data-science) | 14 |
-| 📊 [Data Science & Analytics](#-data-science--analytics) | 35 |
-| 📈 [Quantitative Finance](#-quantitative-finance) | 1 |
+| 📊 [Data Science & Analytics](#-data-science--analytics) | 36 |
+| 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 5 |
 | 🔹 [Other](#-other) | 206 |
 | 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 19 |
-| 🍑 [Roles Open in GA](#-roles-open-in-ga) | 75 |
-| **Total** | **311** |
+| 🍑 [Roles Open in GA](#-roles-open-in-ga) | 77 |
+| **Total** | **312** |
 
 ---
 
@@ -56,6 +56,8 @@ Use this repo to discover and track **tech internships** across software enginee
 | **KION Group** | Software Engineer Intern/Co-op | — | Grand Rapids, MI, Atlanta and 1 more | F26 | [Apply](https://kiongroup.wd3.myworkdayjobs.com/kiongroup/job/Grand-Rapids-MI-United-States/Software-Engineer-Intern-Co-Op_JR-0087991-1?utm_source=Simplify&ref=Simplify) | today |
 | **Elevance Health** | Business Innovation Intern | — | Atlanta, GA | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ELV-ET/job/GA-ATLANTA-740-W-PEACHTREE-ST-NW/Business-Innovation-Intern--Summer-2026_JR184054?utm_source=Simplify&ref=Simplify) | today |
 | **CareBridge** | Business Innovation Intern | — | Atlanta, GA | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ANT/job/GA-ATLANTA-740-W-PEACHTREE-ST-NW/Business-Innovation-Intern--Summer-2026_JR184054-1?utm_source=Simplify&ref=Simplify) | today |
+| **Hermeus** | Manufacturing Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/922ee234-94aa-473b-8464-03f28a709872) | today |
+| **Stantec** | Data Analytics and AI Innovation Intern | — | Atlanta, GA | F26 | [Apply](https://hdhl.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1004743?utm_source=Simplify&ref=Simplify) | today |
 | **Hermeus** | Avionics Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/0f52df07-bd23-44cb-a24d-3346f6d94201) | 1d ago |
 | **Hermeus** | Flight Software Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/51378fa0-0327-45fd-9420-b6e7d8b56440) | 1d ago |
 | **Hermeus** | GNC Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/751c9919-5b19-4609-80ff-ca82d6947e07) | 1d ago |
@@ -135,8 +137,8 @@ Use this repo to discover and track **tech internships** across software enginee
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
-| 🔥 **Optiver** | Quantitative Research Intern, PhD (Summer 2026) | PhD | Austin, Texas, United States | S26 | [Apply](https://optiver.com/working-at-optiver/career-opportunities/8055439002/?gh_jid=8055439002) | today |
 | 🔥 **Cloudflare** | Data Analytics Intern - Summer 2026 | — | Austin, TX | S26 | [Apply](https://boards.greenhouse.io/cloudflare/jobs/7668989?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **Morgan Stanley** | Intern | — | Jacksonville FL 6375 | F26 | [Apply](https://ms.wd5.myworkdayjobs.com/External/job/Jacksonville-FL-6375/Intern_JR029473) | today |
 | 🔥 **Cisco** | Support Engineer I (Intern) - United States | — | USA-RESEARCH TRIANGLE PARK | F26 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/USA-RESEARCH-TRIANGLE-PARK/Support-Engineer-I--Intern----United-States_2001892) | 1d ago |
 | 🔥 **Cisco** | Quality Assurance I (Intern) - United States | — | RTP, North Carolina, US | F26 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Quality-Assurance-I--Intern----United-States_2001815) | 1d ago |
 | 🔥 **Capital One** | Student Café Ambassador (Intern) - Gulfgate Center and Houston Galleria | — | Houston, TX | F26 | [Apply](https://capitalone.wd12.myworkdayjobs.com/Capital_One/job/Houston-TX/Student-Caf-Ambassador--Intern----Gulfgate-Center-and-Houston-Galleria_R237232-2) | 1d ago |
@@ -163,6 +165,7 @@ Use this repo to discover and track **tech internships** across software enginee
 |---------|------|-------|----------|--------|-------|------------|
 | **KION Group** | Software Engineer Intern/Co-op | — | Grand Rapids, MI, Atlanta and 1 more | F26 | [Apply](https://kiongroup.wd3.myworkdayjobs.com/kiongroup/job/Grand-Rapids-MI-United-States/Software-Engineer-Intern-Co-Op_JR-0087991-1?utm_source=Simplify&ref=Simplify) | today |
 | **EquipmentShare** | Intern Software Engineer | — | Columbia, MO | F26 | [Apply](https://www.equipmentshare.com/careers/openings/?gh_jid=7600007&utm_source=Simplify&ref=Simplify) | today |
+| **Leidos** | Software Engineer Intern | — | Huntsville, AL | F26 | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Software-Engineer-Intern_R-00174597-1) | today |
 | **Hermeus** | Flight Software Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/51378fa0-0327-45fd-9420-b6e7d8b56440) | 1d ago |
 | **Hermeus** | Hardware-In-the-Loop Software Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/2b615685-7872-4da4-a4d5-03410fc1030a) | 1d ago |
 | **Hermeus** | Software Engineering Intern (Datalinks/C2) - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/1ce52371-c210-49b5-9a2b-5af6706137bc) | 1d ago |
@@ -243,6 +246,7 @@ Use this repo to discover and track **tech internships** across software enginee
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
 | 🔥 **Cloudflare** | Data Analytics Intern - Summer 2026 | — | Austin, TX | S26 | [Apply](https://boards.greenhouse.io/cloudflare/jobs/7668989?utm_source=Simplify&ref=Simplify) | today |
+| **Stantec** | Data Analytics and AI Innovation Intern | — | Atlanta, GA | F26 | [Apply](https://hdhl.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1004743?utm_source=Simplify&ref=Simplify) | today |
 | **Equifax** | Data & Analytics Intern | — | USA - Georgia - Alpharetta - 30005 | F26 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Alpharetta---30005/Data---Analytics-Intern_J00171081) | 1d ago |
 | **Genuine Parts Company** | Business Intelligence Developer InternBirmingham, AL\|Part time\| | — | Birmingham, AL | F26 | [Apply](https://jobs.genpt.com/job/birmingham/business-intelligence-developer-intern/505/85815950112) | 1d ago |
 | **USAA** | Climate and Geoscience Intern – P&C Climate Risk and Exposure AnalyticsFeb. 28, 2026San Antonio, TX | — | San Antonio, TX | F26 | [Apply](https://www.usaajobs.com/job/san-antonio/climate-and-geoscience-intern-p-and-c-climate-risk-and-exposure-analytics/1207/92233013424) | 1d ago |
@@ -287,7 +291,6 @@ Use this repo to discover and track **tech internships** across software enginee
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
-| 🔥 **Optiver** | Quantitative Research Intern, PhD (Summer 2026) | PhD | Austin, Texas, United States | S26 | [Apply](https://optiver.com/working-at-optiver/career-opportunities/8055439002/?gh_jid=8055439002) | today |
 | **Cypress Creek Renewables** | Quantitative Development Intern 🔒 | — | Washington, DC, Durham and 3 more | S26 | 🔒 Closed | 6d ago |
 
 ---
@@ -316,15 +319,15 @@ No listings yet. Check back soon!
 |---------|------|-------|----------|--------|-------|------------|
 | **Johnson & Johnson** | Vision Communications Intern | — | Jacksonville, Florida, United States of America | F26 | [Apply](https://jj.wd5.myworkdayjobs.com/JJ/job/Jacksonville-Florida-United-States-of-America/Vision-Communications-Intern_R-056821) | today |
 | **Leidos** | Mechanical Design Engineer Summer Intern | — | Huntsville, AL | F26 | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Mechanical-Design-Engineer-Summer-Intern_R-00177432) | today |
-| **S&P Global** | Summer Intern - Product Management | — | Dallas, TX | F26 | [Apply](https://spgi.wd5.myworkdayjobs.com/SPGI_Careers/job/Dallas-TX/Summer-Intern---Product-Management_326496-1) | today |
-| **Cadence Design Systems** | Software Intern | — | AUSTIN | F26 | [Apply](https://cadence.wd1.myworkdayjobs.com/External_Careers/job/AUSTIN/Software-Intern_R52911-2) | today |
-| **Bosch** | Marketing Intern | — | Taguig, NCR | F26 | [Apply](https://jobs.smartrecruiters.com/BoschGroup/744000111566801) | today |
 | **CAE** | Radar Software Co-op | — | Arlington, TX | F26 | [Apply](https://cae.wd3.myworkdayjobs.com/career/job/Arlington-TX/Radar-Software-Co-op_120380?utm_source=Simplify&ref=Simplify) | today |
 | **Elevance Health** | Business Innovation Intern | — | Atlanta, GA | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ELV-ET/job/GA-ATLANTA-740-W-PEACHTREE-ST-NW/Business-Innovation-Intern--Summer-2026_JR184054?utm_source=Simplify&ref=Simplify) | today |
 | **CareBridge** | Business Innovation Intern | — | Atlanta, GA | F26 | [Apply](https://elevancehealth.wd1.myworkdayjobs.com/ANT/job/GA-ATLANTA-740-W-PEACHTREE-ST-NW/Business-Innovation-Intern--Summer-2026_JR184054-1?utm_source=Simplify&ref=Simplify) | today |
 | **Lennox International** | Product Management Intern | — | Columbia, SC | F26 | [Apply](https://uscareers-lennox.icims.com/jobs/51865/job?mobile=true&needsRedirect=false&utm_source=Simplify&ref=Simplify) | today |
 | **Nokia** | Services AI and Automation Intern/Co-op | — | Dallas, TX | F26 | [Apply](https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/32609?utm_source=Simplify&ref=Simplify) | today |
 | **Schweitzer Engineering Laboratories** | Specialist Intern | — | Houston, TX, Plano and 1 more | F26 | [Apply](https://selinc.wd1.myworkdayjobs.com/SEL/job/Texas---Houston/Specialist-Intern_2026-19615?utm_source=Simplify&ref=Simplify) | today |
+| **Hermeus** | Manufacturing Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/922ee234-94aa-473b-8464-03f28a709872) | today |
+| 🔥 **Morgan Stanley** | Intern | — | Jacksonville FL 6375 | F26 | [Apply](https://ms.wd5.myworkdayjobs.com/External/job/Jacksonville-FL-6375/Intern_JR029473) | today |
+| **Continental** | Communications Intern | — | Sumter, SC | F26 | [Apply](https://jobs.smartrecruiters.com/Continental/744000112519345) | today |
 | **xAI** | Summer 2026 Engineering Internship/Co-op | MS | Memphis, TN | S26 | [Apply](https://job-boards.greenhouse.io/xai/jobs/5054417007) | 1d ago |
 | **Hermeus** | Avionics Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/0f52df07-bd23-44cb-a24d-3346f6d94201) | 1d ago |
 | **Hermeus** | GNC Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/751c9919-5b19-4609-80ff-ca82d6947e07) | 1d ago |
