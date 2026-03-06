@@ -99,11 +99,18 @@ class FiltersConfig(BaseModel):
     exclude_companies: list[str] = []
 
 
+class EntryLevelFiltersConfig(BaseModel):
+    """Keyword filtering rules for entry-level job discovery."""
+    keywords_include: list[str] = []
+    keywords_exclude: list[str] = []
+
+
 class AIConfig(BaseModel):
     """AI enrichment settings."""
     model: str = "gemini-2.0-flash"
     max_tokens: int = 1024
     enrichment_prompt: str = ""
+    entry_level_enrichment_prompt: str = ""
 
 
 class ScheduleConfig(BaseModel):
@@ -130,6 +137,7 @@ class AppConfig(BaseModel):
     scrape_sources: list[ScrapeSource] = []
     github_monitors: list[GitHubMonitor] = []
     filters: FiltersConfig = Field(default_factory=FiltersConfig)
+    entry_level_filters: EntryLevelFiltersConfig = Field(default_factory=EntryLevelFiltersConfig)
     ai: AIConfig = Field(default_factory=AIConfig)
     schedule: ScheduleConfig = Field(default_factory=ScheduleConfig)
     company_industries: dict[str, str] = {}

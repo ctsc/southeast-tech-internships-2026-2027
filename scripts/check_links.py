@@ -8,12 +8,14 @@ Tracks consecutive failures in data/link_health.json; a listing must fail
 import asyncio
 import json
 import logging
-from datetime import date, datetime, timezone
+from datetime import date
+from pathlib import Path
 from typing import Any
 
 import httpx
 
 from scripts.utils.config import PROJECT_ROOT
+from scripts.utils.db_io import load_database, save_database
 from scripts.utils.models import JobsDatabase, ListingStatus
 
 logger = logging.getLogger(__name__)
@@ -31,43 +33,28 @@ DEAD_STATUSES = {404, 410, 403}
 TRANSIENT_STATUSES = {429, 500, 502, 503}
 
 
-def _load_database() -> JobsDatabase:
-    """Load data/jobs.json into a JobsDatabase model.
+def _load_database(jobs_path: Path | None = None) -> JobsDatabase:
+    """Load a jobs JSON file into a JobsDatabase model.
+
+    Args:
+        jobs_path: Path to the jobs JSON file. Defaults to JOBS_PATH.
 
     Returns:
         The current jobs database, or an empty one if missing/invalid.
     """
-    if not JOBS_PATH.exists():
-        logger.warning("jobs.json not found, returning empty database")
-        return JobsDatabase(listings=[], last_updated=datetime.now(timezone.utc))
-
-    try:
-        with open(JOBS_PATH, "r", encoding="utf-8") as f:
-            raw = json.load(f)
-        return JobsDatabase.model_validate(raw)
-    except Exception as exc:
-        logger.error("Failed to parse jobs.json: %s", exc)
-        return JobsDatabase(listings=[], last_updated=datetime.now(timezone.utc))
+    path = jobs_path if jobs_path is not None else JOBS_PATH
+    return load_database(path)
 
 
-def _save_database(db: JobsDatabase) -> None:
-    """Save the jobs database to data/jobs.json.
+def _save_database(db: JobsDatabase, jobs_path: Path | None = None) -> None:
+    """Save the jobs database to a JSON file.
 
     Args:
         db: The jobs database to persist.
+        jobs_path: Path to the jobs JSON file. Defaults to JOBS_PATH.
     """
-    db.last_updated = datetime.now(timezone.utc)
-    db.compute_stats()
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-    tmp_path = JOBS_PATH.with_suffix(".tmp")
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(db.model_dump(mode="json"), f, indent=2, default=str)
-    tmp_path.replace(JOBS_PATH)
-
-    logger.info(
-        "Saved jobs.json: %d listings, %d open", len(db.listings), db.total_open
-    )
+    path = jobs_path if jobs_path is not None else JOBS_PATH
+    save_database(db, path)
 
 
 def _load_link_health() -> dict[str, Any]:
@@ -173,17 +160,21 @@ async def _check_single_link(
             return (listing_id, "error", None, str(exc))
 
 
-async def check_all_links() -> dict[str, int]:
+async def check_all_links(jobs_path: Path | None = None) -> dict[str, int]:
     """Check all open listing URLs and update their status.
 
-    Loads jobs.json and link_health.json, checks every OPEN listing
+    Loads the jobs database and link_health.json, checks every OPEN listing
     concurrently (max 10 at a time), tracks consecutive failures,
     and marks listings as CLOSED after 2 consecutive failures.
+
+    Args:
+        jobs_path: Optional path to the jobs JSON file. Defaults to data/jobs.json.
 
     Returns:
         Stats dict with keys: checked, healthy, closed, transient_errors, unknown.
     """
-    db = _load_database()
+    path = jobs_path if jobs_path is not None else JOBS_PATH
+    db = _load_database(path)
     health = _load_link_health()
     today_str = date.today().isoformat()
 
@@ -291,7 +282,7 @@ async def check_all_links() -> dict[str, int]:
             stats["transient_errors"] += 1
 
     # Save updated data
-    _save_database(db)
+    _save_database(db, path)
     _save_link_health(health)
 
     logger.info(

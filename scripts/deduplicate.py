@@ -6,11 +6,12 @@ Keeps the newest listing when duplicates are found.
 
 import json
 import logging
-from datetime import datetime, timezone
+from pathlib import Path
 
 from thefuzz import fuzz
 
 from scripts.utils.config import PROJECT_ROOT
+from scripts.utils.db_io import load_database, save_database
 from scripts.utils.models import JobListing, JobsDatabase
 
 logger = logging.getLogger(__name__)
@@ -20,25 +21,18 @@ JOBS_PATH = DATA_DIR / "jobs.json"
 ARCHIVED_PATH = DATA_DIR / "archived.json"
 
 
-def _load_database() -> JobsDatabase:
-    """Load data/jobs.json into a JobsDatabase model.
+def _load_database(jobs_path: Path | None = None) -> JobsDatabase:
+    """Load a jobs JSON file into a JobsDatabase model.
+
+    Args:
+        jobs_path: Path to the jobs JSON file. Defaults to JOBS_PATH.
 
     Returns:
         The current jobs database, or an empty one if the file
         is missing or contains no listings.
     """
-    if not JOBS_PATH.exists():
-        logger.warning("jobs.json not found, starting with empty database")
-        return JobsDatabase(listings=[], last_updated=datetime.now(timezone.utc))
-
-    with open(JOBS_PATH, "r", encoding="utf-8") as f:
-        raw = json.load(f)
-
-    if not raw or not raw.get("listings"):
-        logger.info("jobs.json is empty, starting with empty database")
-        return JobsDatabase(listings=[], last_updated=datetime.now(timezone.utc))
-
-    return JobsDatabase.model_validate(raw)
+    path = jobs_path if jobs_path is not None else JOBS_PATH
+    return load_database(path)
 
 
 def _load_archived_hashes() -> set[str]:
@@ -61,24 +55,15 @@ def _load_archived_hashes() -> set[str]:
     return {listing["id"] for listing in raw["listings"] if "id" in listing}
 
 
-def _save_database(db: JobsDatabase) -> None:
-    """Update stats, set last_updated, and save to data/jobs.json.
+def _save_database(db: JobsDatabase, jobs_path: Path | None = None) -> None:
+    """Update stats, set last_updated, and save to the jobs JSON file.
 
     Args:
         db: The JobsDatabase to persist.
+        jobs_path: Path to the jobs JSON file. Defaults to JOBS_PATH.
     """
-    db.last_updated = datetime.now(timezone.utc)
-    db.compute_stats()
-
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    tmp_path = JOBS_PATH.with_suffix(".tmp")
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(db.model_dump(mode="json"), f, indent=2, default=str)
-    tmp_path.replace(JOBS_PATH)
-
-    logger.info(
-        "Saved jobs.json: %d listings, %d open", len(db.listings), db.total_open
-    )
+    path = jobs_path if jobs_path is not None else JOBS_PATH
+    save_database(db, path)
 
 
 def _dedup_by_content_hash(
@@ -277,16 +262,20 @@ def _dedup_fuzzy(
     return result, removed
 
 
-def deduplicate_all() -> int:
+def deduplicate_all(jobs_path: Path | None = None) -> int:
     """Run all deduplication strategies on the jobs database.
 
     Executes dedup in order: content hash, URL, then fuzzy matching.
     Saves the updated database after processing.
 
+    Args:
+        jobs_path: Optional path to the jobs JSON file. Defaults to data/jobs.json.
+
     Returns:
         Total number of duplicates removed.
     """
-    db = _load_database()
+    path = jobs_path if jobs_path is not None else JOBS_PATH
+    db = _load_database(path)
 
     if not db.listings:
         logger.info("No listings to deduplicate")
@@ -316,7 +305,7 @@ def deduplicate_all() -> int:
     )
 
     db.listings = listings
-    _save_database(db)
+    _save_database(db, path)
 
     return total_removed
 

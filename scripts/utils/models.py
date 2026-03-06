@@ -13,6 +13,13 @@ from typing import Optional
 from pydantic import BaseModel, Field, HttpUrl
 
 
+class ListingType(str, Enum):
+    """Type of job listing."""
+
+    INTERNSHIP = "internship"
+    ENTRY_LEVEL = "entry_level"
+
+
 class InternSeason(str, Enum):
     """Internship season identifiers."""
 
@@ -136,6 +143,7 @@ class JobListing(BaseModel):
     end_date: Optional[str] = None
     industry: IndustrySector = IndustrySector.OTHER
     preferred_class_years: list[str] = []
+    listing_type: ListingType = ListingType.INTERNSHIP
 
 
 class JobsDatabase(BaseModel):
@@ -163,6 +171,7 @@ class RawListing(BaseModel):
     source: str  # "greenhouse_api", "lever_api", "ashby_api", "scrape", "github_monitor"
     is_faang_plus: bool = False
     description: str = ""
+    listing_type: str = "internship"
     raw_data: dict = {}
     discovered_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 

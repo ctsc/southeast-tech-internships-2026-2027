@@ -5,12 +5,12 @@ Archival criteria:
 - Any listing whose date_added is older than 120 days, regardless of status.
 """
 
-import json
 import logging
 from datetime import date, datetime, timezone
 from pathlib import Path
 
 from scripts.utils.config import PROJECT_ROOT
+from scripts.utils.db_io import load_database, save_database
 from scripts.utils.models import JobListing, JobsDatabase, ListingStatus
 
 logger = logging.getLogger(__name__)
@@ -24,18 +24,12 @@ STALE_ARCHIVE_DAYS = 120
 
 def _load_database(path: Path) -> JobsDatabase:
     """Load a JobsDatabase from a JSON file."""
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return JobsDatabase.model_validate(data)
+    return load_database(path)
 
 
 def _save_database(db: JobsDatabase, path: Path) -> None:
     """Save a JobsDatabase to a JSON file atomically."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = path.with_suffix(".tmp")
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(db.model_dump(mode="json"), f, indent=2, default=str)
-    tmp_path.replace(path)
+    save_database(db, path)
 
 
 def _should_archive(listing: JobListing, today: date) -> str | None:

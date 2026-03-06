@@ -13,6 +13,7 @@ import asyncio
 import logging
 import re
 import sys
+import time
 
 logger = logging.getLogger("internship_pipeline")
 
@@ -38,15 +39,18 @@ def _run_step(name: str, func: object, is_async: bool = False) -> bool:
         True if the step succeeded, False otherwise.
     """
     logger.info("Starting step: %s", name)
+    start = time.monotonic()
     try:
         if is_async:
             asyncio.run(func())
         else:
             func()
-        logger.info("Completed step: %s", name)
+        elapsed = time.monotonic() - start
+        logger.info("Completed step: %s (%.1fs)", name, elapsed)
         return True
     except Exception:
-        logger.exception("Step failed: %s", name)
+        elapsed = time.monotonic() - start
+        logger.exception("Step failed: %s (%.1fs)", name, elapsed)
         return False
 
 
@@ -70,11 +74,13 @@ def run_full_pipeline() -> None:
 
     succeeded = 0
     failed = 0
+    failed_steps: list[str] = []
     for name, func, is_async in steps:
         if _run_step(name, func, is_async):
             succeeded += 1
         else:
             failed += 1
+            failed_steps.append(name)
 
     logger.info(
         "Pipeline complete: %d/%d steps succeeded, %d failed",
@@ -83,7 +89,10 @@ def run_full_pipeline() -> None:
         failed,
     )
     if failed > 0:
-        logger.warning("Some pipeline steps failed — check logs above for details")
+        logger.error(
+            "Failed steps: %s", ", ".join(failed_steps)
+        )
+        sys.exit(1)
 
 
 def run_discover_only() -> None:
@@ -107,6 +116,49 @@ def run_check_links_only() -> None:
     _run_step("Check link health", check_all_links, is_async=True)
 
 
+def run_entry_level_pipeline() -> None:
+    """Run the entry-level jobs pipeline: discover -> validate -> deduplicate -> check_links -> archive -> readme."""
+    from scripts.archive_stale import archive_stale
+    from scripts.check_links import check_all_links
+    from scripts.deduplicate import deduplicate_all
+    from scripts.el_discover import discover_entry_level
+    from scripts.el_validate import validate_entry_level
+    from scripts.generate_readme import generate_readme
+    from scripts.utils.config import PROJECT_ROOT
+
+    el_jobs_path = PROJECT_ROOT / "data" / "entry_level_jobs.json"
+    el_archived_path = PROJECT_ROOT / "data" / "el_archived.json"
+
+    steps: list[tuple[str, object, bool]] = [
+        ("Discover entry-level listings", discover_entry_level, True),
+        ("Validate & enrich entry-level with AI", validate_entry_level, False),
+        ("Deduplicate entry-level listings", lambda: deduplicate_all(el_jobs_path), False),
+        ("Check entry-level link health", lambda: check_all_links(el_jobs_path), True),
+        ("Archive stale entry-level listings", lambda: archive_stale(el_jobs_path, el_archived_path), False),
+        ("Generate README", generate_readme, False),
+    ]
+
+    succeeded = 0
+    failed = 0
+    failed_steps: list[str] = []
+    for name, func, is_async in steps:
+        if _run_step(name, func, is_async):
+            succeeded += 1
+        else:
+            failed += 1
+            failed_steps.append(name)
+
+    logger.info(
+        "Entry-level pipeline complete: %d/%d steps succeeded, %d failed",
+        succeeded, succeeded + failed, failed,
+    )
+    if failed > 0:
+        logger.error(
+            "Failed steps: %s", ", ".join(failed_steps)
+        )
+        sys.exit(1)
+
+
 def run_clean() -> None:
     """Re-filter existing jobs.json: remove listings that fail updated filters.
 
@@ -115,7 +167,6 @@ def run_clean() -> None:
     """
     import json
     from datetime import datetime, timezone
-    from pathlib import Path
 
     from scripts.utils.config import PROJECT_ROOT, get_config
 
@@ -284,6 +335,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Run only the link health checker",
     )
     group.add_argument(
+        "--entry-level",
+        action="store_true",
+        help="Run the entry-level jobs pipeline",
+    )
+    group.add_argument(
         "--clean",
         action="store_true",
         help="Re-filter existing jobs.json to remove non-tech/non-intern listings",
@@ -307,6 +363,8 @@ def main(argv: list[str] | None = None) -> None:
         run_readme_only()
     elif args.check_links_only:
         run_check_links_only()
+    elif args.entry_level:
+        run_entry_level_pipeline()
     elif args.clean:
         run_clean()
     else:

@@ -20,6 +20,10 @@ data/.cache/
 .pytest_cache/
 .ruff_cache/
 
+# Raw discovery snapshots (debug only, regenerated each run)
+data/raw_discovery_*.json
+data/raw_el_discovery_*.json
+
 # IDE
 .vscode/
 .idea/

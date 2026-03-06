@@ -5,10 +5,11 @@ categorized internship tables, stats, and legend. Only includes Southeast
 region listings (GA, FL, AL, TX, SC, NC, TN).
 """
 
+import json
 import logging
 from datetime import date
 
-from scripts.utils.config import get_config
+from scripts.utils.config import PROJECT_ROOT, get_config
 from scripts.utils.models import (
     JobListing,
     JobsDatabase,
@@ -112,7 +113,11 @@ def _format_class_years(years: list[str]) -> str:
     return "/".join(abbrs)
 
 
-def _format_listing_row(listing: JobListing) -> str:
+def _format_listing_row(
+    listing: JobListing,
+    include_level: bool = True,
+    include_season: bool = True,
+) -> str:
     """Format a single listing as a markdown table row."""
     company = f"**{_escape_markdown_cell(listing.company)}**"
     if listing.is_faang_plus:
@@ -131,8 +136,6 @@ def _format_listing_row(listing: JobListing) -> str:
         role = f"{role} {''.join(flags)}"
 
     locations = _format_locations(listing.locations)
-    level = _format_class_years(listing.preferred_class_years)
-    season_badge = _format_season(listing.season)
     date_str = _format_relative_date(listing.date_added)
     apply_url = str(listing.apply_url)
 
@@ -141,7 +144,15 @@ def _format_listing_row(listing: JobListing) -> str:
     else:
         apply_link = f"[Apply]({apply_url})"
 
-    return f"| {company} | {role} | {level} | {locations} | {season_badge} | {apply_link} | {date_str} |"
+    parts = [company, role]
+    if include_level:
+        parts.append(_format_class_years(listing.preferred_class_years))
+    parts.append(locations)
+    if include_season:
+        parts.append(_format_season(listing.season))
+    parts.extend([apply_link, date_str])
+
+    return "| " + " | ".join(parts) + " |"
 
 
 def _render_category_section(
@@ -263,13 +274,64 @@ def _count_open_georgia(listings: list[JobListing]) -> int:
     ])
 
 
-def render_readme(jobs_db: JobsDatabase) -> str:
+def _format_entry_level_row(listing: JobListing) -> str:
+    """Format a single entry-level listing as a markdown table row (no Level/Season columns)."""
+    return _format_listing_row(listing, include_level=False, include_season=False)
+
+
+def _render_entry_level_section(listings: list[JobListing]) -> str:
+    """Render the entry-level jobs in GA section."""
+    lines = [
+        "## 🍑 Entry-Level Jobs in GA",
+        "",
+    ]
+
+    ga_listings = [x for x in listings if _is_georgia_listing(x)]
+
+    open_listings = [x for x in ga_listings if x.status == ListingStatus.OPEN]
+    closed_listings = [x for x in ga_listings if x.status == ListingStatus.CLOSED]
+
+    sorted_listings = sorted(
+        open_listings + closed_listings,
+        key=lambda x: x.date_added,
+        reverse=True,
+    )
+
+    if not sorted_listings:
+        lines.append("No entry-level listings yet. Check back soon!")
+        lines.append("")
+        return "\n".join(lines)
+
+    lines.append("| Company | Role | Location | Apply | Posted |")
+    lines.append("|---------|------|----------|-------|--------|")
+    for listing in sorted_listings:
+        lines.append(_format_entry_level_row(listing))
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _load_entry_level_db() -> JobsDatabase | None:
+    """Load entry_level_jobs.json if it exists."""
+    el_path = PROJECT_ROOT / "data" / "entry_level_jobs.json"
+    try:
+        with open(el_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return JobsDatabase.model_validate(data)
+    except FileNotFoundError:
+        return None
+    except Exception as exc:
+        logger.warning("Failed to load entry_level_jobs.json: %s", exc)
+        return None
+
+
+def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> str:
     """Render a complete README.md from a JobsDatabase.
 
     Only includes listings in the Southeast region (GA, FL, AL, TX, SC, NC, TN).
 
     Args:
         jobs_db: The jobs database to render.
+        el_db: Optional entry-level jobs database. If None, loads from disk.
 
     Returns:
         A string containing the full README markdown.
@@ -308,7 +370,7 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append("> Built and maintained by [Carter](https://github.com/ctsc)")
     parts.append("")
     parts.append(
-        "Use this repo to discover and track **tech internships** "
+        "Use this repo to discover and track **tech internships** and **entry-level jobs** "
         "across software engineering, ML/AI, data science, quant, and more."
     )
     parts.append("")
@@ -334,6 +396,19 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     georgia_count = _count_open_georgia(listings)
     parts.append(f"| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | {big_tech_count} |")
     parts.append(f"| 🍑 [Roles Open in GA](#-roles-open-in-ga) | {georgia_count} |")
+
+    # Entry-level stats
+    if el_db is None:
+        el_db = _load_entry_level_db()
+    el_ga_count = 0
+    if el_db:
+        el_ga_listings = [
+            x for x in el_db.listings
+            if x.status == ListingStatus.OPEN and _is_georgia_listing(x)
+        ]
+        el_ga_count = len(el_ga_listings)
+    parts.append(f"| 🍑 [Entry-Level Jobs in GA](#-entry-level-jobs-in-ga) | {el_ga_count} |")
+
     parts.append(f"| **Total** | **{total_open}** |")
     parts.append("")
     parts.append("---")
@@ -372,6 +447,13 @@ def render_readme(jobs_db: JobsDatabase) -> str:
     parts.append(ga_section)
     parts.append("---")
     parts.append("")
+
+    # --- Entry-Level Jobs in GA ---
+    if el_db and el_db.listings:
+        el_section = _render_entry_level_section(el_db.listings)
+        parts.append(el_section)
+        parts.append("---")
+        parts.append("")
 
     # --- Big Tech in the Southeast ---
     big_tech_listings = [

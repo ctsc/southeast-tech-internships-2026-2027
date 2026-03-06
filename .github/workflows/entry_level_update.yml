@@ -1,0 +1,50 @@
+name: Update Entry-Level Listings
+on:
+  schedule:
+    - cron: '0 */12 * * *'     # Every 12 hours
+  workflow_dispatch:            # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run entry-level pipeline
+        run: python main.py --entry-level
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        continue-on-error: true
+
+      - name: Commit & push
+        run: |
+          git config user.name "internship-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            EL_COUNT=$(python -c "import json, os; d=json.load(open('data/entry_level_jobs.json')) if os.path.exists('data/entry_level_jobs.json') else {'listings':[]}; print(f\"{len([j for j in d['listings'] if j['status']=='open'])} open entry-level roles\")")
+            git commit -m "Update entry-level listings — $EL_COUNT — $(date -u +%Y-%m-%d)"
+            git push
+          fi

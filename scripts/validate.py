@@ -8,12 +8,13 @@ import hashlib
 import json
 import logging
 import re as _re
-from datetime import date, datetime, timezone
+from datetime import date
 from pathlib import Path
 from typing import Optional
 
 from scripts.utils.ai_enrichment import enrich_listing, reset_budget
 from scripts.utils.config import PROJECT_ROOT, get_config, is_big_tech
+from scripts.utils.db_io import load_database, save_database
 from scripts.utils.models import (
     IndustrySector,
     JobListing,
@@ -275,23 +276,7 @@ def _load_existing_database() -> JobsDatabase:
         The current JobsDatabase, or an empty one if the file
         doesn't exist or cannot be parsed.
     """
-    if not JOBS_PATH.exists():
-        logger.info("jobs.json not found, starting with empty database")
-        return JobsDatabase(
-            listings=[], last_updated=datetime.now(timezone.utc), total_open=0
-        )
-
-    try:
-        with open(JOBS_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        db = JobsDatabase.model_validate(data)
-        logger.info("Loaded existing database with %d listings", len(db.listings))
-        return db
-    except Exception as exc:
-        logger.error("Failed to parse jobs.json, starting fresh: %s", exc)
-        return JobsDatabase(
-            listings=[], last_updated=datetime.now(timezone.utc), total_open=0
-        )
+    return load_database(JOBS_PATH)
 
 
 def _get_existing_hashes(db: JobsDatabase) -> set[str]:
@@ -556,22 +541,7 @@ def _save_database(db: JobsDatabase) -> None:
     Args:
         db: The jobs database to save.
     """
-    db.last_updated = datetime.now(timezone.utc)
-    db.compute_stats()
-
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-    data = db.model_dump(mode="json")
-    tmp_path = JOBS_PATH.with_suffix(".tmp")
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, default=str)
-    tmp_path.replace(JOBS_PATH)
-
-    logger.info(
-        "Saved database: %d total listings, %d open",
-        len(db.listings),
-        db.total_open,
-    )
+    save_database(db, JOBS_PATH)
 
 
 def _infer_category_from_title(

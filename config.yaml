@@ -1701,6 +1701,35 @@ filters:
     - "Cognizant"
 
 # ============================================================================
+# Entry-Level Job Filters
+# ============================================================================
+entry_level_filters:
+  keywords_include:
+    - "new grad"
+    - "new graduate"
+    - "recent graduate"
+    - "entry level"
+    - "entry-level"
+    - "junior"
+    - "associate"
+    - "early career"
+    - "university grad"
+    - "0-2 years"
+    - "0-1 years"
+    - "full time"
+    - "full-time"
+  keywords_exclude:
+    - "senior"
+    - "staff"
+    - "principal"
+    - "lead"
+    - "manager"
+    - "director"
+    - "intern"
+    - "internship"
+    - "co-op"
+
+# ============================================================================
 # AI Enrichment
 # ============================================================================
 ai:
@@ -1736,6 +1765,32 @@ ai:
       "tech_stack": ["Python", "React", ...],
       "industry": "fintech|healthcare|energy|ecommerce|banking|automotive|gaming|social_media|cybersecurity|cloud|enterprise|ai_ml|aerospace|telecom|media|food|logistics|semiconductor|other",
       "preferred_class_years": ["freshman", "sophomore", "junior", "senior", "masters", "phd"],
+      "confidence": 0.0-1.0
+    }
+  entry_level_enrichment_prompt: |
+    Analyze this job listing and determine if it is an entry-level/new-grad full-time tech position.
+    This is NOT an internship — we are looking for full-time entry-level roles.
+    Return JSON only, no markdown, no explanation.
+
+    If a job description is provided, use it to determine:
+    - remote_friendly: true if the description mentions remote work, hybrid, or work-from-home options
+    - open_to_international: true if the description does NOT require US citizenship/permanent residency,
+      or explicitly mentions visa sponsorship or international candidates welcome
+    - sponsorship: check for visa sponsorship mentions in the description
+    - tech_stack: extract specific technologies mentioned in the description
+
+    {
+      "is_entry_level": true/false,
+      "is_internship": false,
+      "category": "swe|ml_ai|data_science|quant|pm|hardware|other",
+      "locations": ["city, state abbreviation"],
+      "is_georgia": true/false,
+      "sponsorship": "sponsors|no_sponsorship|us_citizenship|unknown",
+      "requires_advanced_degree": true/false,
+      "remote_friendly": true/false,
+      "open_to_international": true/false,
+      "tech_stack": ["Python", "React", ...],
+      "industry": "fintech|healthcare|energy|ecommerce|banking|automotive|gaming|social_media|cybersecurity|cloud|enterprise|ai_ml|aerospace|telecom|media|food|logistics|semiconductor|other",
       "confidence": 0.0-1.0
     }
 

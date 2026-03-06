@@ -12,9 +12,50 @@ import re
 from pathlib import Path
 from typing import Optional
 
+from pydantic import BaseModel, field_validator
+
 from scripts.utils.config import AppConfig, get_config, get_secret
 
 logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# Enrichment result schema
+# ---------------------------------------------------------------------------
+
+
+class EnrichmentResult(BaseModel):
+    """Schema for validated AI enrichment responses.
+
+    All fields have permissive defaults so partial AI responses still work.
+    Type coercion is handled by Pydantic (e.g., string "true" -> bool True).
+    """
+
+    is_internship: bool = False
+    is_entry_level: bool = False
+    season: str = "none"
+    category: str = "other"
+    locations: list[str] = []
+    sponsorship: str = "unknown"
+    requires_advanced_degree: bool = False
+    graduate_friendly: bool = False
+    remote_friendly: bool = False
+    open_to_international: bool = False
+    tech_stack: list[str] = []
+    confidence: float = 0.0
+    industry: str = "other"
+    start_date: str | None = None
+    end_date: str | None = None
+    preferred_class_years: list[str] = []
+
+    model_config = {"extra": "allow"}
+
+    @field_validator("confidence")
+    @classmethod
+    def clamp_confidence(cls, v: float) -> float:
+        """Clamp confidence to the 0.0-1.0 range."""
+        return max(0.0, min(1.0, v))
+
 
 # ---------------------------------------------------------------------------
 # Module-level budget tracking
@@ -177,11 +218,17 @@ def _parse_gemini_response(text: str) -> dict:
         if not isinstance(result, dict):
             logger.warning("Gemini response parsed but is not a dict")
             return {**DEFAULT_METADATA, "is_internship": False}
-        return result
     except json.JSONDecodeError:
         logger.warning(
             "Failed to parse Gemini response as JSON: %.100s...", cleaned
         )
+        return {**DEFAULT_METADATA, "is_internship": False}
+
+    try:
+        validated = EnrichmentResult.model_validate(result, strict=False)
+        return validated.model_dump()
+    except Exception:
+        logger.warning("Gemini response failed schema validation — using defaults")
         return {**DEFAULT_METADATA, "is_internship": False}
 
 
@@ -223,6 +270,7 @@ def _format_listing_prompt(raw_listing: object) -> str:
 def enrich_listing(
     raw_listing: object,
     config: Optional[AppConfig] = None,
+    prompt_override: Optional[str] = None,
 ) -> dict:
     """Enrich a single raw listing with AI-extracted metadata.
 
@@ -271,7 +319,7 @@ def enrich_listing(
         return {**DEFAULT_METADATA}
 
     # 4. Call Gemini API
-    system_prompt = config.ai.enrichment_prompt
+    system_prompt = prompt_override or config.ai.enrichment_prompt
     user_message = _format_listing_prompt(raw_listing)
 
     try:

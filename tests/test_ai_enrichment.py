@@ -24,6 +24,7 @@ import scripts.utils.ai_enrichment as ai_mod
 from scripts.utils.ai_enrichment import (
     DEFAULT_METADATA,
     MAX_API_CALLS_PER_RUN,
+    EnrichmentResult,
     _format_listing_prompt,
     _get_cache_path,
     _load_cached,
@@ -289,25 +290,29 @@ class TestParseGeminiResponse:
         """Parses valid JSON directly."""
         text = json.dumps(valid_metadata)
         result = _parse_gemini_response(text)
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
 
     def test_json_in_markdown_code_block(self, valid_metadata):
         """Parses JSON wrapped in ```json ... ``` fences."""
         text = f"```json\n{json.dumps(valid_metadata)}\n```"
         result = _parse_gemini_response(text)
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
 
     def test_json_in_plain_code_block(self, valid_metadata):
         """Parses JSON wrapped in ``` ... ``` fences without language tag."""
         text = f"```\n{json.dumps(valid_metadata)}\n```"
         result = _parse_gemini_response(text)
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
 
     def test_json_with_surrounding_whitespace(self, valid_metadata):
         """Handles leading/trailing whitespace around JSON."""
         text = f"  \n  {json.dumps(valid_metadata)}  \n  "
         result = _parse_gemini_response(text)
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
 
     def test_invalid_json_returns_default(self):
         """Returns default metadata with is_internship=False on parse error."""
@@ -335,13 +340,19 @@ class TestParseGeminiResponse:
         """Extracts JSON from code block even with text before it."""
         text = f"Here is the analysis:\n```json\n{json.dumps(valid_metadata)}\n```\nDone."
         result = _parse_gemini_response(text)
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
 
-    def test_partial_metadata_preserved(self):
-        """Partial but valid JSON dict is returned as-is."""
+    def test_partial_metadata_gets_defaults(self):
+        """Partial but valid JSON dict gets defaults filled in."""
         partial = {"is_internship": True, "category": "swe"}
         result = _parse_gemini_response(json.dumps(partial))
-        assert result == partial
+        assert result["is_internship"] is True
+        assert result["category"] == "swe"
+        # Defaults are filled in for missing fields
+        assert result["confidence"] == 0.0
+        assert result["season"] == "none"
+        assert result["locations"] == []
 
 
 # ======================================================================
@@ -466,9 +477,14 @@ class TestEnrichListing:
                     with patch.object(ai_mod, "_save_to_cache") as mock_save:
                         result = enrich_listing(raw_listing, config=mock_config)
 
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
         assert get_api_call_count() == 1
-        mock_save.assert_called_once_with(raw_listing.content_hash, valid_metadata)
+        # The saved data will include defaults from schema validation
+        mock_save.assert_called_once()
+        saved_data = mock_save.call_args[0][1]
+        for key, value in valid_metadata.items():
+            assert saved_data[key] == value
 
     def test_api_error_returns_default(self, raw_listing, mock_config):
         """Returns default metadata when Gemini API raises an exception."""
@@ -544,7 +560,8 @@ class TestEnrichListing:
                     with patch.object(ai_mod, "_save_to_cache"):
                         result = enrich_listing(raw_listing, config=mock_config)
 
-        assert result == valid_metadata
+        for key, value in valid_metadata.items():
+            assert result[key] == value
         assert get_api_call_count() == MAX_API_CALLS_PER_RUN
 
     def test_caches_successful_result(self, raw_listing, mock_config, valid_metadata):
@@ -566,7 +583,8 @@ class TestEnrichListing:
         saved_hash = mock_save.call_args[0][0]
         saved_data = mock_save.call_args[0][1]
         assert saved_hash == raw_listing.content_hash
-        assert saved_data == valid_metadata
+        for key, value in valid_metadata.items():
+            assert saved_data[key] == value
 
 
 # ======================================================================
@@ -869,3 +887,148 @@ class TestConstants:
     def test_max_api_calls_is_200(self):
         """Budget cap should be 200 per the spec."""
         assert MAX_API_CALLS_PER_RUN == 200
+
+
+# ======================================================================
+# Tests: EnrichmentResult schema validation
+# ======================================================================
+
+
+class TestEnrichmentResult:
+    """Tests for the EnrichmentResult Pydantic model."""
+
+    def test_valid_full_response(self):
+        """A complete valid response passes validation."""
+        data = {
+            "is_internship": True,
+            "is_entry_level": True,
+            "season": "summer_2026",
+            "category": "swe",
+            "locations": ["Atlanta, GA"],
+            "sponsorship": "available",
+            "requires_advanced_degree": False,
+            "remote_friendly": True,
+            "open_to_international": True,
+            "tech_stack": ["Python"],
+            "confidence": 0.95,
+            "industry": "tech",
+            "start_date": "2026-06-01",
+            "end_date": "2026-08-15",
+            "preferred_class_years": ["junior", "senior"],
+        }
+        result = EnrichmentResult.model_validate(data, strict=False)
+        assert result.is_internship is True
+        assert result.confidence == 0.95
+        assert result.locations == ["Atlanta, GA"]
+
+    def test_missing_fields_get_defaults(self):
+        """Missing fields are filled with permissive defaults."""
+        result = EnrichmentResult.model_validate({}, strict=False)
+        assert result.is_internship is False
+        assert result.season == "none"
+        assert result.category == "other"
+        assert result.locations == []
+        assert result.confidence == 0.0
+        assert result.tech_stack == []
+        assert result.start_date is None
+        assert result.end_date is None
+        assert result.preferred_class_years == []
+
+    def test_confidence_clamped_above_one(self):
+        """Confidence above 1.0 is clamped to 1.0."""
+        result = EnrichmentResult.model_validate({"confidence": 5.0}, strict=False)
+        assert result.confidence == 1.0
+
+    def test_confidence_clamped_below_zero(self):
+        """Confidence below 0.0 is clamped to 0.0."""
+        result = EnrichmentResult.model_validate({"confidence": -0.5}, strict=False)
+        assert result.confidence == 0.0
+
+    def test_confidence_at_boundaries(self):
+        """Confidence at 0.0 and 1.0 stay unchanged."""
+        r0 = EnrichmentResult.model_validate({"confidence": 0.0}, strict=False)
+        r1 = EnrichmentResult.model_validate({"confidence": 1.0}, strict=False)
+        assert r0.confidence == 0.0
+        assert r1.confidence == 1.0
+
+    def test_string_true_coerced_to_bool(self):
+        """String 'true' is coerced to bool True (strict=False)."""
+        result = EnrichmentResult.model_validate(
+            {"is_internship": "true"}, strict=False
+        )
+        assert result.is_internship is True
+
+    def test_string_false_coerced_to_bool(self):
+        """String 'false' is coerced to bool False (strict=False)."""
+        result = EnrichmentResult.model_validate(
+            {"remote_friendly": "false"}, strict=False
+        )
+        assert result.remote_friendly is False
+
+    def test_string_confidence_coerced_to_float(self):
+        """String '0.85' is coerced to float 0.85."""
+        result = EnrichmentResult.model_validate(
+            {"confidence": "0.85"}, strict=False
+        )
+        assert result.confidence == 0.85
+
+    def test_extra_fields_preserved(self):
+        """Extra fields from AI are preserved (model_config extra=allow)."""
+        data = {"is_internship": True, "some_new_field": "surprise"}
+        result = EnrichmentResult.model_validate(data, strict=False)
+        dumped = result.model_dump()
+        assert dumped["some_new_field"] == "surprise"
+
+    def test_model_dump_returns_dict(self):
+        """model_dump returns a plain dict."""
+        result = EnrichmentResult.model_validate({"is_internship": True}, strict=False)
+        dumped = result.model_dump()
+        assert isinstance(dumped, dict)
+        assert dumped["is_internship"] is True
+
+
+class TestParseGeminiResponseSchemaValidation:
+    """Tests for _parse_gemini_response with EnrichmentResult validation."""
+
+    def test_valid_response_passes_through(self):
+        """A valid AI response is returned with defaults filled."""
+        data = {"is_internship": True, "confidence": 0.9, "category": "swe"}
+        result = _parse_gemini_response(json.dumps(data))
+        assert result["is_internship"] is True
+        assert result["confidence"] == 0.9
+        assert result["category"] == "swe"
+        # Defaults filled
+        assert result["season"] == "none"
+
+    def test_high_confidence_clamped(self):
+        """Confidence > 1.0 is clamped in parsed response."""
+        data = {"is_internship": True, "confidence": 99.9}
+        result = _parse_gemini_response(json.dumps(data))
+        assert result["confidence"] == 1.0
+
+    def test_negative_confidence_clamped(self):
+        """Negative confidence is clamped to 0.0 in parsed response."""
+        data = {"is_internship": True, "confidence": -0.5}
+        result = _parse_gemini_response(json.dumps(data))
+        assert result["confidence"] == 0.0
+
+    def test_completely_invalid_json_returns_default(self):
+        """Completely invalid JSON returns DEFAULT_METADATA with is_internship=False."""
+        result = _parse_gemini_response("garbage not json")
+        assert result["is_internship"] is False
+        assert result["confidence"] == 0.0
+
+    def test_empty_dict_gets_all_defaults(self):
+        """Empty dict gets all default values filled in."""
+        result = _parse_gemini_response("{}")
+        assert result["is_internship"] is False
+        assert result["season"] == "none"
+        assert result["locations"] == []
+        assert result["confidence"] == 0.0
+
+    def test_type_coercion_in_parse(self):
+        """String booleans are coerced during parsing."""
+        data = {"is_internship": "true", "confidence": "0.75"}
+        result = _parse_gemini_response(json.dumps(data))
+        assert result["is_internship"] is True
+        assert result["confidence"] == 0.75

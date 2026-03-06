@@ -28,10 +28,20 @@ logger = logging.getLogger(__name__)
 DATA_DIR = PROJECT_ROOT / "data"
 
 
-async def _run_greenhouse(config: AppConfig) -> list[RawListing]:
-    """Fetch listings from all configured Greenhouse boards."""
-    client = GreenhouseClient(config.filters)
-    tasks = [client.fetch_listings(board) for board in config.greenhouse_boards]
+async def gather_ats_results(
+    client: object, boards: list, source_name: str,
+) -> list[RawListing]:
+    """Gather listings from an ATS client across multiple boards.
+
+    Args:
+        client: An ATS client instance with a fetch_listings method.
+        boards: List of board config objects (each must have .company).
+        source_name: Human-readable source name for logging.
+
+    Returns:
+        Combined list of all discovered RawListing objects.
+    """
+    tasks = [client.fetch_listings(board) for board in boards]
     if not tasks:
         return []
 
@@ -41,145 +51,54 @@ async def _run_greenhouse(config: AppConfig) -> list[RawListing]:
     succeeded = 0
     failed = 0
     for i, result in enumerate(results_or_errors):
-        board = config.greenhouse_boards[i]
+        board = boards[i]
         if isinstance(result, BaseException):
-            logger.error(
-                "Greenhouse %s failed: %s", board.company, result
-            )
+            logger.error("%s %s failed: %s", source_name, board.company, result)
             failed += 1
         else:
             listings.extend(result)
             succeeded += 1
 
     logger.info(
-        "Greenhouse: %d/%d boards succeeded, %d listings found",
-        succeeded,
-        succeeded + failed,
-        len(listings),
+        "%s: %d/%d boards succeeded, %d listings found",
+        source_name, succeeded, succeeded + failed, len(listings),
     )
     return listings
+
+
+async def _run_greenhouse(config: AppConfig) -> list[RawListing]:
+    """Fetch listings from all configured Greenhouse boards."""
+    return await gather_ats_results(
+        GreenhouseClient(config.filters), config.greenhouse_boards, "Greenhouse",
+    )
 
 
 async def _run_lever(config: AppConfig) -> list[RawListing]:
     """Fetch listings from all configured Lever boards."""
-    client = LeverClient(config.filters)
-    tasks = [client.fetch_listings(board) for board in config.lever_boards]
-    if not tasks:
-        return []
-
-    results_or_errors = await asyncio.gather(*tasks, return_exceptions=True)
-
-    listings: list[RawListing] = []
-    succeeded = 0
-    failed = 0
-    for i, result in enumerate(results_or_errors):
-        board = config.lever_boards[i]
-        if isinstance(result, BaseException):
-            logger.error("Lever %s failed: %s", board.company, result)
-            failed += 1
-        else:
-            listings.extend(result)
-            succeeded += 1
-
-    logger.info(
-        "Lever: %d/%d boards succeeded, %d listings found",
-        succeeded,
-        succeeded + failed,
-        len(listings),
+    return await gather_ats_results(
+        LeverClient(config.filters), config.lever_boards, "Lever",
     )
-    return listings
 
 
 async def _run_ashby(config: AppConfig) -> list[RawListing]:
     """Fetch listings from all configured Ashby boards."""
-    client = AshbyClient(config.filters)
-    tasks = [client.fetch_listings(board) for board in config.ashby_boards]
-    if not tasks:
-        return []
-
-    results_or_errors = await asyncio.gather(*tasks, return_exceptions=True)
-
-    listings: list[RawListing] = []
-    succeeded = 0
-    failed = 0
-    for i, result in enumerate(results_or_errors):
-        board = config.ashby_boards[i]
-        if isinstance(result, BaseException):
-            logger.error("Ashby %s failed: %s", board.company, result)
-            failed += 1
-        else:
-            listings.extend(result)
-            succeeded += 1
-
-    logger.info(
-        "Ashby: %d/%d boards succeeded, %d listings found",
-        succeeded,
-        succeeded + failed,
-        len(listings),
+    return await gather_ats_results(
+        AshbyClient(config.filters), config.ashby_boards, "Ashby",
     )
-    return listings
 
 
 async def _run_workday(config: AppConfig) -> list[RawListing]:
     """Fetch listings from all configured Workday boards."""
-    client = WorkdayClient(config.filters)
-    tasks = [client.fetch_listings(board) for board in config.workday_boards]
-    if not tasks:
-        return []
-
-    results_or_errors = await asyncio.gather(*tasks, return_exceptions=True)
-
-    listings: list[RawListing] = []
-    succeeded = 0
-    failed = 0
-    for i, result in enumerate(results_or_errors):
-        board = config.workday_boards[i]
-        if isinstance(result, BaseException):
-            logger.error("Workday %s failed: %s", board.company, result)
-            failed += 1
-        else:
-            listings.extend(result)
-            succeeded += 1
-
-    logger.info(
-        "Workday: %d/%d boards succeeded, %d listings found",
-        succeeded,
-        succeeded + failed,
-        len(listings),
+    return await gather_ats_results(
+        WorkdayClient(config.filters), config.workday_boards, "Workday",
     )
-    return listings
 
 
 async def _run_smartrecruiters(config: AppConfig) -> list[RawListing]:
     """Fetch listings from all configured SmartRecruiters boards."""
-    client = SmartRecruitersClient(config.filters)
-    tasks = [client.fetch_listings(board) for board in config.smartrecruiters_boards]
-    if not tasks:
-        return []
-
-    results_or_errors = await asyncio.gather(*tasks, return_exceptions=True)
-
-    listings: list[RawListing] = []
-    succeeded = 0
-    failed = 0
-    for i, result in enumerate(results_or_errors):
-        board = config.smartrecruiters_boards[i]
-        if isinstance(result, BaseException):
-            logger.error(
-                "SmartRecruiters %s failed: %s", board.company, result
-            )
-            failed += 1
-        else:
-            listings.extend(result)
-            succeeded += 1
-
-    logger.info(
-        "SmartRecruiters: %d/%d boards succeeded, %d listings found",
-        succeeded,
-        succeeded + failed,
-        len(listings),
+    return await gather_ats_results(
+        SmartRecruitersClient(config.filters), config.smartrecruiters_boards, "SmartRecruiters",
     )
-    return listings
 
 
 async def _run_scraping(config: AppConfig) -> list[RawListing]:
