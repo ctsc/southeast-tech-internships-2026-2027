@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: March 11, 2026 at 08:27 AM EST
+> 🤖 **Auto-updated every 6 hours** | Last updated: March 11, 2026 at 02:15 PM EST
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -16,17 +16,17 @@ Use this repo to discover and track **tech internships** and **entry-level jobs*
 
 | Category | Open Roles |
 |----------|-----------|
-| 💻 [Software Engineering](#-software-engineering) | 19 |
+| 💻 [Software Engineering](#-software-engineering) | 20 |
 | 🤖 [ML / AI / Data Science](#-ml--ai--data-science) | 2 |
 | 📊 [Data Science & Analytics](#-data-science--analytics) | 3 |
-| 📈 [Quantitative Finance](#-quantitative-finance) | 0 |
+| 📈 [Quantitative Finance](#-quantitative-finance) | 1 |
 | 📱 [Product Management](#-product-management) | 0 |
 | 🔧 [Hardware Engineering](#-hardware-engineering) | 2 |
-| 🔹 [Other](#-other) | 70 |
-| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 6 |
-| 🍑 [Roles Open in GA](#-roles-open-in-ga) | 20 |
+| 🔹 [Other](#-other) | 74 |
+| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 10 |
+| 🍑 [Roles Open in GA](#-roles-open-in-ga) | 23 |
 | 🍑 [Entry-Level Jobs in GA](#-entry-level-jobs-in-ga) | 0 |
-| **Total** | **96** |
+| **Total** | **102** |
 
 ---
 
@@ -54,7 +54,10 @@ Use this repo to discover and track **tech internships** and **entry-level jobs*
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
-| **Nasdaq** | Business Development Intern - 2026 Summer Internship | — | USA - Atlanta - Georgia | F26 | [Apply](https://nasdaq.wd1.myworkdayjobs.com/Global_External_Site/job/USA---Atlanta---Georgia/Business-Development-Intern---2026-Summer-Internship_R0025506) | today |
+| **PrizePicks** | Government Affairs Intern - Summer 2026 | — | Atlanta, Georgia, United States | S26 | [Apply](http://prizepicks.com/position?gh_jid=7661257003) | today |
+| **Hermeus** | Manufacturing Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/922ee234-94aa-473b-8464-03f28a709872) | today |
+| **Cox** | Aviation Intern - Summer 2026 | — | Atlanta GA | S26 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Aviation-Intern---Summer-2026_R202674114) | today |
+| **Assurant** | Software Engineering Intern | — | Florida, Georgia | F26 | [Apply](https://assurant.wd1.myworkdayjobs.com/External_Limited_Posting/job/Florida-Virtual/Summer-2026--Software-Engineering-Intern_R-112866?utm_source=Simplify&ref=Simplify) | today |
 | **Ciena** | Hardware Design Engineer Intern | — | Atlanta, GA | F26 | [Apply](https://ciena.wd5.myworkdayjobs.com/Careers/job/Atlanta/Hardware-Design-Engineer-Intern--Summer-2026-_R030340?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Hermeus** | Avionics Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/0f52df07-bd23-44cb-a24d-3346f6d94201) | 4d ago |
 | **Hermeus** | Flight Software Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/51378fa0-0327-45fd-9420-b6e7d8b56440) | 4d ago |
@@ -81,6 +84,10 @@ Use this repo to discover and track **tech internships** and **entry-level jobs*
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
+| 🔥 **Optiver** | Quantitative Research Intern, PhD (Summer 2026) | PhD | Austin, Texas, United States | S26 | [Apply](https://optiver.com/working-at-optiver/career-opportunities/8055439002/?gh_jid=8055439002) | today |
+| 🔥 **Morgan Stanley** | Intern | — | Jacksonville FL 6375 | F26 | [Apply](https://ms.wd5.myworkdayjobs.com/External/job/Jacksonville-FL-6375/Intern_JR029473) | today |
+| 🔥 **The Walt Disney Company** | Decision Science Graduate Associate | — | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Lake-Buena-Vista-FL-USA/Decision-Science-Graduate-Associate--Summer-Fall-2026_10145527?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **The Walt Disney Company** | Decision Science Product Graduate Associate | — | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Lake-Buena-Vista-FL-USA/Decision-Science-Product-Graduate-Associate--Summer-Fall-2026_10142048?utm_source=Simplify&ref=Simplify) | today |
 | 🔥 **Cisco** | Support Engineer I (Intern) - United States | — | USA-RESEARCH TRIANGLE PARK | F26 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/USA-RESEARCH-TRIANGLE-PARK/Support-Engineer-I--Intern----United-States_2001892) | 4d ago |
 | 🔥 **Cisco** | Quality Assurance I (Intern) - United States | — | RTP, North Carolina, US | F26 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Quality-Assurance-I--Intern----United-States_2001815) | 4d ago |
 | 🔥 **Capital One** | Student Café Ambassador (Intern) - Gulfgate Center and Houston Galleria | — | Houston, TX | F26 | [Apply](https://capitalone.wd12.myworkdayjobs.com/Capital_One/job/Houston-TX/Student-Caf-Ambassador--Intern----Gulfgate-Center-and-Houston-Galleria_R237232-2) | 4d ago |
@@ -94,6 +101,7 @@ Use this repo to discover and track **tech internships** and **entry-level jobs*
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
+| **Assurant** | Software Engineering Intern | — | Florida, Georgia | F26 | [Apply](https://assurant.wd1.myworkdayjobs.com/External_Limited_Posting/job/Florida-Virtual/Summer-2026--Software-Engineering-Intern_R-112866?utm_source=Simplify&ref=Simplify) | today |
 | **Allstate Insurance Company** | ATS Technology Intern Program | — | Texas, Illinois | F26 | [Apply](https://allstate.wd5.myworkdayjobs.com/allstate_careers/job/USA---IL-Remote/XMLNAME-2026-ATS-Technology-Internship-Program_R21520-1?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Copart** | Software Engineer Intern | — | Dallas, TX | F26 | [Apply](https://copart.wd12.myworkdayjobs.com/copart/job/Dallas-TX---Headquarters/Software-Engineering-Intern_JR107700?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Copart** | Software Engineering Intern | — | Dallas, TX | F26 | [Apply](https://copart.wd12.myworkdayjobs.com/copart/job/Dallas-TX---Headquarters/Software-Engineering-Intern_JR107699?utm_source=Simplify&ref=Simplify) | 1d ago |
@@ -137,7 +145,9 @@ Use this repo to discover and track **tech internships** and **entry-level jobs*
 
 ## 📈 Quantitative Finance
 
-No listings yet. Check back soon!
+| Company | Role | Level | Location | Season | Apply | Posted |
+|---------|------|-------|----------|--------|-------|------------|
+| 🔥 **Optiver** | Quantitative Research Intern, PhD (Summer 2026) | PhD | Austin, Texas, United States | S26 | [Apply](https://optiver.com/working-at-optiver/career-opportunities/8055439002/?gh_jid=8055439002) | today |
 
 ---
 
@@ -160,10 +170,14 @@ No listings yet. Check back soon!
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|------------|
-| **Nasdaq** | Business Development Intern - 2026 Summer Internship | — | USA - Atlanta - Georgia | F26 | [Apply](https://nasdaq.wd1.myworkdayjobs.com/Global_External_Site/job/USA---Atlanta---Georgia/Business-Development-Intern---2026-Summer-Internship_R0025506) | today |
 | **Ercot** | Intern Portfolio Management | — | Pflugerville, TX | F26 | [Apply](https://ercot.wd1.myworkdayjobs.com/ercot_careers/job/Taylor-TX/Intern---Portfolio-Management_R2206?utm_source=Simplify&ref=Simplify) | today |
-| **Cadence Design Systems** | Software Intern | — | AUSTIN | F26 | [Apply](https://cadence.wd1.myworkdayjobs.com/External_Careers/job/AUSTIN/Software-Intern_R52911-2) | today |
-| **Bosch** | Marketing Intern | — | Taguig, NCR | F26 | [Apply](https://jobs.smartrecruiters.com/BoschGroup/744000111566801) | today |
+| **PrizePicks** | Government Affairs Intern - Summer 2026 | — | Atlanta, Georgia, United States | S26 | [Apply](http://prizepicks.com/position?gh_jid=7661257003) | today |
+| **Hermeus** | Manufacturing Engineering Intern - (Summer/Fall 2026) | — | Atlanta, GA | F26 | [Apply](https://jobs.lever.co/hermeus/922ee234-94aa-473b-8464-03f28a709872) | today |
+| 🔥 **Morgan Stanley** | Intern | — | Jacksonville FL 6375 | F26 | [Apply](https://ms.wd5.myworkdayjobs.com/External/job/Jacksonville-FL-6375/Intern_JR029473) | today |
+| **S&P Global** | Summer Intern - Product Management | — | Dallas, TX | F26 | [Apply](https://spgi.wd5.myworkdayjobs.com/SPGI_Careers/job/Dallas-TX/Summer-Intern---Product-Management_326496-1) | today |
+| **Cox** | Aviation Intern - Summer 2026 | — | Atlanta GA | S26 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Aviation-Intern---Summer-2026_R202674114) | today |
+| 🔥 **The Walt Disney Company** | Decision Science Graduate Associate | — | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Lake-Buena-Vista-FL-USA/Decision-Science-Graduate-Associate--Summer-Fall-2026_10145527?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **The Walt Disney Company** | Decision Science Product Graduate Associate | — | Celebration, FL | F26 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Lake-Buena-Vista-FL-USA/Decision-Science-Product-Graduate-Associate--Summer-Fall-2026_10142048?utm_source=Simplify&ref=Simplify) | today |
 | **xAI** | Engineering Internship (Summer 2026) | MS | Memphis, TN | S26 | [Apply](https://job-boards.greenhouse.io/xai/jobs/5054417007) | 1d ago |
 | **Applied Materials** | 2026 Summer Mechanical Engineer Intern (Austin, TX) | — | Austin,TX | F26 | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/XMLNAME-2026-Summer-Mechanical-Engineer-Intern--Austin--TX-_R2611958) | 1d ago |
 | **Leidos** | Aerospace M&S Engineer Intern | — | Huntsville, AL | F26 | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Aerospace-M-S-Engineer-Intern_R-00177886) | 1d ago |
