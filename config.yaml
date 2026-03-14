@@ -1675,16 +1675,6 @@ filters:
       - "data engineer"
       - "business intelligence"
       - "analytics"
-    quant:
-      - "quantitative"
-      - "quant"
-      - "algorithmic trading"
-      - "systematic"
-    pm:
-      - "product manager"
-      - "program manager"
-      - "technical program manager"
-      - "tpm"
     hardware:
       - "hardware engineer"
       - "embedded"
@@ -1745,16 +1735,13 @@ ai:
       or explicitly mentions visa sponsorship or international candidates welcome
     - sponsorship: check for visa sponsorship mentions in the description
     - tech_stack: extract specific technologies mentioned in the description
-    - preferred_class_years: extract eligible class years/grade levels (freshman, sophomore, junior, senior, masters, phd).
-      If the description says "undergrad" or "undergraduate", use ["freshman","sophomore","junior","senior"].
-      If no class year restriction is mentioned, return an empty list.
 
     {
       "is_internship": true/false,
       "season": "summer_2026|fall_2026|spring_2027|summer_2027|none",
       "start_date": "YYYY-MM-DD or YYYY-MM or null",
       "end_date": "YYYY-MM-DD or YYYY-MM or null",
-      "category": "swe|ml_ai|data_science|quant|pm|hardware|other",
+      "category": "swe|ml_ai|data_science|hardware|other",
       "locations": ["city, state abbreviation"],
       "is_georgia": true/false,
       "sponsorship": "sponsors|no_sponsorship|us_citizenship|unknown",
@@ -1764,7 +1751,6 @@ ai:
       "open_to_international": true/false,
       "tech_stack": ["Python", "React", ...],
       "industry": "fintech|healthcare|energy|ecommerce|banking|automotive|gaming|social_media|cybersecurity|cloud|enterprise|ai_ml|aerospace|telecom|media|food|logistics|semiconductor|other",
-      "preferred_class_years": ["freshman", "sophomore", "junior", "senior", "masters", "phd"],
       "confidence": 0.0-1.0
     }
   entry_level_enrichment_prompt: |

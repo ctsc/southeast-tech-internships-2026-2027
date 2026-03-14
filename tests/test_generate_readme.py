@@ -14,7 +14,6 @@ from scripts.utils.models import (
 from scripts.utils.readme_renderer import (
     _count_open,
     _count_open_faang,
-    _format_class_years,
     _format_listing_row,
     _format_locations,
     _format_relative_date,
@@ -220,8 +219,8 @@ class TestFormatListingRow:
         row = _format_listing_row(listing)
         assert row.startswith("|")
         assert row.endswith("|")
-        # 7 columns = 8 pipes
-        assert row.count("|") == 8
+        # 6 columns = 7 pipes
+        assert row.count("|") == 7
 
     def test_season_badge_in_row(self):
         listing = _make_listing(season="summer_2026")
@@ -411,8 +410,8 @@ class TestRenderCategorySection:
     def test_with_listings(self):
         listings = [_make_listing(), _make_listing(id="x2", role="Backend Intern")]
         section = _render_category_section(RoleCategory.SWE, "💻", "Software Engineering", listings)
-        assert "| Company | Role | Level | Location | Season | Apply | Posted |" in section
-        assert "|---------|------|-------|----------|--------|-------|------------|" in section
+        assert "| Company | Role | Location | Season | Apply | Posted |" in section
+        assert "|---------|------|----------|--------|-------|--------|" in section
         assert "**TestCo**" in section
 
     def test_sorted_by_date_desc(self):
@@ -462,13 +461,13 @@ class TestRenderReadme:
         listings = [
             _make_listing(id="swe1", category=RoleCategory.SWE, locations=["Atlanta, GA"]),
             _make_listing(id="ml1", category=RoleCategory.ML_AI, role="ML Intern", locations=["Miami, FL"]),
-            _make_listing(id="pm1", category=RoleCategory.PM, role="PM Intern", locations=["Nashville, TN"]),
+            _make_listing(id="hw1", category=RoleCategory.HARDWARE, role="HW Intern", locations=["Nashville, TN"]),
         ]
         db = _make_db(listings)
         readme = render_readme(db)
         assert "## 💻 Software Engineering" in readme
         assert "## 🤖 ML / AI / Data Science" in readme
-        assert "## 📱 Product Management" in readme
+        assert "## 🔧 Hardware Engineering" in readme
 
     @patch("scripts.utils.readme_renderer.get_config", return_value=_MOCK_CONFIG)
     def test_stats_counts_se_only(self, mock_config):
@@ -857,94 +856,3 @@ class TestReadmeHeader:
         assert "FAANG+" not in readme
 
 
-# ---------------------------------------------------------------------------
-# _format_class_years
-# ---------------------------------------------------------------------------
-
-
-class TestFormatClassYears:
-    """Tests for _format_class_years helper."""
-
-    def test_empty_list_returns_em_dash(self):
-        assert _format_class_years([]) == "\u2014"
-
-    def test_single_junior(self):
-        assert _format_class_years(["junior"]) == "Jr"
-
-    def test_single_phd(self):
-        assert _format_class_years(["phd"]) == "PhD"
-
-    def test_junior_senior(self):
-        assert _format_class_years(["junior", "senior"]) == "Jr/Sr"
-
-    def test_masters_phd(self):
-        assert _format_class_years(["masters", "phd"]) == "MS/PhD"
-
-    def test_undergrad_shortcut(self):
-        assert _format_class_years(["freshman", "sophomore", "junior", "senior"]) == "Undergrad"
-
-    def test_all_shortcut(self):
-        result = _format_class_years(
-            ["freshman", "sophomore", "junior", "senior", "masters", "phd"]
-        )
-        assert result == "All"
-
-    def test_undergrad_plus_grad_is_all(self):
-        """All 6 years should display as 'All'."""
-        result = _format_class_years(
-            ["freshman", "sophomore", "junior", "senior", "masters", "phd"]
-        )
-        assert result == "All"
-
-    def test_freshman_sophomore(self):
-        assert _format_class_years(["freshman", "sophomore"]) == "Fr/So"
-
-    def test_three_years(self):
-        assert _format_class_years(["sophomore", "junior", "senior"]) == "So/Jr/Sr"
-
-    def test_undergrad_plus_masters_not_undergrad_label(self):
-        """Undergrad + masters should NOT show as 'Undergrad' — it's more."""
-        result = _format_class_years(
-            ["freshman", "sophomore", "junior", "senior", "masters"]
-        )
-        assert result == "Fr/So/Jr/Sr/MS"
-
-
-# ---------------------------------------------------------------------------
-# Level column in table
-# ---------------------------------------------------------------------------
-
-
-class TestLevelColumnInTable:
-    """Tests for the Level column in rendered tables."""
-
-    @patch("scripts.utils.readme_renderer.get_config")
-    def test_table_header_has_level(self, mock_config):
-        """Table header should include Level column."""
-        mock_config.return_value = _MOCK_CONFIG
-        listing = _make_listing(locations=["Atlanta, GA"])
-        db = _make_db([listing])
-        readme = render_readme(db)
-        assert "| Company | Role | Level |" in readme
-
-    def test_listing_row_has_level_column(self):
-        """A listing row should contain the level field."""
-        listing = _make_listing(preferred_class_years=["junior", "senior"])
-        row = _format_listing_row(listing)
-        assert "Jr/Sr" in row
-
-    def test_listing_row_empty_class_years_shows_dash(self):
-        """Listing with no class years shows em dash."""
-        listing = _make_listing(preferred_class_years=[])
-        row = _format_listing_row(listing)
-        assert "\u2014" in row
-
-    @patch("scripts.utils.readme_renderer.get_config")
-    def test_legend_has_level_abbreviations(self, mock_config):
-        """Legend should include level abbreviation explanations."""
-        mock_config.return_value = _MOCK_CONFIG
-        db = _make_db([])
-        readme = render_readme(db)
-        assert "Fr/So/Jr/Sr" in readme
-        assert "MS/PhD" in readme
-        assert "Undergrad" in readme

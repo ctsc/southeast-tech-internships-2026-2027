@@ -5,11 +5,10 @@ categorized internship tables, stats, and legend. Only includes Southeast
 region listings (GA, FL, AL, TX, SC, NC, TN).
 """
 
-import json
 import logging
 from datetime import date
 
-from scripts.utils.config import PROJECT_ROOT, get_config
+from scripts.utils.config import get_config
 from scripts.utils.models import (
     JobListing,
     JobsDatabase,
@@ -24,11 +23,12 @@ CATEGORY_INFO: list[tuple[RoleCategory, str, str, str]] = [
     (RoleCategory.SWE, "Software Engineering", "-software-engineering", "💻"),
     (RoleCategory.ML_AI, "ML / AI / Data Science", "-ml--ai--data-science", "🤖"),
     (RoleCategory.DATA_SCIENCE, "Data Science & Analytics", "-data-science--analytics", "📊"),
-    (RoleCategory.QUANT, "Quantitative Finance", "-quantitative-finance", "📈"),
-    (RoleCategory.PM, "Product Management", "-product-management", "📱"),
     (RoleCategory.HARDWARE, "Hardware Engineering", "-hardware-engineering", "🔧"),
     (RoleCategory.OTHER, "Other", "-other", "🔹"),
 ]
+
+# Categories that have been removed from display — their listings fold into OTHER
+_FOLDED_CATEGORIES: set[RoleCategory] = {RoleCategory.QUANT, RoleCategory.PM}
 
 
 def _format_locations(locations: list[str], max_display: int = 3) -> str:
@@ -79,43 +79,8 @@ def _escape_markdown_cell(text: str) -> str:
     return text.replace("|", "\\|")
 
 
-_CLASS_YEAR_ABBR: dict[str, str] = {
-    "freshman": "Fr",
-    "sophomore": "So",
-    "junior": "Jr",
-    "senior": "Sr",
-    "masters": "MS",
-    "phd": "PhD",
-}
-
-_ALL_UNDERGRAD = {"freshman", "sophomore", "junior", "senior"}
-_ALL_YEARS = {"freshman", "sophomore", "junior", "senior", "masters", "phd"}
-
-
-def _format_class_years(years: list[str]) -> str:
-    """Format a list of class years into a short display string.
-
-    Examples: "Jr/Sr", "Undergrad", "All", "MS/PhD", "—" (empty).
-    """
-    if not years:
-        return "\u2014"  # em dash
-
-    year_set = set(years)
-
-    if year_set >= _ALL_YEARS:
-        return "All"
-    if year_set >= _ALL_UNDERGRAD and not (year_set & {"masters", "phd"}):
-        return "Undergrad"
-
-    # Preserve canonical order
-    order = ["freshman", "sophomore", "junior", "senior", "masters", "phd"]
-    abbrs = [_CLASS_YEAR_ABBR[y] for y in order if y in year_set]
-    return "/".join(abbrs)
-
-
 def _format_listing_row(
     listing: JobListing,
-    include_level: bool = True,
     include_season: bool = True,
 ) -> str:
     """Format a single listing as a markdown table row."""
@@ -145,8 +110,6 @@ def _format_listing_row(
         apply_link = f"[Apply]({apply_url})"
 
     parts = [company, role]
-    if include_level:
-        parts.append(_format_class_years(listing.preferred_class_years))
     parts.append(locations)
     if include_season:
         parts.append(_format_season(listing.season))
@@ -182,8 +145,8 @@ def _render_category_section(
         lines.append("")
         return "\n".join(lines)
 
-    lines.append("| Company | Role | Level | Location | Season | Apply | Posted |")
-    lines.append("|---------|------|-------|----------|--------|-------|------------|")
+    lines.append("| Company | Role | Location | Season | Apply | Posted |")
+    lines.append("|---------|------|----------|--------|-------|--------|")
     for listing in sorted_listings:
         lines.append(_format_listing_row(listing))
     lines.append("")
@@ -209,15 +172,19 @@ SOUTHEAST_PATTERNS: dict[str, list[str]] = {
 
 
 def _is_southeast_listing(listing: JobListing) -> bool:
-    """Check if a listing is in the Southeast region (GA, FL, AL, TX, SC, NC, TN)."""
+    """Check if a listing is in the Southeast region (GA, FL, AL, TX, SC, NC, TN) or remote."""
     for loc in listing.locations:
         loc_lower = loc.lower()
+        if "remote" in loc_lower:
+            return True
         for pattern in SOUTHEAST_PATTERNS["states"]:
             if pattern in loc_lower:
                 return True
         for city in SOUTHEAST_PATTERNS["cities"]:
             if city in loc_lower:
                 return True
+    if listing.remote_friendly:
+        return True
     return False
 
 
@@ -274,64 +241,14 @@ def _count_open_georgia(listings: list[JobListing]) -> int:
     ])
 
 
-def _format_entry_level_row(listing: JobListing) -> str:
-    """Format a single entry-level listing as a markdown table row (no Level/Season columns)."""
-    return _format_listing_row(listing, include_level=False, include_season=False)
-
-
-def _render_entry_level_section(listings: list[JobListing]) -> str:
-    """Render the entry-level jobs in GA section."""
-    lines = [
-        "## 🍑 Entry-Level Jobs in GA",
-        "",
-    ]
-
-    ga_listings = [x for x in listings if _is_georgia_listing(x)]
-
-    open_listings = [x for x in ga_listings if x.status == ListingStatus.OPEN]
-    closed_listings = [x for x in ga_listings if x.status == ListingStatus.CLOSED]
-
-    sorted_listings = sorted(
-        open_listings + closed_listings,
-        key=lambda x: x.date_added,
-        reverse=True,
-    )
-
-    if not sorted_listings:
-        lines.append("No entry-level listings yet. Check back soon!")
-        lines.append("")
-        return "\n".join(lines)
-
-    lines.append("| Company | Role | Location | Apply | Posted |")
-    lines.append("|---------|------|----------|-------|--------|")
-    for listing in sorted_listings:
-        lines.append(_format_entry_level_row(listing))
-    lines.append("")
-    return "\n".join(lines)
-
-
-def _load_entry_level_db() -> JobsDatabase | None:
-    """Load entry_level_jobs.json if it exists."""
-    el_path = PROJECT_ROOT / "data" / "entry_level_jobs.json"
-    try:
-        with open(el_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return JobsDatabase.model_validate(data)
-    except FileNotFoundError:
-        return None
-    except Exception as exc:
-        logger.warning("Failed to load entry_level_jobs.json: %s", exc)
-        return None
-
-
-def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> str:
+def render_readme(jobs_db: JobsDatabase) -> str:
     """Render a complete README.md from a JobsDatabase.
 
-    Only includes listings in the Southeast region (GA, FL, AL, TX, SC, NC, TN).
+    Only includes listings in the Southeast region (GA, FL, AL, TX, SC, NC, TN)
+    plus remote-friendly roles.
 
     Args:
         jobs_db: The jobs database to render.
-        el_db: Optional entry-level jobs database. If None, loads from disk.
 
     Returns:
         A string containing the full README markdown.
@@ -350,10 +267,14 @@ def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> s
     last_updated_est = jobs_db.last_updated.replace(tzinfo=timezone.utc).astimezone(est)
     timestamp = last_updated_est.strftime("%B %d, %Y at %I:%M %p EST")
 
-    # Compute category counts (SE-only)
+    # Compute category counts (SE-only), folding removed categories into OTHER
     category_counts: dict[RoleCategory, int] = {}
     for cat, _, _, _ in CATEGORY_INFO:
-        category_counts[cat] = _count_open(listings, cat)
+        count = _count_open(listings, cat)
+        if cat == RoleCategory.OTHER:
+            for folded in _FOLDED_CATEGORIES:
+                count += _count_open(listings, folded)
+        category_counts[cat] = count
     total_open = sum(category_counts.values())
 
     # Build the issue URL
@@ -370,8 +291,8 @@ def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> s
     parts.append("> Built and maintained by [Carter](https://github.com/ctsc)")
     parts.append("")
     parts.append(
-        "Use this repo to discover and track **tech internships** and **entry-level jobs** "
-        "across software engineering, ML/AI, data science, quant, and more."
+        "Use this repo to discover and track **tech internships** "
+        "across software engineering, ML/AI, data science, and more."
     )
     parts.append("")
     parts.append(
@@ -397,18 +318,6 @@ def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> s
     parts.append(f"| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | {big_tech_count} |")
     parts.append(f"| 🍑 [Roles Open in GA](#-roles-open-in-ga) | {georgia_count} |")
 
-    # Entry-level stats
-    if el_db is None:
-        el_db = _load_entry_level_db()
-    el_ga_count = 0
-    if el_db:
-        el_ga_listings = [
-            x for x in el_db.listings
-            if x.status == ListingStatus.OPEN and _is_georgia_listing(x)
-        ]
-        el_ga_count = len(el_ga_listings)
-    parts.append(f"| 🍑 [Entry-Level Jobs in GA](#-entry-level-jobs-in-ga) | {el_ga_count} |")
-
     parts.append(f"| **Total** | **{total_open}** |")
     parts.append("")
     parts.append("---")
@@ -427,11 +336,6 @@ def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> s
     parts.append("| F26 | Fall 2026 |")
     parts.append("| Sp27 | Spring 2027 |")
     parts.append("| S27 | Summer 2027 |")
-    parts.append("| Fr/So/Jr/Sr | Freshman / Sophomore / Junior / Senior |")
-    parts.append("| MS/PhD | Masters / PhD |")
-    parts.append("| Undergrad | All undergraduate years |")
-    parts.append("| All | All class years |")
-    parts.append("| — | Not specified |")
     parts.append("")
     parts.append("---")
     parts.append("")
@@ -447,13 +351,6 @@ def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> s
     parts.append(ga_section)
     parts.append("---")
     parts.append("")
-
-    # --- Entry-Level Jobs in GA ---
-    if el_db and el_db.listings:
-        el_section = _render_entry_level_section(el_db.listings)
-        parts.append(el_section)
-        parts.append("---")
-        parts.append("")
 
     # --- Big Tech in the Southeast ---
     big_tech_listings = [
@@ -471,7 +368,8 @@ def render_readme(jobs_db: JobsDatabase, el_db: JobsDatabase | None = None) -> s
     for cat, title, anchor, emoji in CATEGORY_INFO:
         cat_listings = [
             x for x in listings
-            if x.category == cat and _is_southeast_listing(x)
+            if (x.category == cat or (cat == RoleCategory.OTHER and x.category in _FOLDED_CATEGORIES))
+            and _is_southeast_listing(x)
         ]
         # Skip OTHER section if empty
         if cat == RoleCategory.OTHER and not cat_listings:

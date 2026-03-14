@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 import pytest
 
-from main import main, parse_args, run_clean, run_entry_level_pipeline, run_full_pipeline
+from main import main, parse_args, run_clean, run_full_pipeline
 
 
 class TestParseArgs:
@@ -142,19 +142,6 @@ class TestPipelineExitCodes:
         mock_step.return_value = True
         # Should NOT raise SystemExit
         run_full_pipeline()
-
-    @patch("main._run_step")
-    def test_entry_level_pipeline_exits_1_on_failure(self, mock_step):
-        mock_step.return_value = False
-        with pytest.raises(SystemExit) as exc_info:
-            run_entry_level_pipeline()
-        assert exc_info.value.code == 1
-
-    @patch("main._run_step")
-    def test_entry_level_pipeline_no_exit_on_success(self, mock_step):
-        mock_step.return_value = True
-        # Should NOT raise SystemExit
-        run_entry_level_pipeline()
 
 
 class TestRunClean:
