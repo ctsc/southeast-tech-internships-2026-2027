@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: September 09, 2026 at 11:13 PM EST
+> 🤖 **Auto-updated every 6 hours** | Last updated: September 10, 2026 at 06:15 AM EST
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -16,17 +16,17 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 
 | Category | Open Roles |
 |----------|-----------|
-| 💻 [Software Engineering](#-software-engineering) | 51 |
+| 💻 [Software Engineering](#-software-engineering) | 49 |
 | 🛠️ [Product Engineering](#-product-engineering) | 0 |
 | 📱 [Product Management](#-product-management) | 10 |
 | 🤖 [ML / AI](#-ml--ai) | 8 |
-| 🔹 [Other](#-other) | 69 |
-| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 28 |
+| 🔹 [Other](#-other) | 70 |
+| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 26 |
 | 🍑 [Roles Open in GA](#-roles-open-in-ga) | 44 |
 | 🎓 Graduate-Friendly Internships | 2 |
 | 💼 [Entry-Level Roles in GA](#-entry-level-roles-in-ga) | 28 |
-| 💼 Entry-Level (Southeast) | 96 |
-| **Total Internships** | **138** |
+| 💼 Entry-Level (Southeast) | 99 |
+| **Total Internships** | **137** |
 
 ---
 
@@ -43,8 +43,8 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 | 🔥 **Home Depot** | 2027 Summer Internship - Human Resources | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Human-Resources_Req192106) | today |
 | 🔥 **Home Depot** | 2027 Summer Internship - User Experience | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---User-Experience_Req192109) | today |
 | **Johnson & Johnson** | Athens Manufacturing Plant 2027 Co-Op | — | Athens, Georgia, United States of America | S27 | [Apply](https://jj.wd5.myworkdayjobs.com/JJ/job/Athens-Georgia-United-States-of-America/Athens-Manufacturing-Plant-2027-Co-Op_R-097654-1) | today |
-| **Equifax** | Finance Intern | — | USA - Georgia - Atlanta - Midtown 30309 | S27 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Atlanta---Midtown-30309/Finance-Intern_J00178808) | today |
 | **Equifax** | Security Intern | — | USA - Georgia - Alpharetta - 30005 | S27 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Alpharetta---30005/Security-Intern_J00178958) | today |
+| **Intuitive Surgical** | Financial Analyst Intern | — | Peachtree Corners, GA | S27 | [Apply](https://jobs.smartrecruiters.com/Intuitive/744000146505579) | today |
 | **Hermeus** | GNC & Flight Software Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/555263f6-c5ec-4489-ab07-1aea546b70e7) | 1d ago |
 | **Hermeus** | Manufacturing Engineering Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/1bdf3754-5649-4a50-913e-b05140cb004f) | 1d ago |
 | **Hermeus** | Mission Systems Engineering Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/9229aa88-f54d-4ecd-85ee-b31f53b4207d) | 1d ago |
@@ -85,8 +85,6 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|--------|
-| 🔥 **Epic Games** | Backend Services Programmer Intern | — | Cary,North Carolina,United States | S27 | [Apply](https://epicgames.com/careers/jobs/6183293004?gh_jid=6183293004) | today |
-| 🔥 **Epic Games** | UI Programmer Intern | — | Cary,North Carolina,United States | S27 | [Apply](https://epicgames.com/careers/jobs/6183401004?gh_jid=6183401004) | today |
 | 🔥 **Cisco** | Financial Analyst I - LIFT Intern | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Financial-Analyst-I---LIFT-Intern_2022092) | today |
 | 🔥 **BlackRock** | Veteran & Elite Athletes Internship Programme - Edinburgh | — | Edinburgh, Scotland | S27 | [Apply](https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional/job/Edinburgh-Scotland/Veteran---Elite-Athletes-Internship-Programme---Edinburgh_R266225) | today |
 | 🔥 **The Walt Disney Company** | Disney Live Entertainment Music Production Intern, Spring 2027 | — | Orlando, FL, USA | Sp27 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Orlando-FL-USA/Disney-Live-Entertainment-Music-Production-Intern--Spring-2027_10159178-1) | today |
@@ -97,9 +95,12 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 | 🔥 **Home Depot** | 2027 Summer Internship - PhD Data Science 🎓 | MS/PhD | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---PhD-Data-Science_Req191948) | today |
 | 🔥 **Home Depot** | 2027 Summer Internship - Human Resources | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Human-Resources_Req192106) | today |
 | 🔥 **Home Depot** | 2027 Summer Internship - User Experience | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---User-Experience_Req192109) | today |
-| 🔥 **Epic Games** | Backend Services Programmer Intern - Epic Games Services | — | Cary, NC | S27 | [Apply](https://epicgames.com/careers/jobs/6183293004?gh_jid=6183293004&utm_source=Simplify&ref=Simplify) | today |
 | 🔥 **Dell Technologies** | Software Engineer Intern - Client Solutions Group Engineering | — | Austin, TX | S27 | [Apply](https://iawmqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/careers/job/298217?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **Cisco** | Security Consulting Engineer I (Intern) - United States | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Security-Consulting-Engineer-I--Intern----United-States_2024817) | today |
+| 🔥 **Epic Games** | Backend Services Programmer Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | today |
 | 🔥 **Epic Games** | Level Design Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | today |
+| 🔥 **Epic Games** | UI Programmer Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | today |
+| 🔥 **Epic Games** | Backend Services Programmer Intern - Epic Games Services 🔒 | — | Cary, NC | S27 | 🔒 Closed | today |
 | 🔥 **Cisco** | Software Consulting Engineer I (Intern) United States | — | USA-RESEARCH TRIANGLE PARK | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/USA-RESEARCH-TRIANGLE-PARK/Software-Consulting-Engineer-I--Intern--United-States_2025180) | 1d ago |
 | 🔥 **Boeing** | Boeing Engineering & Technology Innovation Graduate Researcher Program, Applied Mathematician Intern | — | USA - North Charleston, SC | S27 | [Apply](https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/USA---North-Charleston-SC/Boeing-Engineering---Technology-Innovation-Graduate-Researcher-Program--Applied-Mathematician-Intern_JR2026523704) | 1d ago |
 | 🔥 **Home Depot** | 2027 Summer Internship - Software Engineering | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Software-Engineering_Req191937) | 1d ago |
@@ -122,10 +123,10 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|--------|
-| 🔥 **Epic Games** | Backend Services Programmer Intern | — | Cary,North Carolina,United States | S27 | [Apply](https://epicgames.com/careers/jobs/6183293004?gh_jid=6183293004) | today |
-| **RTX** | Software Engineering Intern (Summer 2027) | — | US-AL-HUNTSVILLE-382 ~ 420 Jan Davis Dr ~ DAVIS 382 | S27 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-382--420-Jan-Davis-Dr--DAVIS-382/Software-Engineering-Intern--Summer-2027-_01872655) | today |
-| 🔥 **Epic Games** | Backend Services Programmer Intern - Epic Games Services | — | Cary, NC | S27 | [Apply](https://epicgames.com/careers/jobs/6183293004?gh_jid=6183293004&utm_source=Simplify&ref=Simplify) | today |
 | 🔥 **Dell Technologies** | Software Engineer Intern - Client Solutions Group Engineering | — | Austin, TX | S27 | [Apply](https://iawmqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/careers/job/298217?utm_source=Simplify&ref=Simplify) | today |
+| **RTX** | Software Engineering Intern | — | Huntsville, AL | S27 | [Apply](https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-AL-HUNTSVILLE-382--420-Jan-Davis-Dr--DAVIS-382/Software-Engineering-Intern--Summer-2027-_01872655?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **Epic Games** | Backend Services Programmer Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | today |
+| 🔥 **Epic Games** | Backend Services Programmer Intern - Epic Games Services 🔒 | — | Cary, NC | S27 | 🔒 Closed | today |
 | **Hermeus** | Mission Systems Engineering Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/9229aa88-f54d-4ecd-85ee-b31f53b4207d) | 1d ago |
 | **Hermeus** | Software Engineering Intern (Command & Control) - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/5b08e2df-c9db-4831-aece-67d89e744796) | 1d ago |
 | **Hermeus** | Software Engineering Intern (HIL) - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/d87ed913-affc-475e-b721-c5b5f11c3c7b) | 1d ago |
@@ -220,7 +221,6 @@ No listings yet. Check back soon!
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|--------|
-| 🔥 **Epic Games** | UI Programmer Intern | — | Cary,North Carolina,United States | S27 | [Apply](https://epicgames.com/careers/jobs/6183401004?gh_jid=6183401004) | today |
 | **Hermeus** | Supply Chain Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/17a0b249-c6c4-4361-ab9c-1aa7c4472591) | today |
 | 🔥 **Cisco** | Financial Analyst I - LIFT Intern | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Financial-Analyst-I---LIFT-Intern_2022092) | today |
 | 🔥 **BlackRock** | Veteran & Elite Athletes Internship Programme - Edinburgh | — | Edinburgh, Scotland | S27 | [Apply](https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional/job/Edinburgh-Scotland/Veteran---Elite-Athletes-Internship-Programme---Edinburgh_R266225) | today |
@@ -242,11 +242,14 @@ No listings yet. Check back soon!
 | **Applied Materials** | Summer 2027 Supply Chain Materials Project Manager Intern- Master's (Austin, TX) 🎓 | MS/PhD | Austin,TX | S27 | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Summer-2027-Supply-Chain-Materials-Project-Manager-Intern--Master-s--Austin--TX-_R2627069) | today |
 | **Applied Materials** | Finance Intern (MBA - Austin, TX) | — | Austin,TX | S27 | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Finance-Intern--MBA---Austin--TX-_R2624934) | today |
 | **Merck** | 2027 Future Talent Program - Wilson Packaging Site Summer Internship | — | USA - North Carolina - Wilson | S27 | [Apply](https://msd.wd5.myworkdayjobs.com/searchjobs/job/USA---North-Carolina---Wilson/XMLNAME-2027-Future-Talent-Program---Wilson-Packaging-Site-Summer-Internship_R412129) | today |
-| **Equifax** | Finance Intern | — | USA - Georgia - Atlanta - Midtown 30309 | S27 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Atlanta---Midtown-30309/Finance-Intern_J00178808) | today |
 | **Equifax** | Security Intern | — | USA - Georgia - Alpharetta - 30005 | S27 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Alpharetta---30005/Security-Intern_J00178958) | today |
 | **WP Engine** | Internal Communications Intern | — | Austin | S27 | [Apply](https://wpengine.wd1.myworkdayjobs.com/WP_Engine/job/Austin/Internal-Communications-Intern_JR102849) | today |
 | **Continental** | Intern - Credit Analyst, Year-Round | — | Fort Mill, SC | S27 | [Apply](https://jobs.smartrecruiters.com/Continental/744000147269220) | today |
+| 🔥 **Cisco** | Security Consulting Engineer I (Intern) - United States | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Security-Consulting-Engineer-I--Intern----United-States_2024817) | today |
+| **Merck** | 2027 Future Talent Program - Manufacturing Intern | — | USA - North Carolina - Durham (Old Oxford) | S27 | [Apply](https://msd.wd5.myworkdayjobs.com/searchjobs/job/USA---North-Carolina---Durham-Old-Oxford/XMLNAME-2027-Future-Talent-Program---Manufacturing-Intern_R416739) | today |
+| **Intuitive Surgical** | Financial Analyst Intern | — | Peachtree Corners, GA | S27 | [Apply](https://jobs.smartrecruiters.com/Intuitive/744000146505579) | today |
 | 🔥 **Epic Games** | Level Design Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | today |
+| 🔥 **Epic Games** | UI Programmer Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | today |
 | **Hermeus** | GNC & Flight Software Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/555263f6-c5ec-4489-ab07-1aea546b70e7) | 1d ago |
 | **Hermeus** | Manufacturing Engineering Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/1bdf3754-5649-4a50-913e-b05140cb004f) | 1d ago |
 | **Hermeus** | Structures/Mechanical Engineering Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/60b5d40a-1065-4bd2-8c72-6b2fb69d4761) | 1d ago |
@@ -314,7 +317,6 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | 🔥 **Home Depot** | Software Engineer II - Reliability Engineering Tooling (Remote) | SWE II | GEORGIA - VIRTUAL - GA01 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/GEORGIA---VIRTUAL---GA01/Software-Engineer-II---Reliability-Engineering-Tooling--Remote-_Req192135) | today |
 | 🔥 **Home Depot** | Associate Product Manager Program (Summer 2027) | New Grad | STORE SUPPORT CENTER, ATLANTA - 9090 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/Associate-Product-Manager-Program--Summer-2027-_Req192004) | today |
 | 🔥 **Home Depot** | Software Engineer - Workforce Management | New Grad | GEORGIA - VIRTUAL - GA01 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/GEORGIA---VIRTUAL---GA01/Software-Engineer---Workforce-Management_Req190607) | today |
-| **Cox** | Sr Software Engineer | New Grad | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Sr-Software-Engineer_R202681106) | today |
 | **Cox** | Software Engineer II - 20269 | SWE II | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Software-Engineer-II---20269_R202681181) | today |
 | 🔥 **Coca-Cola** | RGM Product Manager, Experience Design | New Grad | US - GA - Atlanta | [Apply](https://coke.wd1.myworkdayjobs.com/coca-cola-careers/job/US---GA---Atlanta/Director--RGM-Product-Experience-Design_R-145096) | today |
 | **NCR Voyix** | SW Engineer II | SWE II | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/SW-Engineer-II_R0157597-1) | today |
@@ -322,6 +324,7 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | **NCR Voyix** | SW Engineer I | SWE I | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/SW-Engineer-I_R0157595) | today |
 | **NCR Voyix** | Software Engineer | New Grad | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/Software-Engineer_R0158135) | today |
 | **NCR Atleos** | Field Service Technician I (entry level)- Atlanta, GA (East) | SWE I | GEORGIA VIRTUAL, USA | [Apply](https://ncratleos.wd1.myworkdayjobs.com/ext_atleos_us/job/GEORGIA-VIRTUAL-USA/Field-Service-Technician-I--entry-level---Atlanta--GA--East-_R1154274-3) | today |
+| 🔥 **Workday** | Sr. Software Engineer (Distributed Systems) | New Grad | USA, GA, Atlanta | [Apply](https://workday.wd5.myworkdayjobs.com/Workday/job/USA-GA-Atlanta/Sr-Software-Engineer--Distributed-Systems-_JR-0108061) | today |
 | **RELX** | Software Engineer New Grad | New Grad | Alpharetta, GA | [Apply](https://relx.wd3.myworkdayjobs.com/en-US/relx/job/Alpharetta-GA/Tech-Accelerate-Graduate-Program---Software-Engineer--Alpharetta---June-_R117626-2?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **LexisNexis Risk Solutions** | Software Engineer New Grad | New Grad | Alpharetta, GA | [Apply](https://relx.wd3.myworkdayjobs.com/en-US/RiskSolutions/job/Alpharetta-GA/Tech-Accelerate-Graduate-Program---Software-Engineer--Alpharetta---June-_R117626-1?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **LexisNexis Risk Solutions** | Software Engineer New Grad - Risk Solutions Technology Graduate Program | New Grad | Alpharetta, GA | [Apply](https://relx.wd3.myworkdayjobs.com/en-US/RiskSolutions/job/Alpharetta-GA/Tech-Accelerate-Graduate-Program---Software-Engineer--Alpharetta---January-_R117617?utm_source=Simplify&ref=Simplify) | 1d ago |
@@ -343,7 +346,6 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | 🔥 **Anduril** | Software Engineer, Manufacturing Test | New Grad | Atlanta, Georgia, United States | [Apply](https://boards.greenhouse.io/andurilindustries/jobs/5232395007?gh_jid=5232395007) | today |
 | **Bandwidth** | Software Engineer (Voice) | New Grad | Raleigh, NC | [Apply](https://job-boards.greenhouse.io/bandwidth/jobs/8159576) | today |
 | 🔥 **Cisco** | Software Engineer, Structured Storage | New Grad | RTP, North Carolina, US | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Software-Engineer--Structured-Storage_2019277) | today |
-| **RTX** | Software Engineer II (Onsite) | SWE II | US-AL-HUNTSVILLE-401 ~ 401 Jan Davis Dr NW ~ JAN DAVIS 401 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-401--401-Jan-Davis-Dr-NW--JAN-DAVIS-401/Software-Engineer-II--Onsite-_01870003) | today |
 | **RTX** | Principle Software Engineer – Product Owner | New Grad | US-AL-HUNTSVILLE-401 ~ 401 Jan Davis Dr NW ~ JAN DAVIS 401 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-401--401-Jan-Davis-Dr-NW--JAN-DAVIS-401/Principle-Software-Engineer---Product-Owner_01868687) | today |
 | **RTX** | Systems Engineering – Systems Engineer I (Onsite) | SWE I | US-AL-HUNTSVILLE-401 ~ 401 Jan Davis Dr NW ~ JAN DAVIS 401 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-401--401-Jan-Davis-Dr-NW--JAN-DAVIS-401/Systems-Engineering---Systems-Engineer-I--Onsite-_01870661) | today |
 | **Blue Origin** | Avionics Systems Engineer II - Payload Integration | SWE II | Space Coast, FL | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Space-Coast-FL/Avionics-System-Integrator---Payloads_R68663) | today |
@@ -361,15 +363,16 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | **Leidos** | Software Engineer - 25k Sign on Bonus | New Grad | Columbia, MD | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Columbia-MD/Software-Engineer---25k-Sign-on-Bonus_R-00189576) | today |
 | **Leidos** | Signals Software Engineer | New Grad | Columbia, MD | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Columbia-MD/Signals-Software-Engineer_R-00187842) | today |
 | **Leidos** | Software Developer II | SWE II | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Software-Developer-II_R-00191020) | today |
-| **Leidos** | Software Engineer - Kinetic Effects | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Software-Engineer---Kinetic-Effects_R-00189066) | today |
 | **Leidos** | Electronic Warfare Software Engineer | New Grad | 2682 Huntsville AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/2682-Huntsville-AL/Electronic-Warfare-Software-Engineer_R-00190536) | today |
-| **Leidos** | Junior Software Engineer | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Junior-Software-Engineer_R-00191407) | today |
-| **Cox** | Sr Software Engineer | New Grad | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Sr-Software-Engineer_R202681106) | today |
 | **Cox** | Software Engineer II - 20269 | SWE II | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Software-Engineer-II---20269_R202681181) | today |
 | **BigCommerce** | Software Engineer II - Engineering Services (Full Stack) | SWE II | Austin, TX | [Apply](https://bigcommerce.wd12.myworkdayjobs.com/Commerce/job/Austin-TX/Software-Engineer-II---Engineering-Services--Full-Stack-_JR102826) | today |
 | **NCR Voyix** | Software Engineer II | SWE II | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/Software-Engineer-II_R0158049) | today |
 | **NCR Voyix** | Software Engineer | New Grad | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/Software-Engineer_R0158135) | today |
 | 🔥 **Dell Technologies** | Software Engineer 1 - IT | SWE I | Texas | [Apply](https://iawmqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/careers/job/298784?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **PayPal** | Sr Software Engineer - Cloud Infrastructure and Devops | SWE I | Austin, Texas, United States of America | [Apply](https://paypal.wd1.myworkdayjobs.com/jobs/job/Austin-Texas-United-States-of-America/Sr-Software-Engineer---Cloud-Infrastructure-and-Devops_R0136772-1) | today |
+| 🔥 **Workday** | Sr. Software Engineer (Distributed Systems) | New Grad | USA, GA, Atlanta | [Apply](https://workday.wd5.myworkdayjobs.com/Workday/job/USA-GA-Atlanta/Sr-Software-Engineer--Distributed-Systems-_JR-0108061) | today |
+| **Motorola Solutions** | Software Engineer | New Grad | Allen, TX (TX139) | [Apply](https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Allen-TX-TX139/Software-Engineer_R67011) | today |
+| **Leidos** | Embedded Software Engineer - Kinetic Effects | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Embedded-Software-Engineer---Kinetic-Effects_R-00189072) | today |
 | **RTX** | Software Engineer 1 - Advanced Products and Solutions | New Grad | McKinney, TX | [Apply](https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-TX-MCKINNEY-513WC--2501-W-University-Dr--WING-C-BLDG/EOIR-Advanced-Products-and-Solutions--Software-Engineer-I--Onsite-_01872528?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **AeroVironment** | Software Engineer 1 | New Grad | Sunrise, FL | [Apply](https://avav.wd1.myworkdayjobs.com/en-US/avav/job/Sunrise-FL/Software-Engineer-I_8682?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **IXL Learning** | Software Engineer New Grad | New Grad | Raleigh, NC | [Apply](https://www.ixl.com/company/jobs?gh_jid=8765745002&utm_source=Simplify&ref=Simplify) | 1d ago |
@@ -409,6 +412,7 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | 🔥 **Home Depot** | Associate Product Manager Program (Summer 2027) | New Grad | STORE SUPPORT CENTER, ATLANTA - 9090 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/Associate-Product-Manager-Program--Summer-2027-_Req192004) | today |
 | 🔥 **Coca-Cola** | RGM Product Manager, Experience Design | New Grad | US - GA - Atlanta | [Apply](https://coke.wd1.myworkdayjobs.com/coca-cola-careers/job/US---GA---Atlanta/Director--RGM-Product-Experience-Design_R-145096) | today |
 | **BigCommerce** | Technical Product Manager | New Grad | Austin, TX | [Apply](https://bigcommerce.wd12.myworkdayjobs.com/Commerce/job/Austin-TX/Lead-Technical-Product-Manager_JR102540-1) | today |
+| 🔥 **Anduril** | Product Manager, Connected Warfare | New Grad | Washington, District of Columbia, United States | [Apply](https://boards.greenhouse.io/andurilindustries/jobs/5231701007?gh_jid=5231701007) | today |
 
 ---
 
@@ -417,6 +421,7 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | Company | Role | Seniority | Location | Apply | Posted |
 |---------|------|-----------|----------|-------|--------|
 | **Expedia Group** | Enterprise AI Engineer II | SWE II | Austin Domain 11 - HomeAway | [Apply](https://expedia.wd108.myworkdayjobs.com/private/job/Austin-Domain-11---HomeAway/Enterprise-AI-Engineer-II_R-109164) | today |
+| 🔥 **The Walt Disney Company** | Sr Machine Learning Engineer | New Grad | Orlando, FL, USA | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Orlando-FL-USA/Sr-Machine-Learning-Engineer_10157609-1) | today |
 
 ---
 
@@ -440,7 +445,6 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | **Procter & Gamble** | Field Service Technician (Entry Level) - Charleston, SC | New Grad | Charleston | [Apply](https://pg.wd5.myworkdayjobs.com/1000/job/Charleston/Field-Service-Technician--Entry-Level----Charleston--SC_R000158785) | today |
 | **Motorola Solutions** | Technical Support Engineer II | SWE II | Allen, TX (TX139) | [Apply](https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Allen-TX-TX139/Technical-Support-Technician-II_R65382) | today |
 | **Leidos** | Entry-Level Test Engineer | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Entry-Level-Test-Engineer_R-00191583) | today |
-| **Leidos** | Enterprise Voice Engineer II | SWE II | Tampa, FL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Tampa-FL/Enterprise-Voice-Engineer-II_R-00190783) | today |
 | **Leidos** | Veterinary Technician I - Entry Level | SWE I | San Antonio, TX | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/San-Antonio-TX/Veterinary-Technician-I---Entry-Level_R-00191099) | today |
 | **Leidos** | Junior Radar Modeling Engineer w/ DoD Secret | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Radar-Modeling-Engineer_R-00185586) | today |
 | **Leidos** | Junior Electrical System Design Engineer | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Junior-Electrical-System-Design-Engineer_R-00189432) | today |
@@ -451,13 +455,15 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 | **Applied Materials** | Global Software Support Engineer I | SWE I | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Global-Software-Support-Engineer-I_R2625245) | today |
 | **Applied Materials** | Manufacturing Engineer II (ALD)- Day/Swing Shift | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Manufacturing-Engineer---ALD_R2626564) | today |
 | **Applied Materials** | Manufacturing Engineer II- 2nd Shift | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Manufacturing-Engineer---ALD_R2627967) | today |
-| **Applied Materials** | Manufacturing Engineer II - (E2) | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Manufacturing-Engineer-II----E2-_R2622697) | today |
-| **Applied Materials** | Process Support Engineer II | SWE II | Dallas-Richardson,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/Dallas-RichardsonTX/Process-Support-Engineer-II_R2626618) | today |
 | **Expedia Group** | Software Development Engineer II - Identity Authentication Services | SWE II | Austin Domain 11 - HomeAway | [Apply](https://expedia.wd108.myworkdayjobs.com/private/job/Austin-Domain-11---HomeAway/Software-Development-Engineer-II---Identity-Authentication-Services_R-108809) | today |
 | **NCR Voyix** | SW Engineer II | SWE II | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/SW-Engineer-II_R0157597-1) | today |
 | **NCR Voyix** | SW Engineer I | SWE I | ATLANTA, GA, USA | [Apply](https://ncr.wd1.myworkdayjobs.com/ext_us/job/ATLANTA-GA-USA/SW-Engineer-I_R0157595) | today |
 | **NCR Atleos** | Field Service Technician I (entry level) - PBC -Tampa, FL | SWE I | FLORIDA VIRTUAL, USA | [Apply](https://ncratleos.wd1.myworkdayjobs.com/ext_atleos_us/job/FLORIDA-VIRTUAL-USA/Field-Service-Technician-I--entry-level----PBC--Tampa--FL_R1154201-2) | today |
 | **NCR Atleos** | Field Service Technician I (entry level)- Atlanta, GA (East) | SWE I | GEORGIA VIRTUAL, USA | [Apply](https://ncratleos.wd1.myworkdayjobs.com/ext_atleos_us/job/GEORGIA-VIRTUAL-USA/Field-Service-Technician-I--entry-level---Atlanta--GA--East-_R1154274-3) | today |
+| **Blue Origin** | Manufacturing Engineer II | SWE II | Huntsville, AL | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Huntsville-AL/Manufacturing-Engineer-II_R71013) | today |
+| **Blue Origin** | Test Engineer I (TX) - Early Career (2026 Starts) | SWE I | Van Horn, TX | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Van-Horn-TX/Test-Engineer-I--TX----Early-Career--2026-Starts-_R70057) | today |
+| **Applied Materials** | Manufacturing Quality Engineer II - (E2) | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Manufacturing-Quality-Engineer-II----E2-_R2621899) | today |
+| **Applied Materials** | NPC Manufacturing Engineer II - (E2) | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/NPC-Manufacturing-Engineer-II----E2-_R2628317) | today |
 | **Blue Origin** | Software Development Engineer 1 - Early Career - 2027 Starts | New Grad | Seattle, WALACape Canaveral, FLKent and 3 more | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Greater-Seattle-Area/Software-Development-Engineer-I---Early-Career--2027-Starts-_R71326?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Hot Topic** | Junior Systems Analyst - Warehouse Management System | New Grad | Nashville, TNLa Vergne, TNRiverside and 1 more | [Apply](https://simplify.jobs/c/HotTopic?utm_source=GHList&utm_medium=company) | 1d ago |
 | **Siemens** | Junior Software Development Engineer | New Grad | Grand Prairie, TX | [Apply](https://simplify.jobs/c/Siemens?utm_source=GHList&utm_medium=company) | 1d ago |
