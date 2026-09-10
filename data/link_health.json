@@ -7172,7 +7172,7 @@
     "last_checked": "2026-09-10"
   },
   "272ae53139f3fa4d2d996e873ecf471e7971f71126dbd718f73a014baf4ffbd4": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 2,
     "last_checked": "2026-09-10"
   },
   "d381b500866f8ef6096a4ab3369bc78409f4936a32c264906be8dd02dd021914": {
@@ -7180,7 +7180,7 @@
     "last_checked": "2026-09-10"
   },
   "f0af515de6dc1cc7baf131a3b683031d6ebaa3f5ee05f53fc2b91dbcf45470e0": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 2,
     "last_checked": "2026-09-10"
   }
 }
