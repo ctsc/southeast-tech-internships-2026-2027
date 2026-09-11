@@ -1,6 +1,6 @@
 # Atlanta Tech Internships 🚀
 
-> 🤖 **Auto-updated every 6 hours** | Last updated: September 10, 2026 at 11:09 PM EST
+> 🤖 **Auto-updated every 6 hours** | Last updated: September 11, 2026 at 06:11 AM EST
 >
 > Catered to Georgia / Southeast ⭐ Leave a star on the repo if you enjoy this project :)
 >
@@ -16,17 +16,17 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 
 | Category | Open Roles |
 |----------|-----------|
-| 💻 [Software Engineering](#-software-engineering) | 49 |
+| 💻 [Software Engineering](#-software-engineering) | 47 |
 | 🛠️ [Product Engineering](#-product-engineering) | 0 |
 | 📱 [Product Management](#-product-management) | 11 |
 | 🤖 [ML / AI](#-ml--ai) | 8 |
-| 🔹 [Other](#-other) | 94 |
-| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 25 |
+| 🔹 [Other](#-other) | 97 |
+| 🔥 [Big Tech in the Southeast](#-big-tech-in-the-southeast) | 26 |
 | 🍑 [Roles Open in GA](#-roles-open-in-ga) | 59 |
 | 🎓 Graduate-Friendly Internships | 2 |
 | 💼 [Entry-Level Roles in GA](#-entry-level-roles-in-ga) | 31 |
-| 💼 Entry-Level (Southeast) | 103 |
-| **Total Internships** | **162** |
+| 💼 Entry-Level (Southeast) | 106 |
+| **Total Internships** | **163** |
 
 ---
 
@@ -34,12 +34,12 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|--------|
-| **Equifax** | Finance Intern | — | USA - Georgia - Atlanta - Midtown 30309 | S27 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Atlanta---Midtown-30309/Finance-Intern_J00178808) | today |
 | **Cox** | Enterprise Architect Intern - Summer 2027 | — | Atlanta GA | S27 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Enterprise-Architect-Intern---Summer-2027_R202682360) | today |
 | **Gulfstream** | Flight Sciences / Mass Properties College Intern - IEF | — | Savannah, GA | S27 | [Apply](https://careers.gulfstream.com/job/Savannah-Summer-2027-IEF-Flight-Sciences-Mass-Properties-College-Intern-GA-31401/1428564800/?ats=successfactors&utm_source=Simplify&ref=Simplify) | today |
 | **Cox** | AI/Automation Intern | — | Atlanta, GA | S27 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/AI-Automation-Intern---Summer-2027_R202682342?utm_source=Simplify&ref=Simplify) | today |
 | **State Farm** | Data Science Intern - Magnet Program - Online MS Analytics | — | Athens, GA | S27 | [Apply](https://jobs.statefarm.com/jobs/46057?icims=1&utm_source=Simplify&ref=Simplify) | today |
 | **Cox** | Data Governance and Management Intern | — | Atlanta, GA | S27 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Data-Governance-and-Management-Intern---Summer-2027_R202682353?utm_source=Simplify&ref=Simplify) | today |
+| **Intuitive Surgical** | Financial Analyst Intern | — | Peachtree Corners, GA | S27 | [Apply](https://jobs.smartrecruiters.com/Intuitive/744000146505579) | today |
 | **Hermeus** | Supply Chain Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/17a0b249-c6c4-4361-ab9c-1aa7c4472591) | 1d ago |
 | 🔥 **Home Depot** | 2027 Summer Internship - Supply Chain and Logistics | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Supply-Chain-and-Logistics_Req191966) | 1d ago |
 | 🔥 **Home Depot** | 2027 Summer Internship - Marketing | — | STORE SUPPORT CENTER, ATLANTA - 9090 | S27 | [Apply](https://homedepot.wd5.myworkdayjobs.com/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Marketing_Req191965) | 1d ago |
@@ -100,6 +100,7 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|--------|
+| 🔥 **Cisco** | Security Consulting Engineer I (Intern) - United States | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Security-Consulting-Engineer-I--Intern----United-States_2024817) | today |
 | 🔥 **Cisco** | Financial Analyst I - LIFT Intern | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Financial-Analyst-I---LIFT-Intern_2022092) | 1d ago |
 | 🔥 **BlackRock** | Veteran & Elite Athletes Internship Programme - Edinburgh | — | Edinburgh, Scotland | S27 | [Apply](https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional/job/Edinburgh-Scotland/Veteran---Elite-Athletes-Internship-Programme---Edinburgh_R266225) | 1d ago |
 | 🔥 **The Walt Disney Company** | Disney Live Entertainment Music Production Intern, Spring 2027 | — | Orlando, FL, USA | Sp27 | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Orlando-FL-USA/Disney-Live-Entertainment-Music-Production-Intern--Spring-2027_10159178-1) | 1d ago |
@@ -140,7 +141,6 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 | **Tanium** | Software Engineer Intern - Summer 2027 | — | Emeryville, CA, Durham and 1 more | S27 | [Apply](https://job-boards.greenhouse.io/tanium/jobs/8181017?utm_source=Simplify&ref=Simplify) | today |
 | **RF-SMART** | Software Developer Intern - Product Engineering | — | Jacksonville, FL | S27 | [Apply](https://job-boards.greenhouse.io/rfsmart/jobs/5407206008?utm_source=Simplify&ref=Simplify) | today |
 | **Booz Allen** | Systems Engineer Intern - Summer Games | — | Huntsville, AL | S27 | [Apply](https://bah.wd1.myworkdayjobs.com/bah_jobs/job/Huntsville-AL/University---2027-Summer-Games-Systems-Engineer-Intern---Huntsville--AL_R0249188?utm_source=Simplify&ref=Simplify) | today |
-| **Garmin** | Software Engineer Intern | — | Cary, NC | S27 | [Apply](https://careers.garmin.com/jobs/20131?icims=1&utm_source=Simplify&ref=Simplify) | today |
 | 🔥 **Dell Technologies** | Software Engineer Intern - Client Solutions Group Engineering | — | Austin, TX | S27 | [Apply](https://iawmqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/careers/job/298217?utm_source=Simplify&ref=Simplify) | 1d ago |
 | **Planview** | Software Engineer Intern | — | Austin, TX | S27 | [Apply](https://careers.planview.com/jobs/5128?icims=1&utm_source=Simplify&ref=Simplify) | 1d ago |
 | 🔥 **Epic Games** | Backend Services Programmer Intern 🔒 | — | Cary,North Carolina,United States | S27 | 🔒 Closed | 1d ago |
@@ -167,7 +167,6 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 | **RTX** | Software Engineer Intern - Summer 2027 | — | Richardson, TX | S27 | [Apply](https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-TX-RICHARDSON-C17--1717-Cityline-Dr--CITYLINE-C17/Software-Engineering-Intern--Summer-2027-_01872100?utm_source=Simplify&ref=Simplify) | 2d ago |
 | **Dimensional Fund Advisors** | Software Engineer Intern | — | Austin, TX | S27 | [Apply](https://dimensional.wd5.myworkdayjobs.com/dfa_careers/job/Austin/Internship-in-Technology---Software-Engineer_2026-9022?utm_source=Simplify&ref=Simplify) | 2d ago |
 | **ENFOS** | Software Engineer Intern - Summer 2027 | — | Durham, NC | S27 | [Apply](https://apply.workable.com/enfos-inc/j/CA15908E0A/apply?utm_source=Simplify&ref=Simplify) | 2d ago |
-| **Principal Financial Group** | Software Engineer Intern - Summer 2027 | — | Charlotte, NC | S27 | [Apply](https://careers.principal.com/jobs/52513?icims=1&utm_source=Simplify&ref=Simplify) | 2d ago |
 | **Hermeus** | Software Engineer Intern - Command & Control | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/5b08e2df-c9db-4831-aece-67d89e744796/apply?utm_source=Simplify&ref=Simplify) | 2d ago |
 | 🔥 **Adobe** | Software Engineer Intern | — | Seattle, WA, SF and 9 more | S27 | [Apply](https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Jose/XMLNAME-2027-Intern---Software-Engineer_R171666?utm_source=Simplify&ref=Simplify) | 2d ago |
 | 🔥 **Intel** | Software Engineer Intern | — | Austin, TX, Santa Clara and 7 more | S27 | [Apply](https://intel.wd1.myworkdayjobs.com/en-us/external/job/US-Oregon-Hillsboro/Software-Engineering---Intern--Graduate_JR0286836?utm_source=Simplify&ref=Simplify) | 2d ago |
@@ -189,6 +188,7 @@ Use this repo to discover and track **Spring 2027 / Summer 2027 tech internships
 | **Moog** | Software Engineer Intern - Military Aircraft | — | Mineral Wells, TX | S27 | [Apply](https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Mineral-Wells-TX/Intern--Software-Engineering_R-26-19888-1?utm_source=Simplify&ref=Simplify) | 2d ago |
 | 🔥 **Intel** | Platform Hardware and Systems Engineering Intern - Bachelor's | — | Austin, TX, Santa Clara and 7 more | S27 | [Apply](https://intel.wd1.myworkdayjobs.com/en-us/external/job/US-Oregon-Hillsboro/Platform-Hardware-and-Systems-Engineering---Intern--Bachelor-s_JR0286827?utm_source=Simplify&ref=Simplify) | 2d ago |
 | 🔥 **Intel** | Platform Hardware and Systems Engineering Intern | — | Austin, TX, Santa Clara and 7 more | S27 | [Apply](https://intel.wd1.myworkdayjobs.com/en-us/external/job/US-Oregon-Hillsboro/Platform-Hardware-and-Systems-Engineering---Intern--Graduate_JR0286828?utm_source=Simplify&ref=Simplify) | 2d ago |
+| **Principal Financial Group** | Software Engineer Intern - Summer 2027 🔒 | — | Charlotte, NC | S27 | 🔒 Closed | 2d ago |
 | **Transcard Payments** | Software Engineer Intern 🔒 | — | Chattanooga, TN | S27 | 🔒 Closed | 2d ago |
 
 ---
@@ -236,9 +236,7 @@ No listings yet. Check back soon!
 
 | Company | Role | Level | Location | Season | Apply | Posted |
 |---------|------|-------|----------|--------|-------|--------|
-| **Equifax** | Finance Intern | — | USA - Georgia - Atlanta - Midtown 30309 | S27 | [Apply](https://equifax.wd5.myworkdayjobs.com/UR_External/job/USA---Georgia---Atlanta---Midtown-30309/Finance-Intern_J00178808) | today |
 | **Cox** | Enterprise Architect Intern - Summer 2027 | — | Atlanta GA | S27 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Enterprise-Architect-Intern---Summer-2027_R202682360) | today |
-| **USAA** | Future Leaders Program - Data InternSep. 10, 2026San Antonio, TX | — | San Antonio, TX | S27 | [Apply](https://www.usaajobs.com/job/san-antonio/future-leaders-program-data-intern/1207/100442599600) | today |
 | **Gulfstream** | Flight Sciences / Mass Properties College Intern - IEF | — | Savannah, GA | S27 | [Apply](https://careers.gulfstream.com/job/Savannah-Summer-2027-IEF-Flight-Sciences-Mass-Properties-College-Intern-GA-31401/1428564800/?ats=successfactors&utm_source=Simplify&ref=Simplify) | today |
 | **Cox** | AI/Automation Intern | — | Atlanta, GA | S27 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/AI-Automation-Intern---Summer-2027_R202682342?utm_source=Simplify&ref=Simplify) | today |
 | **ISN Software** | Product Strategy Intern | — | Dallas, TX | S27 | [Apply](https://isnetworld.com/en/about/careers/jobs?gh_jid=6188490004&utm_source=Simplify&ref=Simplify) | today |
@@ -248,6 +246,11 @@ No listings yet. Check back soon!
 | **Ketjen** | Data Science Intern | — | Houston, TX | S27 | [Apply](https://albemarle.wd5.myworkdayjobs.com/en-US/ketjenexternal/job/Houston-Texas-United-States-of-America/Ketjen-Summer-2027-Data-Science-Internship_REQ-31411?utm_source=Simplify&ref=Simplify) | today |
 | **Cox** | Data Governance and Management Intern | — | Atlanta, GA | S27 | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Data-Governance-and-Management-Intern---Summer-2027_R202682353?utm_source=Simplify&ref=Simplify) | today |
 | **Repsol** | Middle Office Risk and Valuation Intern | — | Houston, TX | S27 | [Apply](https://repsol.wd3.myworkdayjobs.com/Repsol/job/Houston/Middle-Office--Risk-and-Valuation-Intern_83841?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **Cisco** | Security Consulting Engineer I (Intern) - United States | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Security-Consulting-Engineer-I--Intern----United-States_2024817) | today |
+| **RTX** | Mechanical Engineering Intern (Summer 2027) | — | US-AL-HUNTSVILLE-315 ~ 315 Bob Heath Dr ~ BOB HEATH | S27 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-315--315-Bob-Heath-Dr--BOB-HEATH/Mechanical-Engineering-Intern--Summer-2027-_01871548) | today |
+| **Merck** | 2027 Future Talent Program - Manufacturing Intern | — | USA - North Carolina - Durham (Old Oxford) | S27 | [Apply](https://msd.wd5.myworkdayjobs.com/searchjobs/job/USA---North-Carolina---Durham-Old-Oxford/XMLNAME-2027-Future-Talent-Program---Manufacturing-Intern_R416739) | today |
+| **Intuitive Surgical** | Financial Analyst Intern | — | Peachtree Corners, GA | S27 | [Apply](https://jobs.smartrecruiters.com/Intuitive/744000146505579) | today |
+| **USAA** | Future Leaders Program - Finance InternSep. 10, 2026San Antonio, TX | — | San Antonio, TX | S27 | [Apply](https://www.usaajobs.com/job/san-antonio/future-leaders-program-finance-intern/1207/100442599632) | today |
 | **Hermeus** | Supply Chain Intern - Spring/Summer 2027 | — | Atlanta, GA | S27 | [Apply](https://jobs.lever.co/hermeus/17a0b249-c6c4-4361-ab9c-1aa7c4472591) | 1d ago |
 | 🔥 **Cisco** | Financial Analyst I - LIFT Intern | — | RTP, North Carolina, US | S27 | [Apply](https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/RTP-North-Carolina-US/Financial-Analyst-I---LIFT-Intern_2022092) | 1d ago |
 | 🔥 **BlackRock** | Veteran & Elite Athletes Internship Programme - Edinburgh | — | Edinburgh, Scotland | S27 | [Apply](https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional/job/Edinburgh-Scotland/Veteran---Elite-Athletes-Internship-Programme---Edinburgh_R266225) | 1d ago |
@@ -344,8 +347,8 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 
 | Company | Role | Seniority | Location | Apply | Posted |
 |---------|------|-----------|----------|-------|--------|
-| **Cox** | Sr Software Engineer | New Grad | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Sr-Software-Engineer_R202681106) | today |
 | **Zebra Technologies** | Software Engineer 1 | New Grad | Kennesaw, GA | [Apply](https://zebra.wd501.myworkdayjobs.com/Zebra_careers/job/Kennesaw-Georgia/Software-Engineer--I_JR103242-1?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **Workday** | Sr. Software Engineer (Distributed Systems) | New Grad | USA, GA, Atlanta | [Apply](https://workday.wd5.myworkdayjobs.com/Workday/job/USA-GA-Atlanta/Sr-Software-Engineer--Distributed-Systems-_JR-0108061) | today |
 | **OneTrust** | Software Engineer | New Grad | Atlanta, Georgia | [Apply](https://job-boards.greenhouse.io/onetrust/jobs/8167257) | 1d ago |
 | **PagerDuty** | Site Reliability Engineer I | SWE I | Atlanta, Toronto | [Apply](https://job-boards.greenhouse.io/pagerduty/jobs/6162484004) | 1d ago |
 | **PagerDuty** | Site Reliability Engineer II | SWE II | Atlanta | [Apply](https://job-boards.greenhouse.io/pagerduty/jobs/6162595004) | 1d ago |
@@ -382,12 +385,12 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 
 | Company | Role | Seniority | Location | Apply | Posted |
 |---------|------|-----------|----------|-------|--------|
-| **RTX** | Software Engineer II (Onsite) | SWE II | US-AL-HUNTSVILLE-401 ~ 401 Jan Davis Dr NW ~ JAN DAVIS 401 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-401--401-Jan-Davis-Dr-NW--JAN-DAVIS-401/Software-Engineer-II--Onsite-_01870003) | today |
-| **Leidos** | Software Engineer | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Software-Engineer_R-00187549) | today |
-| **Leidos** | Software Engineer - Kinetic Effects | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Software-Engineer---Kinetic-Effects_R-00189066) | today |
-| **Leidos** | Junior Software Engineer | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Junior-Software-Engineer_R-00191407) | today |
-| **Cox** | Sr Software Engineer | New Grad | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Sr-Software-Engineer_R202681106) | today |
 | **Zebra Technologies** | Software Engineer 1 | New Grad | Kennesaw, GA | [Apply](https://zebra.wd501.myworkdayjobs.com/Zebra_careers/job/Kennesaw-Georgia/Software-Engineer--I_JR103242-1?utm_source=Simplify&ref=Simplify) | today |
+| 🔥 **PayPal** | Sr Software Engineer - Cloud Infrastructure and Devops | SWE I | Austin, Texas, United States of America | [Apply](https://paypal.wd1.myworkdayjobs.com/jobs/job/Austin-Texas-United-States-of-America/Sr-Software-Engineer---Cloud-Infrastructure-and-Devops_R0136772-1) | today |
+| 🔥 **Workday** | Sr. Software Engineer (Distributed Systems) | New Grad | USA, GA, Atlanta | [Apply](https://workday.wd5.myworkdayjobs.com/Workday/job/USA-GA-Atlanta/Sr-Software-Engineer--Distributed-Systems-_JR-0108061) | today |
+| **Motorola Solutions** | Software Engineer | New Grad | Allen, TX (TX139) | [Apply](https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Allen-TX-TX139/Software-Engineer_R67011) | today |
+| **Leidos** | Embedded Software Engineer - Kinetic Effects | New Grad | Huntsville, AL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Huntsville-AL/Embedded-Software-Engineer---Kinetic-Effects_R-00189072) | today |
+| **Citigroup** | Full Stack Software Engineer - Vice President | New Grad | Irving, Texas, United States | [Apply](https://jobs.citi.com/job/irving/full-stack-software-engineer-vice-president/287/98481844352) | today |
 | **OneTrust** | Software Engineer | New Grad | Atlanta, Georgia | [Apply](https://job-boards.greenhouse.io/onetrust/jobs/8167257) | 1d ago |
 | **PagerDuty** | Site Reliability Engineer I | SWE I | Atlanta, Toronto | [Apply](https://job-boards.greenhouse.io/pagerduty/jobs/6162484004) | 1d ago |
 | **PagerDuty** | Site Reliability Engineer II | SWE II | Atlanta | [Apply](https://job-boards.greenhouse.io/pagerduty/jobs/6162595004) | 1d ago |
@@ -449,6 +452,7 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 
 | Company | Role | Seniority | Location | Apply | Posted |
 |---------|------|-----------|----------|-------|--------|
+| 🔥 **Anduril** | Product Manager, Connected Warfare | New Grad | Washington, District of Columbia, United States | [Apply](https://boards.greenhouse.io/andurilindustries/jobs/5231701007?gh_jid=5231701007) | today |
 | **PrizePicks** | Product Manager II - MarTech | SWE II | Atlanta, GA preferred, Remote | [Apply](http://prizepicks.com/position?gh_jid=7984304003) | 1d ago |
 | **PrizePicks** | Product Manager II - Rewards and Promotions | SWE II | Atlanta, GA preferred, Remote | [Apply](http://prizepicks.com/position?gh_jid=7984325003) | 1d ago |
 | **CallRail** | Product Manager, Core Integrations & API | SWE I | Atlanta, GA (Hybrid) | [Apply](https://job-boards.greenhouse.io/callrail/jobs/8186527) | 1d ago |
@@ -465,6 +469,7 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 
 | Company | Role | Seniority | Location | Apply | Posted |
 |---------|------|-----------|----------|-------|--------|
+| 🔥 **The Walt Disney Company** | Sr Machine Learning Engineer | New Grad | Orlando, FL, USA | [Apply](https://disney.wd5.myworkdayjobs.com/disneycareerdc/job/Orlando-FL-USA/Sr-Machine-Learning-Engineer_10157609-1) | today |
 | **Expedia Group** | Enterprise AI Engineer II | SWE II | Austin Domain 11 - HomeAway | [Apply](https://expedia.wd108.myworkdayjobs.com/private/job/Austin-Domain-11---HomeAway/Enterprise-AI-Engineer-II_R-109164) | 1d ago |
 | **Cox** | Machine Learning Engineer II, GenAI Evaluation Framework | SWE II | Atlanta GA | [Apply](https://cox.wd1.myworkdayjobs.com/Cox_External_Career_Site_1/job/Atlanta-GA/Machine-Learning-Engineer-II--GenAI-Evaluation-Framework_R202682290) | 1d ago |
 
@@ -474,10 +479,11 @@ Full-time new-grad and early-career SWE / PE / PM / ML-AI roles (SWE / SWE I / S
 
 | Company | Role | Seniority | Location | Apply | Posted |
 |---------|------|-----------|----------|-------|--------|
-| **RTX** | Electrical Components Engineer II | SWE II | US-AL-HUNTSVILLE-315 ~ 315 Bob Heath Dr ~ BOB HEATH | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-315--315-Bob-Heath-Dr--BOB-HEATH/Electrical-Components-Engineer-II_01873130-1) | today |
-| **Leidos** | Enterprise Voice Engineer II | SWE II | Tampa, FL | [Apply](https://leidos.wd5.myworkdayjobs.com/External/job/Tampa-FL/Enterprise-Voice-Engineer-II_R-00190783) | today |
-| **Applied Materials** | Manufacturing Engineer II - (E2) | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Manufacturing-Engineer-II----E2-_R2622697) | today |
-| **Applied Materials** | Process Support Engineer II | SWE II | Dallas-Richardson,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/Dallas-RichardsonTX/Process-Support-Engineer-II_R2626618) | today |
+| **RTX** | Electrical Components Engineer II | SWE II | US-AL-HUNTSVILLE-401 ~ 401 Jan Davis Dr NW ~ JAN DAVIS 401 | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-401--401-Jan-Davis-Dr-NW--JAN-DAVIS-401/Electrical-Components-Engineer-II_01868883) | today |
+| **Blue Origin** | Manufacturing Engineer II | SWE II | Huntsville, AL | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Huntsville-AL/Manufacturing-Engineer-II_R71013) | today |
+| **Blue Origin** | Test Engineer I (TX) - Early Career (2026 Starts) | SWE I | Van Horn, TX | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Van-Horn-TX/Test-Engineer-I--TX----Early-Career--2026-Starts-_R70057) | today |
+| **Applied Materials** | Manufacturing Quality Engineer II - (E2) | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/Manufacturing-Quality-Engineer-II----E2-_R2621899) | today |
+| **Applied Materials** | NPC Manufacturing Engineer II - (E2) | SWE II | Austin,TX | [Apply](https://amat.wd1.myworkdayjobs.com/External/job/AustinTX/NPC-Manufacturing-Engineer-II----E2-_R2628317) | today |
 | 🔥 **Robinhood** | Customer Experience Associate (New Grad) | New Grad | Denver, CO, Westlake, TX | [Apply](https://boards.greenhouse.io/robinhood/jobs/8163432?t=gh_src=&gh_jid=8163432) | 1d ago |
 | **RTX** | Electrical Components Engineer I - Onsite | SWE I | US-AL-HUNTSVILLE-315 ~ 315 Bob Heath Dr ~ BOB HEATH | [Apply](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-AL-HUNTSVILLE-315--315-Bob-Heath-Dr--BOB-HEATH/Electrical-Components-Engineer-I---Onsite_01871856) | 1d ago |
 | **Blue Origin** | Materials and Process Engineer II – TPS, Sealants, Coatings, & Adhesives (Early Career) | SWE II | Space Coast, FL | [Apply](https://blueorigin.wd5.myworkdayjobs.com/blueorigin/job/Space-Coast-FL/Materials-and-Process-Engineer-II---TPS--Sealants--Coatings----Adhesives--Early-Career-_R66867) | 1d ago |
